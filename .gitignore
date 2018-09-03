@@ -1,0 +1,11 @@
+*.iml
+src/main/resources/rebel.xml
+src/main/webapp/resources/libs/*
+!src/main/webapp/resources/libs/sockjs/
+target
+.metadata/
+.classpath
+.project
+.settings/
+src/main/resources/db-config.xml
+src/main/resources/redis-config.xml

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+    <comment>database-config</comment>
+    <entry key="jdbcDriver">com.mysql.jdbc.Driver</entry>
+    <entry key="url">jdbc:mysql://Your-URL/Your-Schema</entry>
+    <entry key="username">Your-Username</entry>
+    <entry key="password">Your-Password</entry>
+</properties>

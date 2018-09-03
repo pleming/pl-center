@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="users">
+    <select id="isExistUser" resultType="org.computerized.pl.dto.UserDTO">
+        SELECT
+			user_code AS userCode,
+			user_id AS userId,
+			passwd,
+			col_id AS colId,
+			dept_id AS deptId,
+			student_code AS studentCode,
+			users.name,
+			email,
+			phone
+        FROM users
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="signin" resultType="org.computerized.pl.dto.UserAuthDTO">
+        SELECT
+			U.user_code AS userCode,
+	     	user_id AS userId,
+			passwd,
+			col_id AS colId,
+			dept_id AS deptId,
+			student_code AS studentCode,
+			U.name,
+			email,
+			phone,
+			auth
+        FROM users AS U
+	    INNER JOIN auth AS A
+	    ON U.user_code = A.user_code
+        WHERE user_id = #{userId} AND passwd = #{passwd}
+    </select>
+
+    <insert id="signup">
+        INSERT INTO
+			users(user_id, passwd, col_id, dept_id, student_code, name, email, phone)
+        VALUES
+        	(#{userId}, #{passwd}, ${colId}, ${deptId}, #{studentCode}, #{name}, #{email}, #{phone})
+    </insert>
+</mapper>

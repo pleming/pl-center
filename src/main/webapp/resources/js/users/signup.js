@@ -10,6 +10,8 @@ $(document).ready(function() {
 
         var college = res.contents;
 
+        $("select#col").append("<option value='-1'>단과대학</option>");
+
         for(var i = 0; i < college.length; i++) {
             $("select#col").append(
                 "<option value=" + college[i].id + ">" + college[i].college + "</option>"
@@ -38,6 +40,8 @@ var loadDept = function(colId) {
 
         var dept = res.contents;
 
+        $("select#dept").append("<option value='-1'>학과</option>");
+
         for(var i = 0; i < dept.length; i++) {
             $("select#dept").append(
                 "<option value=" + dept[i].id + ">" + dept[i].dept + "</option>"
@@ -55,12 +59,22 @@ var signup = function () {
         deptId: $("select#dept").val(),
         studentCode: $("input[name=studentCode]").val(),
         name: $("input[name=name]").val(),
-        email: $("input[name=email").val(),
+        email: $("input[name=email]").val(),
         phone: $("input[name=phone]").val()
     };
 
     if (data.passwd != data.chkPasswd) {
         alert("패스워드와 패스워드 확인이 일치하지 않습니다.");
+        return;
+    }
+
+    if(data.colId == -1) {
+        alert("단과대학을 선택해주세요.");
+        return;
+    }
+
+    if(data.deptId == -1) {
+        alert("학과를 선택해주세요.");
         return;
     }
 

@@ -4,48 +4,27 @@
 <html>
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
+    <link rel="stylesheet" href="/resources/css/users/signup.css">
     <script src="/resources/js/users/signup.js"></script>
     <title>PL Center - 회원가입</title>
 </head>
 <body>
-<div>
-    <label>아이디 </label>
-    <input type="text" name="userId"/>
-</div>
-<div>
-    <label>비밀번호 </label>
-    <input type="password" name="passwd"/>
-</div>
-<div>
-    <label>비밀번호 확인 </label>
-    <input type="password" name="chkPasswd"/>
-</div>
-<div>
-    <label>단과대학 </label>
-    <select id="col"></select>
-</div>
-<div>
-    <label>학과 </label>
-    <select id="dept"></select>
-</div>
-<div>
-    <label>학번 </label>
-    <input type="text" name="studentCode">
-</div>
-<div>
-    <label>이름 </label>
-    <input type="text" name="name"/>
-</div>
-<div>
-    <label>이메일 </label>
-    <input type="text" name="email"/>
-</div>
-<div>
-    <label>전화번호 </label>
-    <input type="text" name="phone"/>
-</div>
-<div>
-    <button onclick="signup()">회원가입</button>
+<div class="container container-box">
+    <div class="guide-box">
+        <div class="div-signup">
+            <h1 class="display-4">Sign Up</h1>
+            <input class="form-control input-account" type="text" name="userId" placeholder="아이디"/>
+            <input class="form-control input-account" type="password" name="passwd" placeholder="비밀번호"/>
+            <input class="form-control input-account" type="password" name="chkPasswd" placeholder="비밀번호 확인"/>
+            <select class="form-control input-account" id="col"></select>
+            <select class="form-control input-account" id="dept"></select>
+            <input class="form-control input-account" type="text" name="studentCode" placeholder="학번">
+            <input class="form-control input-account" type="text" name="name" placeholder="이름"/>
+            <input class="form-control input-account" type="text" name="email" placeholder="이메일"/>
+            <input class="form-control input-account" type="text" name="phone" placeholder="휴대폰 번호"/>
+            <button class="btn btn-primary btn-signup input-account" onclick="signup()">회원가입</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

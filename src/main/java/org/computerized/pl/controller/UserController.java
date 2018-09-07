@@ -49,14 +49,18 @@ public class UserController {
         boolean isExist = userService.isExistUser(userDTO);
 
         if(!isExist)
-            return new ResponseVO(true, 1, "아이디나 패스워드가 틀렸습니다.");
+            return new ResponseVO(false, 1, "아이디나 패스워드가 틀렸습니다.");
 
         UserAuthDTO userAuthDTO = userService.signin(userDTO);
+
+        if(userAuthDTO == null)
+            return new ResponseVO(false, 2, "아이디나 패스워드가 틀렸습니다.");
+
         SessionVO sessionVO = SessionVO.parseSessionVO(userAuthDTO);
 
         httpSession.setAttribute("sessionInfo", sessionVO);
 
-        return new ResponseVO(true, 2, "로그인을 성공하였습니다.");
+        return new ResponseVO(true, 1, "로그인을 성공하였습니다.");
     }
 
     @RequestMapping(value = "signup", method = RequestMethod.POST)
@@ -65,9 +69,9 @@ public class UserController {
         UserDTO userDTO = UserDTO.parseUserDTO(userVO);
 
         if(userService.isExistUser(userDTO))
-            return new ResponseVO(true, 1, "동일한 아이디가 존재합니다.");
+            return new ResponseVO(false, 1, "동일한 아이디가 존재합니다.");
 
         userService.signup(userDTO);
-        return new ResponseVO(true, 2, "회원가입을 성공하였습니다.");
+        return new ResponseVO(true, 1, "회원가입을 성공하였습니다.");
     }
 }

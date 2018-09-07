@@ -3,6 +3,7 @@ package org.computerized.pl.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
+import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,5 +44,9 @@ public class UserDAO {
         param.put("phone", userDTO.getPhone());
 
         sqlSession.insert("users.signup", param);
+    }
+
+    public List<StudentVO> loadStudent() {
+        return sqlSession.selectList("users.loadStudent");
     }
 }

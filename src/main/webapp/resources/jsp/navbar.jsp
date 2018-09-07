@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link rel="stylesheet" href="/resources/css/navbar.css">
+<script src="/resources/js/users/signout.js"></script>
 <script src="/resources/js/navbar.js"></script>
 
 <div class="navbar-box">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">PL Center</a>
+        <a class="navbar-brand" href="/">PL Center</a>
         <buttion class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
             <span class="navbar-toggler-icon"></span>
         </buttion>

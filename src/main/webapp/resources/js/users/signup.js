@@ -68,12 +68,12 @@ var signup = function () {
         return;
     }
 
-    if(data.colId == -1) {
+    if (data.colId == -1) {
         alert("단과대학을 선택해주세요.");
         return;
     }
 
-    if(data.deptId == -1) {
+    if (data.deptId == -1) {
         alert("학과를 선택해주세요.");
         return;
     }
@@ -92,8 +92,13 @@ var signup = function () {
         method: "POST",
         data: JSON.stringify(data)
     }, function(err, res) {
-        if (err || res.status == false) {
+        if (err) {
             alert("회원가입을 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        if (res.status == false) {
+            alert(res.contents);
             return;
         }
 

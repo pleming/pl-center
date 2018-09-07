@@ -41,4 +41,24 @@
         VALUES
         	(#{userId}, #{passwd}, ${colId}, ${deptId}, #{studentCode}, #{name}, #{email}, #{phone})
     </insert>
+
+	<select id="loadStudent" resultType="org.computerized.pl.model.StudentVO">
+		SELECT
+			U.user_code AS userCode,
+	     	user_id AS userId,
+			college,
+			dept,
+			student_code AS studentCode,
+			U.name,
+			email,
+			phone,
+			auth
+        FROM users AS U
+	    INNER JOIN auth AS A
+	    ON U.user_code = A.user_code
+	    INNER JOIN college AS C
+	    ON U.col_id = C.id
+	    INNER JOIN dept AS D
+	    ON U.dept_id = D.id
+	</select>
 </mapper>

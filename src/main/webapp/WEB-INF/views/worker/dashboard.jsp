@@ -11,7 +11,7 @@
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
-<%@ include file="/resources/jsp/sidebar.jsp" %>
+<%@ include file="/resources/jsp/admin/sidebar.jsp" %>
 
 <div class="container-box">
     <h1>PL Center - 근무자</h1>

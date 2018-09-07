@@ -9,8 +9,13 @@ var signin = function () {
        method: "POST",
        data: JSON.stringify(data)
     }, function (err, res) {
-        if (err || res.status == false) {
+        if(err) {
             alert("로그인을 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        if (res.status == false) {
+            alert(res.contents);
             return;
         }
 

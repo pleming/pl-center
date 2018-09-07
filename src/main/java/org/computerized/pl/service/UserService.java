@@ -5,6 +5,7 @@ import org.computerized.pl.dao.UserDAO;
 import org.computerized.pl.model.AuthVO;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
+import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,13 @@ public class UserService {
     public void signup(UserDTO userDTO) {
         userDAO.signup(userDTO);
         authDAO.registerAuth();
+    }
+
+    public List<StudentVO> loadStudent() {
+        return userDAO.loadStudent();
+    }
+
+    public void updateAuth(AuthVO authVO) {
+        authDAO.updateAuth(authVO);
     }
 }

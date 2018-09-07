@@ -23,6 +23,6 @@ public class AuthDAO {
         param.put("userCode", authVO.getUserCode());
         param.put("auth", authVO.getAuth());
 
-        sqlSession.update("auth.registerAuth", param);
+        sqlSession.update("auth.updateAuth", param);
     }
 }

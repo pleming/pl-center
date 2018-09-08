@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/")
 public class MainController {
-    @RequestMapping(value = "", method = {RequestMethod.GET})
+    @RequestMapping(value = "", method = { RequestMethod.GET })
     public String renderIndex(HttpSession httpSession) {
         SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
 
@@ -28,6 +28,6 @@ public class MainController {
         else if(auth.equals(CodeDefinition.Auth.ADMIN.getCode()))
             return "redirect:/admin/dashboard";
         else
-            return "redirect:/500";
+            return "redirect:/error/400";
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -18,20 +19,20 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "dashboard")
+    @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
 
     @RequestMapping(value = "auth")
     public void renderAuth(){}
 
-    @RequestMapping(value = "loadStudent")
+    @RequestMapping(value = "loadStudent", method = { RequestMethod.GET })
     @ResponseBody
     public ResponseVO loadStudent() {
         List<StudentVO> studentVOList = userService.loadStudent();
         return new ResponseVO(true, 1, studentVOList);
     }
 
-    @RequestMapping(value = "updateAuth")
+    @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO updateAuth(@RequestBody AuthVO authVO) {
         userService.updateAuth(authVO);

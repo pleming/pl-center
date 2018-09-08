@@ -5,7 +5,6 @@
 
 <div class="sidebar-box navbar-dark bg-dark">
     <div class="sidebar-list list-group">
-        <a href="/admin/dashboard" class="list-group-item list-group-item-action">대시보드</a>
         <a href="#" class="list-group-item list-group-item-action">근무일지 현황</a>
         <a href="#" class="list-group-item list-group-item-action">상담일지 현황</a>
         <a href="#" class="list-group-item list-group-item-action">단과대학 현황</a>

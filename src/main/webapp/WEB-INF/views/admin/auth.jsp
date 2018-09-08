@@ -6,7 +6,7 @@
     <%@ include file="/resources/jsp/header.jsp" %>
     <link rel="stylesheet" href="/resources/css/admin/dashboard.css">
     <script src="/resources/js/admin/dashboard.js"></script>
-    <title>PL Center - 관리자</title>
+    <title>PL Center - 권한 설정</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>

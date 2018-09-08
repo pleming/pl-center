@@ -25,24 +25,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "signin", method = RequestMethod.GET)
+    @RequestMapping(value = "signin", method = { RequestMethod.GET })
     public String renderSignIn() {
         return "users/signin";
     }
 
-    @RequestMapping(value = "signup", method = RequestMethod.GET)
+    @RequestMapping(value = "signup", method = { RequestMethod.GET })
     public String renderSignUp() {
         return "users/signup";
     }
 
-    @RequestMapping(value = "signout", method = RequestMethod.GET)
+    @RequestMapping(value = "signout", method = { RequestMethod.GET })
     @ResponseBody
     public ResponseVO renderSignout(HttpSession httpSession) {
         httpSession.invalidate();
         return new ResponseVO(true, 1, "로그아웃을 성공하였습니다.");
     }
 
-    @RequestMapping(value = "signin", method = RequestMethod.POST)
+    @RequestMapping(value = "signin", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO signin(HttpSession httpSession, @RequestBody UserVO userVO) {
         UserDTO userDTO = UserDTO.parseUserDTO(userVO);
@@ -63,7 +63,7 @@ public class UserController {
         return new ResponseVO(true, 1, "로그인을 성공하였습니다.");
     }
 
-    @RequestMapping(value = "signup", method = RequestMethod.POST)
+    @RequestMapping(value = "signup", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO signup(@RequestBody UserVO userVO) {
         UserDTO userDTO = UserDTO.parseUserDTO(userVO);

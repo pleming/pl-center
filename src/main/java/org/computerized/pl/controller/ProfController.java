@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("student")
-public class StudentController {
+@RequestMapping("prof")
+public class ProfController {
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
 }

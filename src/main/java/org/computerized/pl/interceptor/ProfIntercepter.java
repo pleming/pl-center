@@ -14,7 +14,7 @@ public class ProfIntercepter extends HandlerInterceptorAdapter {
         SessionVO sessionVO = (SessionVO)request.getSession().getAttribute("sessionInfo");
 
         if(!sessionVO.getAuth().equals(CodeDefinition.Auth.PROF.getCode())) {
-            response.sendRedirect(request.getContextPath() + "/500");
+            response.sendRedirect("/error/400");
             return false;
         }
 

@@ -12,7 +12,7 @@
 <div class="container container-box">
     <div class="guide-box">
         <div class="div-signup">
-            <h1 class="display-4">Sign Up</h1>
+            <h1 class="display-4 text-center">Sign Up</h1>
             <input class="form-control input-account" type="text" name="userId" placeholder="아이디"/>
             <input class="form-control input-account" type="password" name="passwd" placeholder="비밀번호"/>
             <input class="form-control input-account" type="password" name="chkPasswd" placeholder="비밀번호 확인"/>

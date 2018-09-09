@@ -8,5 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("prof")
 public class ProfController {
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
-    public void renderDashboard(){}
+    public void renderDashboard() {}
+
+    @RequestMapping(value = "class", method = { RequestMethod.GET })
+    public void renderClass() {}
+
+    @RequestMapping(value = "class/add", method = { RequestMethod.GET })
+    public void renderAdd() {}
 }

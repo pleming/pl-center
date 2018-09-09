@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="class">
+    <select id="loadClass" resultType="org.computerized.pl.model.ClassVO">
+        SELECT
+            id,
+            C.year,
+            semester,
+            class_no AS classNo
+        FROM pl_center.class AS C
+        ORDER BY C.year DESC, semester ASC
+    </select>
+
+    <insert id="addClass">
+        INSERT INTO
+            pl_center.class(pl_center.class.year, pl_center.class.semester, pl_center.class.class_no)
+        VALUES(${year}, ${semester}, ${classNo})
+    </insert>
+</mapper>

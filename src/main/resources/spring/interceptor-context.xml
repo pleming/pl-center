@@ -14,6 +14,7 @@
             <mvc:mapping path="/assistant/**"/>
             <mvc:mapping path="/prof/**"/>
             <mvc:mapping path="/admin/**"/>
+            <mvc:mapping path="/class/**"/>
             <bean class="org.computerized.pl.interceptor.SessionCheckInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
@@ -35,6 +36,10 @@
         <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <bean class="org.computerized.pl.interceptor.AdminIntercepter"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/class/**"/>
+            <bean class="org.computerized.pl.interceptor.ProfWorkerIntercepter"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

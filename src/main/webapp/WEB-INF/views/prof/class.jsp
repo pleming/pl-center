@@ -13,25 +13,10 @@
 <%@ include file="/resources/jsp/prof/sidebar.jsp" %>
 
 <div class="container-box">
-    <button class="btn btn-outline-success btn-block btn-class-add" onclick="location.href='/prof/class/add'">+ 분반 추가</button>
-
-    <div class="card card-class">
-        <div class="card-body">
-            <h1 class="card-title text-center">2017-01</h1>
-        </div>
+    <div class="div-class-add">
+        <button class="btn btn-outline-success btn-block" onclick="location.href='/prof/class/add'">+ 분반 추가</button>
     </div>
-
-    <div class="card card-class">
-        <div class="card-body">
-            <h1 class="card-title text-center">2017-02</h1>
-        </div>
-    </div>
-
-    <div class="card card-class">
-        <div class="card-body">
-            <h1 class="card-title text-center">2017-03</h1>
-        </div>
-    </div>
+    <div id="div-class-list"></div>
 </div>
 
 </body>

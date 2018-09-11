@@ -16,7 +16,20 @@ public class ClassService {
         return classDAO.loadClass();
     }
 
+    public ClassVO loadClassById(Integer id) {
+        List<ClassVO> classVOList = classDAO.loadClassById(id);
+
+        if(classVOList.size() == 0)
+            return null;
+
+        return classVOList.get(0);
+    }
+
     public void addClass(ClassVO classVO) {
         classDAO.addClass(classVO);
+    }
+
+    public void modClass(ClassVO classVO) {
+        classDAO.modClass(classVO);
     }
 }

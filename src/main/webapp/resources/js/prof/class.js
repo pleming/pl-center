@@ -22,6 +22,6 @@ $(document).ready(function() {
     });
 
     $("div#div-class-list").on("click", "div.card-class", function() {
-        location.href = "/prof/class/mod";
+        location.href = "/prof/class/mod/" + $(this).attr("data-id");
     });
 });

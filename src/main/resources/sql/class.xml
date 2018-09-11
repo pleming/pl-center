@@ -12,9 +12,26 @@
         ORDER BY C.year DESC, semester ASC
     </select>
 
+    <select id="loadClassById" resultType="org.computerized.pl.model.ClassVO">
+        SELECT
+            id,
+            C.year,
+            semester,
+            class_no AS classNo
+        FROM pl_center.class AS C
+        WHERE id = ${id}
+        ORDER BY C.year DESC, semester ASC
+    </select>
+
     <insert id="addClass">
         INSERT INTO
             pl_center.class(pl_center.class.year, pl_center.class.semester, pl_center.class.class_no)
         VALUES(${year}, ${semester}, ${classNo})
+    </insert>
+
+    <insert id="modClass">
+        UPDATE pl_center.class AS C
+        SET C.year = ${year}, semester = ${semester}, class_no = ${classNo}
+        WHERE id = ${id}
     </insert>
 </mapper>

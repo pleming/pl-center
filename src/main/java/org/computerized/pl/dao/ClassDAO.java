@@ -18,6 +18,12 @@ public class ClassDAO {
         return sqlSession.selectList("class.loadClass");
     }
 
+    public List<ClassVO> loadClassById(Integer id) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", id);
+        return sqlSession.selectList("class.loadClassById", param);
+    }
+
     public void addClass(ClassVO classVO) {
         Map<String, Object> param = new HashMap<String, Object>();
 
@@ -26,5 +32,16 @@ public class ClassDAO {
         param.put("classNo", classVO.getClassNo());
 
         sqlSession.insert("class.addClass", param);
+    }
+
+    public void modClass(ClassVO classVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("id", classVO.getId());
+        param.put("year", classVO.getYear());
+        param.put("semester", classVO.getSemester());
+        param.put("classNo", classVO.getClassNo());
+
+        sqlSession.update("class.modClass", param);
     }
 }

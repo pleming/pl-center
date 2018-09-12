@@ -31,7 +31,7 @@ var loadDept = function(colId) {
     $ajax.request({
         url: "/colDept/loadDept",
         method: "POST",
-        data: JSON.stringify({colId: colId})
+        data: JSON.stringify({id: colId})
     }, function(err, res) {
         if (err || res.status == false) {
             alert("학과 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");

@@ -26,8 +26,8 @@ public class ClassController {
 
     @RequestMapping(value = "loadClassById", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO loadClassById(@RequestBody Map<String, Object> param) {
-        return new ResponseVO(true, 1, classService.loadClassById((Integer)param.get("id")));
+    public ResponseVO loadClassById(@RequestBody ClassVO classVO) {
+        return new ResponseVO(true, 1, classService.loadClassById(classVO.getId()));
     }
 
     @RequestMapping(value = "addClass", method = { RequestMethod.POST })
@@ -42,5 +42,12 @@ public class ClassController {
     public ResponseVO modClass(@RequestBody ClassVO classVO) {
         classService.modClass(classVO);
         return new ResponseVO(true, 1, "분반 수정을 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "removeClass", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO removeClass(@RequestBody ClassVO classVO) {
+        classService.removeClass(classVO.getId());
+        return new ResponseVO(true, 1, "분반 삭제를 성공하였습니다.");
     }
 }

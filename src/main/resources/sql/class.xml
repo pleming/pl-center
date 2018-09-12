@@ -34,4 +34,9 @@
         SET C.year = ${year}, semester = ${semester}, class_no = ${classNo}
         WHERE id = ${id}
     </insert>
+
+    <delete id="removeClass">
+        DELETE FROM pl_center.class
+        WHERE pl_center.class.id = ${id}
+    </delete>
 </mapper>

@@ -5,3 +5,13 @@
 .input-class-mod {
     margin: 4px;
 }
+
+.btn-class-del {
+    float: right;
+    margin-right: 0;
+    width: 100px;
+}
+
+.span-class-remove-txt {
+    float: right;
+}

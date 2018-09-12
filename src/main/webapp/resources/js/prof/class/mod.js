@@ -73,6 +73,24 @@ var modClassInfo = function() {
             return;
         }
 
+        alert("분반 수정이 완료되었습니다.");
+    });
+};
+
+var removeClassInfo = function() {
+    if(!confirm("분반을 삭제하시겠습니까?"))
+        return;
+
+    $ajax.request({
+        url: "/class/removeClass/",
+        method: "POST",
+        data: JSON.stringify({id: Number($("input[name=class-id]").val())})
+    }, function (err, res) {
+        if (err || res.status == false) {
+            alert("분반 삭제를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
         location.href = "/prof/class";
     });
 };

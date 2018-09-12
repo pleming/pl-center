@@ -32,4 +32,8 @@ public class ClassService {
     public void modClass(ClassVO classVO) {
         classDAO.modClass(classVO);
     }
+
+    public void removeClass(Integer id) {
+        classDAO.removeClass(id);
+    }
 }

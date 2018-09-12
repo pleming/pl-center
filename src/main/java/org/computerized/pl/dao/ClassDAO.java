@@ -44,4 +44,10 @@ public class ClassDAO {
 
         sqlSession.update("class.modClass", param);
     }
+
+    public void removeClass(Integer id) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", id);
+        sqlSession.delete("class.removeClass", param);
+    }
 }

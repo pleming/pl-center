@@ -1,5 +1,6 @@
 package org.computerized.pl.controller;
 
+import org.computerized.pl.model.DeptVO;
 import org.computerized.pl.model.ResponseVO;
 import org.computerized.pl.service.ColDeptService;
 import org.computerized.pl.service.CollegeService;
@@ -28,7 +29,7 @@ public class ColDeptController {
 
     @RequestMapping(value = "loadDept", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO loadDept(@RequestBody Map<String, Object> param) {
-        return new ResponseVO(true, 1, colDeptService.loadDeptListByColId((Integer)param.get("colId")));
+    public ResponseVO loadDept(@RequestBody DeptVO deptVO) {
+        return new ResponseVO(true, 1, colDeptService.loadDeptListByColId(deptVO.getId()));
     }
 }

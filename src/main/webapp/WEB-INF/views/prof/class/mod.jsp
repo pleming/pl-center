@@ -22,7 +22,12 @@
         <select class="form-control input-class-mod" id="semester"></select>
         <select class="form-control input-class-mod" id="class-no"></select>
 
-        <button class="btn btn-primary btn-block btn-class-mod input-class-mod" onclick="modClassInfo()">수정</button>
+        <button class="btn btn-primary btn-block input-class-mod" onclick="modClassInfo()">수정</button>
+
+        <div class="dropdown-divider"></div>
+
+        <button class="btn btn-danger btn-class-del input-class-mod" onclick="removeClassInfo()">삭제</button>
+        <span class="span-class-remove-txt">분반을 삭제합니다.</span>
     </div>
 </div>
 

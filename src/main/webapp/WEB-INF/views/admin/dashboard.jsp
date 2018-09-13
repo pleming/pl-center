@@ -5,7 +5,6 @@
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
     <link rel="stylesheet" href="/resources/css/admin/dashboard.css">
-    <script src="/resources/js/admin/dashboard.js"></script>
     <title>PL Center - 대시보드</title>
 </head>
 

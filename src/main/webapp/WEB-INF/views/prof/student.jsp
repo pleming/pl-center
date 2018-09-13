@@ -4,15 +4,16 @@
 <html>
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
-    <link rel="stylesheet" href="/resources/css/prof/dashboard.css">
-    <title>PL Center - 대시보드</title>
+    <link rel="stylesheet" href="/resources/css/prof/student.css">
+    <script src="/resources/js/prof/student.js"></script>
+    <title>PL Center - 학생 설정</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
 <%@ include file="/resources/jsp/prof/sidebar.jsp" %>
 
 <div class="container-box">
-    <h1>PL Center - 교수</h1>
+    <div id="div-class-list"></div>
 </div>
 
 </body>

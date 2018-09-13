@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="classStd">
+    <select id="loadStudentInClass" resultType="org.computerized.pl.model.StudentVO">
+        SELECT
+            U.user_code AS userCode,
+            U.user_id AS userId,
+            C.college,
+            D.dept,
+            U.student_code AS studentCode,
+            U.name,
+            U.email,
+            U.phone
+        FROM class_std AS CS
+        INNER JOIN users AS U
+        ON CS.user_code = U.user_code
+        INNER JOIN college AS C
+        ON U.col_id = C.id
+        INNER JOIN dept AS D
+        ON U.dept_id = D.id
+        WHERE CS.class_id = ${classId}
+    </select>
+
+    <delete id="delStudentInClass">
+        DELETE FROM class_std
+        WHERE class_id = 1 AND user_code IN
+        
+        <foreach item="item" index="index" collection="userList" open="(" separator="," close=")">
+            ${item}
+        </foreach>
+    </delete>
+</mapper>

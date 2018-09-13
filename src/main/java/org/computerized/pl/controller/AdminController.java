@@ -25,13 +25,6 @@ public class AdminController {
     @RequestMapping(value = "auth")
     public void renderAuth(){}
 
-    @RequestMapping(value = "loadStudent", method = { RequestMethod.GET })
-    @ResponseBody
-    public ResponseVO loadStudent() {
-        List<StudentVO> studentVOList = userService.loadStudent();
-        return new ResponseVO(true, 1, studentVOList);
-    }
-
     @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO updateAuth(@RequestBody AuthVO authVO) {

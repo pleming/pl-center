@@ -1,0 +1,13 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.btn-add-student, .btn-del-student {
+    float: right;
+    margin: 0 0 16px 0;
+    width: 100px;
+}
+
+.btn-add-student {
+    margin-right: 8px;
+}

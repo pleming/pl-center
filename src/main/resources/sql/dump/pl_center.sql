@@ -27,9 +27,61 @@ VALUES
 	(2,3),
 	(3,2),
 	(4,1),
-	(5,0);
+	(5,0),
+	(6,0),
+	(7,0);
 
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table class
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `class`;
+
+CREATE TABLE `class` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `year` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `class_no` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `class` WRITE;
+/*!40000 ALTER TABLE `class` DISABLE KEYS */;
+
+INSERT INTO `class` (`id`, `year`, `semester`, `class_no`)
+VALUES
+	(1,2017,2,1),
+	(2,2017,2,2),
+	(3,2017,2,3);
+
+/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table class_std
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `class_std`;
+
+CREATE TABLE `class_std` (
+  `class_id` int(11) unsigned NOT NULL,
+  `user_code` int(11) unsigned NOT NULL,
+  UNIQUE KEY `class_id` (`class_id`,`user_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `class_std` WRITE;
+/*!40000 ALTER TABLE `class_std` DISABLE KEYS */;
+
+INSERT INTO `class_std` (`class_id`, `user_code`)
+VALUES
+	(1,5),
+	(2,6),
+	(3,7);
+
+/*!40000 ALTER TABLE `class_std` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -41,8 +93,7 @@ DROP TABLE IF EXISTS `col_dept`;
 CREATE TABLE `col_dept` (
   `col_id` int(11) unsigned NOT NULL,
   `dept_id` int(11) unsigned NOT NULL,
-  UNIQUE KEY `dept_id_2` (`dept_id`),
-  KEY `col_id` (`col_id`)
+  UNIQUE KEY `col_id` (`col_id`,`dept_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `col_dept` WRITE;
@@ -198,7 +249,9 @@ VALUES
 	(2,'prof','prof','2','17','-','교수','prof@korea.ac.kr','010-0000-0002'),
 	(3,'assistant','assistant','2','17','2011270001','조교','assistant@korea.ac.kr','010-0000-0003'),
 	(4,'worker','worker','2','17','2011270002','근무자','worker@korea.ac.kr','010-0000-0004'),
-	(5,'student01','student01','2','8','2011270003','학생01','student01@korea.ac.kr','010-0000-0005');
+	(5,'student01','student01','2','8','2011270003','학생01','student01@korea.ac.kr','010-0000-0005'),
+	(6,'student02','student02','2','9','2011270004','학생02','student02@korea.ac.kr','010-0000-0006'),
+	(7,'student03','student03','2','10','2011270005','학생03','student03@korea.ac.kr','010-0000-0007');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -39,7 +39,7 @@
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/class/**"/>
-            <bean class="org.computerized.pl.interceptor.ProfWorkerIntercepter"/>
+            <bean class="org.computerized.pl.interceptor.ProfAssistantIntercepter"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

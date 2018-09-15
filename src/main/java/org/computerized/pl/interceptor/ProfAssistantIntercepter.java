@@ -7,13 +7,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ProfWorkerIntercepter extends HandlerInterceptorAdapter {
+public class ProfAssistantIntercepter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         SessionVO sessionVO = (SessionVO)request.getSession().getAttribute("sessionInfo");
         int auth = sessionVO.getAuth().intValue();
 
-        if(!(auth == CodeDefinition.Auth.PROF.getCode().intValue() || auth == CodeDefinition.Auth.WORKER.getCode().intValue())) {
+        if(!(auth == CodeDefinition.Auth.PROF.getCode().intValue() || auth == CodeDefinition.Auth.ASSISTANT.getCode().intValue())) {
             response.sendRedirect("/error/400");
             return false;
         }

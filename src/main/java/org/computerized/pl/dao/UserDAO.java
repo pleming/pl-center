@@ -3,6 +3,7 @@ package org.computerized.pl.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
+import org.computerized.pl.model.StdSearchVO;
 import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -48,5 +49,14 @@ public class UserDAO {
 
     public List<StudentVO> loadStudent() {
         return sqlSession.selectList("users.loadStudent");
+    }
+
+    public List<StdSearchVO> loadStudentCondition(String searchKey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        searchKey = "%" + searchKey + "%";
+        param.put("searchKey", searchKey);
+
+        return sqlSession.selectList("users.loadStudentByCondition", param);
     }
 }

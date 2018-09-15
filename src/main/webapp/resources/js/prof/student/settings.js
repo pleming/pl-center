@@ -29,7 +29,87 @@ $(document).ready(function() {
             );
         }
     });
+
+    $("#addStudentModal").on("show.bs.modal", function(event) {
+        $("tbody#student-row-modal").html("");
+        $("input#add-student-search").val("");
+
+        $("tbody#student-row-modal").append(
+            "<tr>" +
+            "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
+            "<td class='user-id'></td>" +
+            "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
+            "<td class='student-code'></td>" +
+            "<td class='name'></td>" +
+            "</tr>"
+        );
+    });
+
+    $("input#add-student-search").change(function() {
+        addStudentSearch();
+    })
 });
+
+var addStudent = function() {
+    var data = {
+        classId: Number($("input[name=class-id]").val()),
+        userList: []
+    };
+
+    $("tbody#student-row-modal input[name=user-code]").each(function() {
+        if($(this).prop("checked")) {
+            data.userList.push($(this).val());
+        }
+    });
+
+    console.log(data);
+};
+
+var addStudentSearch = function() {
+    var data = {
+        searchKey: $("input#add-student-search").val()
+    };
+
+    $ajax.request({
+        url: "/student/loadStudentByCondition",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err || res.status == false) {
+            alert("학생 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        var userList = res.contents;
+
+        $("tbody#student-row-modal").html("");
+
+        if(userList.length == 0) {
+            $("tbody#student-row-modal").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
+                "<td class='user-id'></td>" +
+                "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='student-code'></td>" +
+                "<td class='name'></td>" +
+                "</tr>"
+            );
+            return;
+        }
+
+        for(var i = 0; i < userList.length; i++) {
+            $("tbody#student-row-modal").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='user-code' value='" + userList[i].userCode + "'/></td>" +
+                "<td class='user-id'>" + userList[i].userId + "</td>" +
+                "<td class='dept'>" + userList[i].dept + "</td>" +
+                "<td class='student-code'>" + userList[i].studentCode + "</td>" +
+                "<td class='name'>" + userList[i].name + "</td>" +
+                "</tr>"
+            );
+        }
+    });
+};
 
 var delStudent = function() {
     var data = {
@@ -37,7 +117,7 @@ var delStudent = function() {
         userList: []
     };
 
-    $("input[name=user-code]").each(function() {
+    $("tbody#student-row input[name=user-code]").each(function() {
         if($(this).prop("checked")) {
             data.userList.push($(this).val());
         }

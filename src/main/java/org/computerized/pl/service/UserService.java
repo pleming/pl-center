@@ -2,9 +2,10 @@ package org.computerized.pl.service;
 
 import org.computerized.pl.dao.AuthDAO;
 import org.computerized.pl.dao.UserDAO;
-import org.computerized.pl.model.AuthVO;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
+import org.computerized.pl.model.AuthVO;
+import org.computerized.pl.model.StdSearchVO;
 import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class UserService {
 
     public List<StudentVO> loadStudent() {
         return userDAO.loadStudent();
+    }
+
+    public List<StdSearchVO> loadStudentCondition(String searchKey) {
+        return userDAO.loadStudentCondition(searchKey);
     }
 
     public void updateAuth(AuthVO authVO) {

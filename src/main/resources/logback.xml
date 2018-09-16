@@ -6,7 +6,11 @@
         </layout>
     </appender>
 
-    <logger name="org.skeleton.spring" level="DEBUG"/>
+    <logger name="org.computerized.pl" level="DEBUG"/>
+
+    <logger name="jdbc.audit" level="OFF"/>
+
+    <logger name="jdbc.resultset" level="OFF"/>
 
     <root level="DEBUG">
         <appender-ref ref="console"/>

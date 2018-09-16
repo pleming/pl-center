@@ -9,5 +9,6 @@
     <context:annotation-config/>
 
     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
+    <!--<bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:port="#{redisConfig.port}" p:hostName="#{redisConfig.hostName}"/>-->
     <bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:port="6379" p:hostName="127.0.0.1"/>
 </beans>

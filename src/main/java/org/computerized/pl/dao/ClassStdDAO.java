@@ -1,7 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.ClassStdDelVO;
+import org.computerized.pl.model.ClassStdListlVO;
 import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,10 +21,21 @@ public class ClassStdDAO {
         return sqlSession.selectList("classStd.loadStudentInClass", param);
     }
 
-    public void delStudentInClass(ClassStdDelVO classStdDelVO) {
+    public void addStudentInClass(ClassStdListlVO classStdListlVO) {
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("classId", classStdDelVO.getClassId());
-        param.put("userList", classStdDelVO.getUserList());
+
+        param.put("classId", classStdListlVO.getClassId());
+        param.put("userList", classStdListlVO.getUserList());
+
+        sqlSession.insert("classStd.addStudentInClass", param);
+    }
+
+    public void delStudentInClass(ClassStdListlVO classStdListlVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("classId", classStdListlVO.getClassId());
+        param.put("userList", classStdListlVO.getUserList());
+
         sqlSession.delete("classStd.delStudentInClass", param);
     }
 }

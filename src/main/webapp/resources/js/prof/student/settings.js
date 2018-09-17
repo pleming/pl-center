@@ -6,7 +6,7 @@ $(document).ready(function() {
         method: "POST",
         data: JSON.stringify({classId: classId})
     }, function (err, res) {
-        if (err || res.status == false) {
+        if (err) {
             alert("학생 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
@@ -50,21 +50,6 @@ $(document).ready(function() {
     })
 });
 
-var addStudent = function() {
-    var data = {
-        classId: Number($("input[name=class-id]").val()),
-        userList: []
-    };
-
-    $("tbody#student-row-modal input[name=user-code]").each(function() {
-        if($(this).prop("checked")) {
-            data.userList.push($(this).val());
-        }
-    });
-
-    console.log(data);
-};
-
 var addStudentSearch = function() {
     var data = {
         searchKey: $("input#add-student-search").val()
@@ -75,7 +60,7 @@ var addStudentSearch = function() {
         method: "POST",
         data: JSON.stringify(data)
     }, function (err, res) {
-        if (err || res.status == false) {
+        if (err) {
             alert("학생 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
@@ -111,6 +96,33 @@ var addStudentSearch = function() {
     });
 };
 
+var addStudent = function() {
+    var data = {
+        classId: Number($("input[name=class-id]").val()),
+        userList: []
+    };
+
+    $("tbody#student-row-modal input[name=user-code]").each(function() {
+        if($(this).prop("checked")) {
+            data.userList.push($(this).val());
+        }
+    });
+
+    $ajax.request({
+        url: "/class/std/addStudentInClass",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err) {
+            alert("학생 목록 추가하기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        alert(res.contents);
+        location.reload();
+    });
+};
+
 var delStudent = function() {
     var data = {
         classId: Number($("input[name=class-id]").val()),
@@ -128,7 +140,7 @@ var delStudent = function() {
         method: "POST",
         data: JSON.stringify(data)
     }, function(err, res) {
-        if(err || res.status == false) {
+        if(err) {
             alert("학생 삭제를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }

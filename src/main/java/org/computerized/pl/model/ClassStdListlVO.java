@@ -2,7 +2,7 @@ package org.computerized.pl.model;
 
 import java.util.List;
 
-public class ClassStdDelVO {
+public class ClassStdListlVO {
     private Integer classId;
     private List<Integer> userList;
 

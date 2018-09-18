@@ -30,6 +30,14 @@ $(document).ready(function() {
         }
     });
 
+    $("input[name=checkAll]").change(function() {
+        if($(this).prop("checked"))
+            $("input[name=user-code]").prop("checked", true);
+        else {
+            $("input[name=user-code]").prop("checked", false);
+        }
+    });
+
     $("#addStudentModal").on("show.bs.modal", function(event) {
         $("tbody#student-row-modal").html("");
         $("input#add-student-search").val("");
@@ -97,15 +105,16 @@ var addStudentSearch = function() {
 };
 
 var addStudent = function() {
+    if(!confirm("선택한 학생을 추가하시겠습니까?"))
+        return;
+
     var data = {
         classId: Number($("input[name=class-id]").val()),
         userList: []
     };
 
-    $("tbody#student-row-modal input[name=user-code]").each(function() {
-        if($(this).prop("checked")) {
-            data.userList.push($(this).val());
-        }
+    $("tbody#student-row-modal input[name=user-code]:checked").each(function() {
+        data.userList.push($(this).val());
     });
 
     $ajax.request({
@@ -114,7 +123,7 @@ var addStudent = function() {
         data: JSON.stringify(data)
     }, function (err, res) {
         if (err) {
-            alert("학생 목록 추가하기를 실패하였습니다. 관리자에게 문의해주세요.");
+            alert("학생 추가를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
@@ -124,15 +133,16 @@ var addStudent = function() {
 };
 
 var delStudent = function() {
+    if(!confirm("선택한 학생을 삭제하시겠습니까?"))
+        return;
+
     var data = {
         classId: Number($("input[name=class-id]").val()),
         userList: []
     };
 
-    $("tbody#student-row input[name=user-code]").each(function() {
-        if($(this).prop("checked")) {
-            data.userList.push($(this).val());
-        }
+    $("tbody#student-row input[name=user-code]:checked").each(function() {
+        data.userList.push($(this).val());
     });
 
     $ajax.request({

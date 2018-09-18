@@ -4,9 +4,8 @@ public final class CodeDefinition {
     public static enum Auth {
         STUDENT(0),
         WORKER(1),
-        ASSISTANT(2),
-        PROF(3),
-        ADMIN(4);
+        LECTURER(2),
+        ADMIN(3);
 
         private final Integer code;
 

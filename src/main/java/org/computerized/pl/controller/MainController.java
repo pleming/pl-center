@@ -21,10 +21,8 @@ public class MainController {
             return "redirect:/student/dashboard";
         else if(auth.equals(CodeDefinition.Auth.WORKER.getCode()))
             return "redirect:/worker/dashboard";
-        else if(auth.equals(CodeDefinition.Auth.ASSISTANT.getCode()))
-            return "redirect:/assistant/dashboard";
-        else if(auth.equals(CodeDefinition.Auth.PROF.getCode()))
-            return "redirect:/prof/dashboard";
+        else if(auth.equals(CodeDefinition.Auth.LECTURER.getCode()))
+            return "redirect:/lecturer/dashboard";
         else if(auth.equals(CodeDefinition.Auth.ADMIN.getCode()))
             return "redirect:/admin/dashboard";
         else

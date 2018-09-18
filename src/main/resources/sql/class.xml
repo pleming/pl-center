@@ -23,6 +23,17 @@
         ORDER BY C.year DESC, semester ASC
     </select>
 
+    <select id="loadClassByYear" resultType="org.computerized.pl.model.ClassVO">
+        SELECT
+            id,
+            C.year,
+            semester,
+            class_no AS classNo
+        FROM pl_center.class AS C
+        WHERE C.year = ${year}
+        ORDER BY C.year DESC, semester ASC
+    </select>
+
     <insert id="addClass">
         INSERT INTO
             pl_center.class(pl_center.class.year, pl_center.class.semester, pl_center.class.class_no)

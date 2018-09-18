@@ -2,6 +2,11 @@
     padding: 40px 40px 0 240px;
 }
 
+.div-class-filter {
+    width: 97%;
+    margin-bottom: 16px;
+}
+
 .card-class {
     display: inline-block;
     width: 48%;
@@ -12,9 +17,4 @@
 .card-class:hover {
     background-color: #343a40;
     color: white;
-}
-
-.div-class-add {
-    width: 97%;
-    margin-bottom: 16px;
 }

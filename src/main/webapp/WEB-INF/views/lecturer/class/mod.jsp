@@ -4,13 +4,13 @@
 <html>
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
-    <link rel="stylesheet" href="/resources/css/prof/class/mod.css">
-    <script src="/resources/js/prof/class/mod.js"></script>
+    <link rel="stylesheet" href="/resources/css/lecturer/class/mod.css">
+    <script src="/resources/js/lecturer/class/mod.js"></script>
     <title>PL Center - 분반 수정</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
-<%@ include file="/resources/jsp/prof/sidebar.jsp" %>
+<%@ include file="/resources/jsp/lecturer/sidebar.jsp" %>
 
 <div class="container-box">
     <div class="div-class-mod">

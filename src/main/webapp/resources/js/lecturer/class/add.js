@@ -47,6 +47,6 @@ var addClassInfo = function() {
             return;
         }
 
-        location.href = "/prof/class";
+        location.href = "/lecturer/class";
     });
 };

@@ -4,13 +4,13 @@
 <html>
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
-    <link rel="stylesheet" href="/resources/css/prof/class/add.css">
-    <script src="/resources/js/prof/class/add.js"></script>
+    <link rel="stylesheet" href="/resources/css/lecturer/class/add.css">
+    <script src="/resources/js/lecturer/class/add.js"></script>
     <title>PL Center - 분반 추가</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
-<%@ include file="/resources/jsp/prof/sidebar.jsp" %>
+<%@ include file="/resources/jsp/lecturer/sidebar.jsp" %>
 
 <div class="container-box">
     <div class="div-class-add">

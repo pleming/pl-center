@@ -11,10 +11,10 @@
             <mvc:mapping path="/users/signout"/>
             <mvc:mapping path="/student/**"/>
             <mvc:mapping path="/worker/**"/>
-            <mvc:mapping path="/assistant/**"/>
-            <mvc:mapping path="/prof/**"/>
+            <mvc:mapping path="/lecturer/**"/>
             <mvc:mapping path="/admin/**"/>
             <mvc:mapping path="/class/**"/>
+            <mvc:mapping path="/colDept/**"/>
             <bean class="org.computerized.pl.interceptor.SessionCheckInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
@@ -26,20 +26,12 @@
             <bean class="org.computerized.pl.interceptor.WorkerIntercepter"/>
         </mvc:interceptor>
         <mvc:interceptor>
-            <mvc:mapping path="/assistant/**"/>
-            <bean class="org.computerized.pl.interceptor.AssistantIntercepter"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/prof/**"/>
-            <bean class="org.computerized.pl.interceptor.ProfIntercepter"/>
+            <mvc:mapping path="/lecturer/**"/>
+            <bean class="org.computerized.pl.interceptor.LecturerIntercepter"/>
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <bean class="org.computerized.pl.interceptor.AdminIntercepter"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/class/**"/>
-            <bean class="org.computerized.pl.interceptor.ProfAssistantIntercepter"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

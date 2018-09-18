@@ -30,6 +30,12 @@ public class ClassController {
         return new ResponseVO(true, 1, classService.loadClassById(classVO.getId()));
     }
 
+    @RequestMapping(value = "loadClassByYear", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO loadClassByYear(@RequestBody ClassVO classVO) {
+        return new ResponseVO(true, 1, classService.loadClassByYear(classVO.getYear()));
+    }
+
     @RequestMapping(value = "addClass", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO addClass(@RequestBody ClassVO classVO) {

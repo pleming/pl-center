@@ -24,6 +24,12 @@ public class ClassDAO {
         return sqlSession.selectList("class.loadClassById", param);
     }
 
+    public List<ClassVO> loadClassByYear(Integer year) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("year", year);
+        return sqlSession.selectList("class.loadClassByYear", param);
+    }
+
     public void addClass(ClassVO classVO) {
         Map<String, Object> param = new HashMap<String, Object>();
 

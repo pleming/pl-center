@@ -25,6 +25,11 @@ public class ClassService {
         return classVOList.get(0);
     }
 
+    public List<ClassVO> loadClassByYear(Integer year) {
+        List<ClassVO> classVOList = classDAO.loadClassByYear(year);
+        return classVOList;
+    }
+
     public void addClass(ClassVO classVO) {
         classDAO.addClass(classVO);
     }

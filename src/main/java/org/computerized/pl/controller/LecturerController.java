@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("prof")
-public class ProfController {
+@RequestMapping("lecturer")
+public class LecturerController {
     @Autowired
     private ClassService classService;
 
@@ -24,6 +24,9 @@ public class ProfController {
     @RequestMapping(value = "student", method = { RequestMethod.GET })
     public void renderClassStudent() {}
 
+    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
+    public void renderCounsel() {}
+
     @RequestMapping(value = "class/add", method = { RequestMethod.GET })
     public void renderAddClass() {}
 
@@ -32,7 +35,7 @@ public class ProfController {
         ModelAndView mav = new ModelAndView();
 
         mav.addObject("classId", classId);
-        mav.setViewName("prof/class/mod");
+        mav.setViewName("lecturer/class/mod");
 
         return mav;
     }
@@ -46,7 +49,7 @@ public class ProfController {
 
         mav.addObject("classId", classId);
         mav.addObject("title", title);
-        mav.setViewName("prof/student/settings");
+        mav.setViewName("lecturer/student/settings");
 
         return mav;
     }

@@ -4,13 +4,13 @@
 <html>
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
-    <link rel="stylesheet" href="/resources/css/prof/student/settings.css">
-    <script src="/resources/js/prof/student/settings.js"></script>
+    <link rel="stylesheet" href="/resources/css/lecturer/student/settings.css">
+    <script src="/resources/js/lecturer/student/settings.js"></script>
     <title>PL Center - 학생 설정</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
-<%@ include file="/resources/jsp/prof/sidebar.jsp" %>
+<%@ include file="/resources/jsp/lecturer/sidebar.jsp" %>
 
 <div class="container-box">
     <div>
@@ -24,7 +24,7 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>선택</th>
+                <th><input type="checkbox" name="checkAll"/></th>
                 <th>#</th>
                 <th>아이디</th>
                 <th>단과대학</th>
@@ -54,7 +54,7 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th>선택</th>
+                        <th><input type="checkbox" name="checkAll"/></th>
                         <th>아이디</th>
                         <th>학과</th>
                         <th>학번</th>

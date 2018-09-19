@@ -15,6 +15,7 @@
             <mvc:mapping path="/admin/**"/>
             <mvc:mapping path="/class/**"/>
             <mvc:mapping path="/colDept/**"/>
+            <mvc:mapping path="/counsel/**"/>
             <bean class="org.computerized.pl.interceptor.SessionCheckInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>

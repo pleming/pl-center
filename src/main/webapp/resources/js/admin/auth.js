@@ -25,9 +25,8 @@ $(document).ready(function() {
                 "<select id='auth'>" +
                 "<option value='0'" + (userList[i].auth == 0 ? "selected" : "") + ">학생</option>" +
                 "<option value='1'" + (userList[i].auth == 1 ? "selected" : "") + ">근무자</option>" +
-                "<option value='2'" + (userList[i].auth == 2 ? "selected" : "") + ">조교</option>" +
-                "<option value='3'" + (userList[i].auth == 3 ? "selected" : "") + ">교수</option>" +
-                "<option value='4'" + (userList[i].auth == 4 ? "selected" : "") + ">관리자</option>" +
+                "<option value='2'" + (userList[i].auth == 2 ? "selected" : "") + ">강의진</option>" +
+                "<option value='3'" + (userList[i].auth == 3 ? "selected" : "") + ">관리자</option>" +
                 "</select>" +
                 "</td>" +
                 "</tr>"

@@ -1,6 +1,5 @@
 package org.computerized.pl.interceptor;
 
-import org.computerized.pl.model.SessionVO;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="counsel">
+    <select id="loadCounsel" resultType="org.computerized.pl.model.CounselVO">
+        SELECT
+            counsel.id AS counselId,
+            U.user_id AS userId,
+            col.college AS college,
+            dept.dept AS dept,
+            U.student_code AS studentCode,
+            C.year AS year,
+            C.semester AS semester,
+            C.class_no AS classNo,
+            U.name AS name,
+            counsel.counsel_datetime AS counselDatetime,
+            counsel.counsel_contents AS counselContents
+        FROM pl_center.counsel AS counsel
+        INNER JOIN pl_center.class AS C
+        ON counsel.class_id = C.id
+        INNER JOIN pl_center.users AS U
+        ON counsel.user_code = U.user_code
+        INNER JOIN pl_center.college AS col
+        ON U.col_id = col.id
+        INNER JOIN pl_center.dept AS dept
+        ON U.dept_id = dept.id
+    </select>
+
+    <select id="loadCounselByCondition" resultType="org.computerized.pl.model.CounselVO">
+        SELECT
+            counsel.id AS counselId,
+            U.user_id AS userId,
+            col.college AS college,
+            dept.dept AS dept,
+            U.student_code AS studentCode,
+            C.year AS year,
+            C.semester AS semester,
+            C.class_no AS classNo,
+            U.name AS name,
+            counsel.counsel_datetime AS counselDatetime,
+            counsel.counsel_contents AS counselContents
+        FROM pl_center.counsel AS counsel
+        INNER JOIN pl_center.class AS C
+        ON counsel.class_id = C.id
+        INNER JOIN pl_center.users AS U
+        ON counsel.user_code = U.user_code
+        INNER JOIN pl_center.college AS col
+        ON U.col_id = col.id
+        INNER JOIN pl_center.dept AS dept
+        ON U.dept_id = dept.id
+        WHERE counsel.id IS NOT NULL
+        <if test="year != -1">
+            AND C.year = ${year}
+        </if>
+        <if test="semester != -1">
+            AND C.semester = ${semester}
+        </if>
+        <if test="classNo != -1">
+            AND C.class_no = ${classNo}
+        </if>
+        <if test="searchKey != ''">
+            AND (
+                    U.user_id LIKE #{searchKey}
+                    OR col.college LIKE #{searchKey}
+                    OR dept.dept LIKE #{searchKey}
+                    OR U.student_code LIKE #{searchKey}
+                    OR U.name LIKE #{searchKey}
+            )
+        </if>
+    </select>
+</mapper>

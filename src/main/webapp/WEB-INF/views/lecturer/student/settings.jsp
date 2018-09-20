@@ -25,7 +25,6 @@
             <thead>
             <tr>
                 <th><input type="checkbox" name="checkAll"/></th>
-                <th>#</th>
                 <th>아이디</th>
                 <th>단과대학</th>
                 <th>학과</th>

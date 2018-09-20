@@ -17,7 +17,6 @@ $(document).ready(function() {
             $("tbody#student-row").append(
                 "<tr>" +
                 "<td><input type='checkbox' name='user-code' value='" + userList[i].userCode + "'/></td>" +
-                "<td class='user-code'>" + userList[i].userCode + "</td>" +
                 "<td class='user-id'>" + userList[i].userId + "</td>" +
                 "<td class='college'>" + userList[i].college + "</td>" +
                 "<td class='dept'>" + userList[i].dept + "</td>" +
@@ -55,7 +54,7 @@ $(document).ready(function() {
 
     $("input#add-student-search").change(function() {
         addStudentSearch();
-    })
+    });
 });
 
 var addStudentSearch = function() {

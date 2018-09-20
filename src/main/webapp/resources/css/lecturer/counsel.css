@@ -1,0 +1,29 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-counsel-filter {
+    margin-bottom: 16px;
+}
+
+.counsel-filter-elem {
+    display: inline-block;
+    float: right;
+    margin-right: 8px;
+    width: 16%;
+}
+
+.btn-counsel-search {
+    float: right;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.btn-counsel-search:hover {
+    background-color: #ced4da;
+}
+
+.input-counsel-contents {
+    margin-top: 16px;
+}

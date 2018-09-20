@@ -78,11 +78,11 @@
 		INNER JOIN dept AS D
 		ON U.dept_id = D.id
 		WHERE auth = 0 AND (
-				U.user_id LIKE #{searchKey}
-				OR college LIKE #{searchKey}
-				OR dept LIKE #{searchKey}
-				OR U.student_code LIKE #{searchKey}
-				OR U.name LIKE #{searchKey}
+					U.user_id LIKE #{searchKey}
+					OR college LIKE #{searchKey}
+					OR dept LIKE #{searchKey}
+					OR U.student_code LIKE #{searchKey}
+					OR U.name LIKE #{searchKey}
 			  )
 	</select>
 </mapper>

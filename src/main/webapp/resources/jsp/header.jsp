@@ -9,6 +9,7 @@
 
 <!-- Import Library(CSS)-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="/resources/libs/font-awesome/css/font-awesome.min.css">
 
 <!-- Import Library(JS)-->
 <script src="/resources/libs/jquery/dist/jquery.js"></script>
@@ -18,3 +19,4 @@
 
 <!-- Import Custom Library(JS)-->
 <script src="/resources/js/ajax.js"></script>
+<script src="/resources/js/date-util.js"></script>

@@ -51,12 +51,12 @@ public class UserDAO {
         return sqlSession.selectList("users.loadStudent");
     }
 
-    public List<StdSearchVO> loadStudentCondition(String searchKey) {
-        Map<String, Object> param = new HashMap<String, Object>();
+    public List<StdSearchVO> loadStudentCondition(Map<String, Object> param) {
+        Map<String, Object> dbParam = new HashMap<String, Object>();
 
-        searchKey = "%" + searchKey + "%";
-        param.put("searchKey", searchKey);
+        dbParam.put("requireClassInfo", (boolean)param.get("requireClassInfo"));
+        dbParam.put("searchKey", "%" + param.get("searchKey").toString() + "%");
 
-        return sqlSession.selectList("users.loadStudentByCondition", param);
+        return sqlSession.selectList("users.loadStudentByCondition", dbParam);
     }
 }

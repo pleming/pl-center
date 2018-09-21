@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -41,8 +42,8 @@ public class UserService {
         return userDAO.loadStudent();
     }
 
-    public List<StdSearchVO> loadStudentCondition(String searchKey) {
-        return userDAO.loadStudentCondition(searchKey);
+    public List<StdSearchVO> loadStudentCondition(Map<String, Object> param) {
+        return userDAO.loadStudentCondition(param);
     }
 
     public void updateAuth(AuthVO authVO) {

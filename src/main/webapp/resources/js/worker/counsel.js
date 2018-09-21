@@ -13,6 +13,7 @@ $(document).ready(function() {
         for(var i = 0; i < counselList.length; i++) {
             $("tbody#counsel-row").append(
                 "<tr>" +
+                    "<td><input type='checkbox' name='counsel-id' value='" + counselList[i].counselId + "'/></td>" +
                     "<td class='user-id'>" + counselList[i].userId + "</td>" +
                     "<td class='college'>" + counselList[i].college + "</td>" +
                     "<td class='dept'>" + counselList[i].dept + "</td>" +
@@ -75,6 +76,25 @@ $(document).ready(function() {
             $("input[name=counsel-id]").prop("checked", false);
         }
     });
+
+    $("#addCounselStudentModal").on("show.bs.modal", function(event) {
+        $("tbody#student-row-modal").html("");
+        $("input#add-counsel-student-search").val("");
+
+        $("tbody#student-row-modal").append(
+            "<tr>" +
+            "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
+            "<td class='user-id'></td>" +
+            "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
+            "<td class='student-code'></td>" +
+            "<td class='name'></td>" +
+            "</tr>"
+        );
+    });
+
+    $("input#add-counsel-student-search").change(function() {
+        addCounselStudentSearch();
+    });
 });
 
 var searchCounsel = function() {
@@ -128,6 +148,54 @@ var searchCounsel = function() {
                 "<td class='name'>" + counselList[i].name + "</td>" +
                 "<td class='counsel-datetime'>" + new Date(counselList[i].counselDatetime).format("yyyy-MM-dd HH:mm:ss") + "</td>" +
                 "<td class='counsel-contents'>" + counselList[i].counselContents + "</td>" +
+                "</tr>"
+            );
+        }
+    });
+};
+
+var addCounselStudentSearch = function() {
+    var data = {
+        requireClassInfo: true,
+        searchKey: $("input#add-counsel-student-search").val()
+    };
+
+    $ajax.request({
+        url: "/student/loadStudentByCondition",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err) {
+            alert("학생 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        var userList = res.contents;
+
+        $("tbody#student-row-modal").html("");
+
+        if(userList.length == 0) {
+            $("tbody#student-row-modal").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
+                "<td class='user-id'></td>" +
+                "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='student-code'></td>" +
+                "<td class='name'></td>" +
+                "</tr>"
+            );
+            return;
+        }
+
+        for(var i = 0; i < userList.length; i++) {
+            $("tbody#student-row-modal").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='user-code' value='" + userList[i].userCode + "'/></td>" +
+                "<td class='user-id'>" + userList[i].userId + "</td>" +
+                "<td class='dept'>" + userList[i].dept + "</td>" +
+                "<td class='student-code'>" + userList[i].studentCode + "</td>" +
+                "<td class='class-div' data-class-id='" + userList[i].classId + "'>" + userList[i].year + "-" + userList[i].semester + "(0" + userList[i].classNo + ")</td>" +
+                "<td class='name'>" + userList[i].name + "</td>" +
                 "</tr>"
             );
         }

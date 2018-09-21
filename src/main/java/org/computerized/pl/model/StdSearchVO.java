@@ -6,6 +6,10 @@ public class StdSearchVO {
     private String dept;
     private String studentCode;
     private String name;
+    private Integer classId;
+    private Integer year;
+    private Integer semester;
+    private Integer classNo;
 
     public Integer getUserCode() {
         return userCode;
@@ -45,5 +49,37 @@ public class StdSearchVO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Integer classId) {
+        this.classId = classId;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getSemester() {
+        return semester;
+    }
+
+    public void setSemester(Integer semester) {
+        this.semester = semester;
+    }
+
+    public Integer getClassNo() {
+        return classNo;
+    }
+
+    public void setClassNo(Integer classNo) {
+        this.classNo = classNo;
     }
 }

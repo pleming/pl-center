@@ -34,8 +34,7 @@ public class StudentController {
     @RequestMapping(value = "loadStudentByCondition", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO loadStudent(@RequestBody Map<String, Object> param) {
-        String searchKey = param.get("searchKey").toString();
-        List<StdSearchVO> stdSearchVOList = userService.loadStudentCondition(searchKey);
+        List<StdSearchVO> stdSearchVOList = userService.loadStudentCondition(param);
         return new ResponseVO(true, 1, stdSearchVOList);
     }
 }

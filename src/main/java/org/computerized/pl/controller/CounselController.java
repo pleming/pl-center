@@ -1,5 +1,6 @@
 package org.computerized.pl.controller;
 
+import org.computerized.pl.model.CounselAddVO;
 import org.computerized.pl.model.CounselSearchVO;
 import org.computerized.pl.model.CounselVO;
 import org.computerized.pl.model.ResponseVO;
@@ -38,5 +39,19 @@ public class CounselController {
             counselVOList = counselService.loadCounselByCondition(counselSearchVO);
 
         return new ResponseVO(true, 1, counselVOList);
+    }
+
+    @RequestMapping(value = "addCounsel", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO addCounsel(@RequestBody CounselAddVO counselAddVO) {
+        counselService.addCounsel(counselAddVO);
+        return new ResponseVO(true, 1, "상담일지 등록을 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "delCounsel", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO delCounsel(@RequestBody CounselVO counselVO) {
+        counselService.delCounsel(counselVO.getCounselId());
+        return new ResponseVO(true, 1, "상담일지 삭제를 성공하였습니다.");
     }
 }

@@ -1,7 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.ClassStdDAO;
-import org.computerized.pl.model.ClassStdListlVO;
+import org.computerized.pl.model.ClassStdListVO;
 import org.computerized.pl.model.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ public class ClassStdService {
         return classStdDAO.loadStudentInClass(classId);
     }
 
-    public void addStudentInClass(ClassStdListlVO classStdListlVO) {
-        classStdDAO.addStudentInClass(classStdListlVO);
+    public void addStudentInClass(ClassStdListVO classStdListVO) {
+        classStdDAO.addStudentInClass(classStdListVO);
     }
 
-    public void delStudentInClass(ClassStdListlVO classStdListlVO) {
-        classStdDAO.delStudentInClass(classStdListlVO);
+    public void delStudentInClass(ClassStdListVO classStdListVO) {
+        classStdDAO.delStudentInClass(classStdListVO);
     }
 }

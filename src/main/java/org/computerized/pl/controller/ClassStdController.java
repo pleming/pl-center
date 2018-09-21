@@ -1,6 +1,6 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.ClassStdListlVO;
+import org.computerized.pl.model.ClassStdListVO;
 import org.computerized.pl.model.ClassStdVO;
 import org.computerized.pl.model.ResponseVO;
 import org.computerized.pl.service.ClassStdService;
@@ -23,17 +23,23 @@ public class ClassStdController {
         return new ResponseVO(true, 1, classStdService.loadStudentInClass(classStdVO.getClassId()));
     }
 
+    @RequestMapping(value = "loadClassByUserCode", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO loadClassByUserCode(@RequestBody ClassStdVO classStdVO) {
+        return new ResponseVO(true, 1, classStdService.loadStudentInClass(classStdVO.getClassId()));
+    }
+
     @RequestMapping(value = "addStudentInClass", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO addStudentInClass(@RequestBody ClassStdListlVO classStdListlVO) {
-        classStdService.addStudentInClass(classStdListlVO);
+    public ResponseVO addStudentInClass(@RequestBody ClassStdListVO classStdListVO) {
+        classStdService.addStudentInClass(classStdListVO);
         return new ResponseVO(true, 1, "학생 추가를 성공하였습니다.");
     }
 
     @RequestMapping(value = "delStudentInClass", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO delStudentInClass(@RequestBody ClassStdListlVO classStdListlVO) {
-        classStdService.delStudentInClass(classStdListlVO);
+    public ResponseVO delStudentInClass(@RequestBody ClassStdListVO classStdListVO) {
+        classStdService.delStudentInClass(classStdListVO);
         return new ResponseVO(true, 1, "학생 삭제를 성공하였습니다.");
     }
 }

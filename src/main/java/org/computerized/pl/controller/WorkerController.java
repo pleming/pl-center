@@ -9,4 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WorkerController {
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
+
+    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
+    public void renderCounsel(){}
 }

@@ -53,7 +53,7 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th><input type="checkbox" name="checkAll"/></th>
+                        <th><input type="checkbox" name="checkAll-modal"/></th>
                         <th>아이디</th>
                         <th>학과</th>
                         <th>학번</th>

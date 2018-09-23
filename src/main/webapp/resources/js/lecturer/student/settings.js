@@ -31,9 +31,17 @@ $(document).ready(function() {
 
     $("input[name=checkAll]").change(function() {
         if($(this).prop("checked"))
-            $("input[name=user-code]").prop("checked", true);
+            $("tbody#student-row input[name=user-code]").prop("checked", true);
         else {
-            $("input[name=user-code]").prop("checked", false);
+            $("tbody#student-row input[name=user-code]").prop("checked", false);
+        }
+    });
+
+    $("input[name=checkAll-modal]").change(function() {
+        if($(this).prop("checked"))
+            $("tbody#student-row-modal input[name=user-code]").prop("checked", true);
+        else {
+            $("tbody#student-row-modal input[name=user-code]").prop("checked", false);
         }
     });
 

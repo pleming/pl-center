@@ -101,17 +101,16 @@ var searchCounsel = function() {
 
         if(counselList.length == 0) {
             $("tbody#counsel-row").append(
-                    "<tr>" +
-                    "<td><input type='checkbox' name='counsel-id' value='-1'/></td>" +
-                    "<td class='user-id'></td>" +
-                    "<td class='college'></td>" +
-                    "<td class='dept'></td>" +
-                    "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
-                    "<td class='class-div'></td>" +
-                    "<td class='name'></td>" +
-                    "<td class='counsel-datetime'></td>" +
-                    "<td class='counsel-contents'></td>" +
-                    "</tr>"
+                "<tr>" +
+                "<td class='user-id'></td>" +
+                "<td class='college'></td>" +
+                "<td class='dept'></td>" +
+                "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='class-div'></td>" +
+                "<td class='name'></td>" +
+                "<td class='counsel-datetime'></td>" +
+                "<td class='counsel-contents'></td>" +
+                "</tr>"
             );
             return;
         }
@@ -119,7 +118,6 @@ var searchCounsel = function() {
         for(var i = 0; i < counselList.length; i++) {
             $("tbody#counsel-row").append(
                 "<tr>" +
-                "<td><input type='checkbox' name='counsel-id' value='" + counselList[i].counselId + "'/></td>" +
                 "<td class='user-id'>" + counselList[i].userId + "</td>" +
                 "<td class='college'>" + counselList[i].college + "</td>" +
                 "<td class='dept'>" + counselList[i].dept + "</td>" +

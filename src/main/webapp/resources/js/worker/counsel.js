@@ -71,9 +71,17 @@ $(document).ready(function() {
 
     $("input[name=checkAll]").change(function() {
         if($(this).prop("checked"))
-            $("input[name=counsel-id]").prop("checked", true);
+            $("tbody#counsel-row input[name=counsel-id]").prop("checked", true);
         else {
-            $("input[name=counsel-id]").prop("checked", false);
+            $("tbody#counsel-row input[name=counsel-id]").prop("checked", false);
+        }
+    });
+
+    $("input[name=checkAll-modal]").change(function() {
+        if($(this).prop("checked"))
+            $("tbody#student-row-modal input[name=user-code]").prop("checked", true);
+        else {
+            $("tbody#student-row-modal input[name=user-code]").prop("checked", false);
         }
     });
 
@@ -85,8 +93,9 @@ $(document).ready(function() {
             "<tr>" +
             "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
             "<td class='user-id'></td>" +
-            "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
-            "<td class='student-code'></td>" +
+            "<td class='dept'></td>" +
+            "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
+            "<td class='class-div' data-class-id='-1'></td>" +
             "<td class='name'></td>" +
             "</tr>"
         );
@@ -179,8 +188,9 @@ var addCounselStudentSearch = function() {
                 "<tr>" +
                 "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
                 "<td class='user-id'></td>" +
-                "<td class='dept'>검색 결과가 존재하지 않습니다.</td>" +
-                "<td class='student-code'></td>" +
+                "<td class='dept'></td>" +
+                "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='class-div' data-class-id='-1'></td>" +
                 "<td class='name'></td>" +
                 "</tr>"
             );
@@ -199,5 +209,62 @@ var addCounselStudentSearch = function() {
                 "</tr>"
             );
         }
+    });
+};
+
+var addCounsel = function() {
+    if(!confirm("선택한 학생의 상담일지를 추가하시겠습니까?\n재수강 등으로 동일 인원이 여러 분반에 분산되어 있을 수 있습니다.\n소속 분반이 정확한지 확인해주세요."))
+        return;
+
+    var data = {
+        counselAddList: []
+    };
+
+    $("tbody#student-row-modal input[name=user-code]:checked").each(function() {
+        var __data = {
+            userCode: $(this).val(),
+            classId: $(this).parent("td").siblings("td.class-div").attr("data-class-id"),
+            counselContents: $("input[name=counsel-contents]").val()
+        };
+
+        data.counselAddList.push(__data);
+    });
+
+    $ajax.request({
+        url: "/counsel/addCounsel",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function(err, res) {
+        if (err) {
+            alert("상담일지 등록을 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        alert(res.contents);
+        location.reload();
+    });
+};
+
+var delCounsel = function() {
+    var data = {
+        counselIdList: []
+    };
+
+    $("tbody#counsel-row input[name=counsel-id]:checked").each(function() {
+        data.counselIdList.push(Number($(this).val()));
+    });
+
+    $ajax.request({
+        url: "/counsel/delCounsel",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function(err, res) {
+       if (err) {
+           alert("상담일지 삭제를 실패하였습니다. 관리자에게 문의해주세요.")
+           return;
+       }
+
+       alert(res.contents);
+       location.reload();
     });
 };

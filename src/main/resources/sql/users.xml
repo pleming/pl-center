@@ -60,6 +60,15 @@
 	    ON U.col_id = C.id
 	    INNER JOIN dept AS D
 	    ON U.dept_id = D.id
+		<if test="searchKey != null and searchKey != ''">
+			WHERE U.user_id IS NOT NULL AND (
+						U.user_id LIKE #{searchKey}
+						OR college LIKE #{searchKey}
+						OR dept LIKE #{searchKey}
+						OR U.student_code LIKE #{searchKey}
+						OR U.name LIKE #{searchKey}
+				  )
+		</if>
 	</select>
 
 	<select id="loadStudentByCondition" resultType="org.computerized.pl.model.StdSearchVO">
@@ -71,8 +80,7 @@
 			student_code AS studentCode,
 			U.name
 			<if test="requireClassInfo == true">
-				,
-				cls.id AS classId,
+				,cls.id AS classId,
 				cls.year,
 				cls.semester,
 				cls.class_no AS classNo

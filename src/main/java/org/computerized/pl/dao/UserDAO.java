@@ -51,7 +51,13 @@ public class UserDAO {
         return sqlSession.selectList("users.loadStudent");
     }
 
-    public List<StdSearchVO> loadStudentCondition(Map<String, Object> param) {
+    public List<StudentVO> searchStudent(String searchKey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("searchKey", "%" + searchKey + "%");
+        return sqlSession.selectList("users.loadStudent", param);
+    }
+
+    public List<StdSearchVO> loadStudentByCondition(Map<String, Object> param) {
         Map<String, Object> dbParam = new HashMap<String, Object>();
 
         dbParam.put("requireClassInfo", (boolean)param.get("requireClassInfo"));

@@ -1,3 +1,25 @@
 .container-box {
     padding: 40px 40px 0 240px;
 }
+
+.div-auth-filter {
+    margin-bottom: 16px;
+}
+
+.auth-filter-elem {
+    display: inline-block;
+    float: right;
+    margin: 0 8px 16px 0;
+    width: 16%;
+}
+
+.btn-auth-search {
+    float: right;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.btn-auth-search:hover {
+    background-color: #ced4da;
+}

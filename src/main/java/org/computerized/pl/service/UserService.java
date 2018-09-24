@@ -42,8 +42,12 @@ public class UserService {
         return userDAO.loadStudent();
     }
 
-    public List<StdSearchVO> loadStudentCondition(Map<String, Object> param) {
-        return userDAO.loadStudentCondition(param);
+    public List<StudentVO> searchStudent(String searchKey) {
+        return userDAO.searchStudent(searchKey);
+    }
+
+    public List<StdSearchVO> loadStudentByCondition(Map<String, Object> param) {
+        return userDAO.loadStudentByCondition(param);
     }
 
     public void updateAuth(AuthVO authVO) {

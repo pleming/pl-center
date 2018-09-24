@@ -34,10 +34,18 @@ public class StudentController {
         return new ResponseVO(true, 1, studentVOList);
     }
 
+    @RequestMapping(value = "searchStudent", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO searchStudent(@RequestBody Map<String, Object> param) {
+        String searchKey = param.get("searchKey").toString();
+        List<StudentVO> studentVOList = userService.searchStudent(searchKey);
+        return new ResponseVO(true, 1, studentVOList);
+    }
+
     @RequestMapping(value = "loadStudentByCondition", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO loadStudent(@RequestBody Map<String, Object> param) {
-        List<StdSearchVO> stdSearchVOList = userService.loadStudentCondition(param);
+        List<StdSearchVO> stdSearchVOList = userService.loadStudentByCondition(param);
         return new ResponseVO(true, 1, stdSearchVOList);
     }
 }

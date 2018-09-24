@@ -13,8 +13,11 @@
 <%@ include file="/resources/jsp/admin/sidebar.jsp" %>
 
 <div class="container-box">
-    <div>
-        <h1 class="text-center">계정 권한</h1>
+    <div class="div-auth-filter">
+        <button class="btn btn-auth-search" onclick="searchAuth()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <input type="text" id="auth-search" class="form-control auth-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
     </div>
     <div>
         <table class="table table-striped table-hover">

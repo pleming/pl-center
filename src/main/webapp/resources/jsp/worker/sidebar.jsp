@@ -5,7 +5,7 @@
 
 <div class="sidebar-box navbar-dark bg-dark">
     <div class="sidebar-list list-group">
-        <a href="#" class="list-group-item list-group-item-action">근무일지 현황</a>
+        <a href="/worker/workingDiary" class="list-group-item list-group-item-action">근무일지 현황</a>
         <a href="/worker/counsel" class="list-group-item list-group-item-action">상담일지 현황</a>
     </div>
 </div>

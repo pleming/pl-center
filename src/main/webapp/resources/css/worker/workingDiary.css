@@ -1,0 +1,48 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-working-diary-calendar {
+    display: inline-block;
+    float: left;
+    max-width: 62%;
+}
+
+.div-attendance {
+    display: inline-block;
+    width: 37%;
+    margin: 60px 0 0 16px;
+}
+
+.fc-head {
+    background-color: #dddddd;
+}
+
+.fc-body .fc-sun {
+    background-color: #ffcdd2;
+}
+
+.fc-body .fc-sat {
+    background-color: #bbdefb;
+}
+
+.fc-head-container, .fc-day-header {
+    border-color: black !important;
+}
+
+.fc-body .fc-widget-content {
+    border-color: black !important;
+}
+
+.fc-day-grid-event {
+    border-color: #C8E6C9;
+    background-color: #C8E6C9;
+}
+
+.div-attend-worker-settings {
+    margin-bottom: 16px;
+}
+
+.ui-timepicker-container {
+    z-index: 9999 !important;
+}

@@ -1,34 +1,18 @@
 $(document).ready(function() {
     $ajax.request({
-        url: "",
+        url: "/worker/loadWorkingDiary",
         method: "POST",
-        data: JSON.stringify({ nowYearMonth: new Date().format("yyyy-MM") })
+        data: JSON.stringify({ nowYearMonth: new Date().format("yyyy-MM") + "-01" })
     }, function(err, res) {
         if (err) {
             alert("근무일지 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
-        var workingDiaryCalendarInfo = res.contents;
-        var eventsInfo = [];
+        initWorkingDiaryCalendar(res.contents);
 
-        for(var i = 0; i < workingDiaryCalendarInfo.length; i++) {
-            eventsInfo.push({
-                title: workingDiaryCalendarInfo[i].name + "(" + new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("HH:mm") + "~" + new Date(workingDiaryCalendarInfo[i].workingEndDatetime) +  ")",
-                start: workingDiaryCalendarInfo[i].workingStartDatetime.length
-            });
-        }
-
-        $("div#working-diary-calendar").fullCalendar({
-            height: 768,
-            header: {
-                left: "",
-                center: "title"
-            },
-            monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-            dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
-            events: eventsInfo
-        });
+        $("button.fc-prev-button").click(loadWorkingDiaryByCalendarMonth);
+        $("button.fc-next-button").click(loadWorkingDiaryByCalendarMonth);
     });
 
     $("#attendWorkerModal").on("show.bs.modal", function(event) {
@@ -56,7 +40,7 @@ var attendWorker = function() {
     };
 
     $ajax.request({
-        url: "",
+        url: "/worker/attendWorker",
         method: "POST",
         data: JSON.stringify(data)
     }, function(err, res) {
@@ -68,6 +52,54 @@ var attendWorker = function() {
         alert(res.contents);
         location.reload();
     });
+};
 
-    console.log(data);
+var initWorkingDiaryCalendar = function(workingDiaryCalendarInfo) {
+    var eventsInfo = generateEventsInfo(workingDiaryCalendarInfo);
+
+    $("div#working-diary-calendar").fullCalendar({
+        height: 768,
+        header: {
+            left: "",
+            center: "title"
+        },
+        monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+        dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
+        events: eventsInfo
+    });
+};
+
+var updateWorkingDiaryCalendar = function(workingDiaryCalendarInfo) {
+    var eventsInfo = generateEventsInfo(workingDiaryCalendarInfo);
+
+    $("div#working-diary-calendar").fullCalendar("removeEvents");
+    $("div#working-diary-calendar").fullCalendar("addEventSource", eventsInfo);
+};
+
+var generateEventsInfo = function(workingDiaryCalendarInfo) {
+    var eventsInfo = [];
+
+    for(var i = 0; i < workingDiaryCalendarInfo.length; i++) {
+        eventsInfo.push({
+            title: workingDiaryCalendarInfo[i].name + "(" + new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("HH:mm") + "~" + new Date(workingDiaryCalendarInfo[i].workingEndDatetime).format("HH:mm") +  ")",
+            start: new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("yyyy-MM-dd")
+        });
+    }
+
+    return eventsInfo;
+};
+
+var loadWorkingDiaryByCalendarMonth = function() {
+    $ajax.request({
+        url: "/worker/loadWorkingDiary",
+        method: "POST",
+        data: JSON.stringify({ nowYearMonth: new Date($("div#working-diary-calendar").fullCalendar("getDate")).format("yyyy-MM") + "-01" })
+    }, function(err, res) {
+        if (err) {
+            alert("근무일지 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        updateWorkingDiaryCalendar(res.contents);
+    });
 };

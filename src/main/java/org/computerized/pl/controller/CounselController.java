@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -34,8 +35,15 @@ public class CounselController {
 
     @RequestMapping(value = "addCounsel", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO addCounsel(@RequestBody CounselAddListVO counselAddListVO) {
+    public ResponseVO addCounsel(HttpSession httpSession, @RequestBody CounselAddListVO counselAddListVO) {
+        SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
+        List<CounselAddVO> counselAddList = counselAddListVO.getCounselAddList();
+
+        for(int i = 0; i < counselAddList.size(); i++)
+            counselAddList.get(i).setCounselorUserCode(sessionVO.getUserCode());
+
         counselService.addCounsel(counselAddListVO);
+
         return new ResponseVO(true, 1, "상담일지 등록을 성공하였습니다.");
     }
 

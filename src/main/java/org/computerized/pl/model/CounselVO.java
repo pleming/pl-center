@@ -14,6 +14,7 @@ public class CounselVO {
     private String name;
     private Date counselDatetime;
     String counselContents;
+    String counselorName;
 
     public Integer getCounselId() {
         return counselId;
@@ -101,5 +102,13 @@ public class CounselVO {
 
     public void setCounselContents(String counselContents) {
         this.counselContents = counselContents;
+    }
+
+    public String getCounselorName() {
+        return counselorName;
+    }
+
+    public void setCounselorName(String counselorName) {
+        this.counselorName = counselorName;
     }
 }

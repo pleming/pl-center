@@ -36,6 +36,7 @@
             <th>이름</th>
             <th>상담일자</th>
             <th>상담내용</th>
+            <th>상담자</th>
         </tr>
         </thead>
         <tbody id="counsel-row">

@@ -22,6 +22,7 @@ $(document).ready(function() {
                     "<td class='name'>" + counselList[i].name + "</td>" +
                     "<td class='counsel-datetime'>" + new Date(counselList[i].counselDatetime).format("yyyy-MM-dd HH:mm:ss") + "</td>" +
                     "<td class='counsel-contents'>" + counselList[i].counselContents + "</td>" +
+                    "<td class='counselor-name'>" + counselList[i].counselorName + "</td>" +
                 "</tr>"
             );
         }
@@ -140,6 +141,7 @@ var searchCounsel = function() {
                     "<td class='name'></td>" +
                     "<td class='counsel-datetime'></td>" +
                     "<td class='counsel-contents'></td>" +
+                    "<td class='counselor-name'></td>" +
                     "</tr>"
             );
             return;
@@ -157,6 +159,7 @@ var searchCounsel = function() {
                 "<td class='name'>" + counselList[i].name + "</td>" +
                 "<td class='counsel-datetime'>" + new Date(counselList[i].counselDatetime).format("yyyy-MM-dd HH:mm:ss") + "</td>" +
                 "<td class='counsel-contents'>" + counselList[i].counselContents + "</td>" +
+                "<td class='counselor-name'>" + counselList[i].counselorName + "</td>" +
                 "</tr>"
             );
         }

@@ -14,7 +14,8 @@
             C.class_no AS classNo,
             U.name AS name,
             counsel.counsel_datetime AS counselDatetime,
-            counsel.counsel_contents AS counselContents
+            counsel.counsel_contents AS counselContents,
+            U2.name AS counselorName
         FROM pl_center.counsel AS counsel
         INNER JOIN pl_center.class AS C
         ON counsel.class_id = C.id
@@ -24,6 +25,8 @@
         ON U.col_id = col.id
         INNER JOIN pl_center.dept AS dept
         ON U.dept_id = dept.id
+        INNER JOIN pl_center.users AS U2
+        ON U2.user_code = counsel.counselor_user_code;
     </select>
 
     <select id="loadCounselByCondition" resultType="org.computerized.pl.model.CounselVO">
@@ -38,7 +41,8 @@
             C.class_no AS classNo,
             U.name AS name,
             counsel.counsel_datetime AS counselDatetime,
-            counsel.counsel_contents AS counselContents
+            counsel.counsel_contents AS counselContents,
+            U2.name AS counselorName
         FROM pl_center.counsel AS counsel
         INNER JOIN pl_center.class AS C
         ON counsel.class_id = C.id
@@ -48,6 +52,8 @@
         ON U.col_id = col.id
         INNER JOIN pl_center.dept AS dept
         ON U.dept_id = dept.id
+        INNER JOIN pl_center.users AS U2
+        ON U2.user_code = counsel.counselor_user_code
         WHERE counsel.id IS NOT NULL
         <if test="year != -1">
             AND C.year = ${year}
@@ -71,10 +77,10 @@
 
     <insert id="addCounsel">
         INSERT INTO
-            counsel(class_id, user_code, counsel_datetime, counsel_contents)
+            counsel(class_id, counselor_user_code, user_code, counsel_datetime, counsel_contents)
         VALUES
         <foreach item="item" index="index" collection="counselAddList" separator=",">
-            (${item.classId}, ${item.userCode}, now(), #{item.counselContents})
+            (${item.classId}, ${item.counselorUserCode}, ${item.userCode}, now(), #{item.counselContents})
         </foreach>
     </insert>
 

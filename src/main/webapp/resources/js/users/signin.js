@@ -22,3 +22,8 @@ var signin = function () {
         location.href = "/";
     });
 };
+
+var signinEnterKey = function() {
+    if(event.keyCode == 13)
+        signin();
+};

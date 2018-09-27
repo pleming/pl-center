@@ -2,6 +2,7 @@ package org.computerized.pl.model;
 
 public class CounselAddVO {
     private Integer classId;
+    private Integer counselorUserCode;
     private Integer userCode;
     private String counselContents;
 
@@ -11,6 +12,14 @@ public class CounselAddVO {
 
     public void setClassId(Integer classId) {
         this.classId = classId;
+    }
+
+    public Integer getCounselorUserCode() {
+        return counselorUserCode;
+    }
+
+    public void setCounselorUserCode(Integer counselorUserCode) {
+        this.counselorUserCode = counselorUserCode;
     }
 
     public Integer getUserCode() {

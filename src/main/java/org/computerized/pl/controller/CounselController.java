@@ -53,4 +53,15 @@ public class CounselController {
         counselService.delCounsel(counselIdListVO);
         return new ResponseVO(true, 1, "상담일지 삭제를 성공하였습니다.");
     }
+
+    @RequestMapping(value = "loadPlCertificated", method = { RequestMethod.GET })
+    @ResponseBody
+    public ResponseVO loadPlCertificated(HttpSession httpSession) {
+        SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
+        Integer userCode = sessionVO.getUserCode();
+
+        List<CounselVO> counselVOList = counselService.loadPlCertificated(userCode);
+
+        return new ResponseVO(true, 1, counselVOList);
+    }
 }

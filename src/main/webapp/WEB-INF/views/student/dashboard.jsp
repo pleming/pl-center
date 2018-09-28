@@ -13,7 +13,7 @@
 <%@ include file="/resources/jsp/student/sidebar.jsp" %>
 
 <div class="container-box">
-    <h1>PL Center - 학생</h1>
+    <div class="div-pl-certificated"></div>
 </div>
 
 </body>

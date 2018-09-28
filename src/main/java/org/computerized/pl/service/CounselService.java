@@ -30,4 +30,8 @@ public class CounselService {
     public void delCounsel(CounselIdListVO counselIdListVO) {
         counselDAO.delCounsel(counselIdListVO);
     }
+
+    public List<CounselVO> loadPlCertificated(Integer userCode) {
+        return counselDAO.loadPlCertificated(userCode);
+    }
 }

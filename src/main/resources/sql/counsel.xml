@@ -26,7 +26,11 @@
         INNER JOIN pl_center.dept AS dept
         ON U.dept_id = dept.id
         INNER JOIN pl_center.users AS U2
-        ON U2.user_code = counsel.counselor_user_code;
+        ON U2.user_code = counsel.counselor_user_code
+        <if test="userCode != null">
+            WHERE U.user_code = ${userCode}
+            ORDER BY counsel.counsel_datetime DESC
+        </if>
     </select>
 
     <select id="loadCounselByCondition" resultType="org.computerized.pl.model.CounselVO">

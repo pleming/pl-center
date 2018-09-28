@@ -43,4 +43,10 @@ public class CounselDAO {
         param.put("counselList", counselIdListVO.getCounselIdList());
         sqlSession.insert("counsel.delCounsel", param);
     }
+
+    public List<CounselVO> loadPlCertificated(Integer userCode) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("userCode", userCode);
+        return sqlSession.selectList("counsel.loadCounsel", param);
+    }
 }

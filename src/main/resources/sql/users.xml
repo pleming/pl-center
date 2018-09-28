@@ -79,7 +79,7 @@
 			dept,
 			student_code AS studentCode,
 			U.name
-			<if test="requireClassInfo == true">
+			<if test="requireClassInfo != null AND requireClassInfo == true">
 				,cls.id AS classId,
 				cls.year,
 				cls.semester,
@@ -92,7 +92,7 @@
 		ON U.col_id = C.id
 		INNER JOIN dept AS D
 		ON U.dept_id = D.id
-		<if test="requireClassInfo == true">
+		<if test="requireClassInfo != null requireClassInfo == true">
 			INNER JOIN class_std AS CS
 			ON U.user_code = CS.user_code
 			INNER JOIN pl_center.class AS cls

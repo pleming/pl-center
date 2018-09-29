@@ -11,18 +11,18 @@ $(document).ready(function() {
         var college = res.contents;
 
         $("select#col").append("<option value='-1'>단과대학</option>");
+        $("select#dept").append("<option value='-1'>학과</option>");
 
         for(var i = 0; i < college.length; i++) {
             $("select#col").append(
                 "<option value=" + college[i].id + ">" + college[i].college + "</option>"
             );
         }
-
-        loadDept(parseInt(college[0].id));
     });
 
     $("select#col").change(function() {
         $("select#dept").html("");
+        $("select#dept").append("<option value='-1'>학과</option>");
         loadDept(parseInt($(this).val()));
     });
 });
@@ -39,8 +39,6 @@ var loadDept = function(colId) {
         }
 
         var dept = res.contents;
-
-        $("select#dept").append("<option value='-1'>학과</option>");
 
         for(var i = 0; i < dept.length; i++) {
             $("select#dept").append(

@@ -249,6 +249,9 @@ var addCounsel = function() {
 };
 
 var delCounsel = function() {
+    if(!confirm("선택한 학생의 상담일지를 삭제하시겠습니까?\nPL Center 감사 등의 이유로 상담 일지의 유지가 필요합니다.\n정확한 인원을 선택했는지 확인해주세요."))
+        return;
+
     var data = {
         counselIdList: []
     };

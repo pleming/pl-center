@@ -49,10 +49,10 @@ $(document).ready(function() {
             $(".div-pl-certificated").append(
                 plCertificatedTemplate1 +
 
-                "<span id='student-code'>2011270319</span><br>" +
-                "<span id='dept'>컴퓨터융합소프트웨어학과</span><br>" +
-                "<span id='class-div'>2017-2(01)</span><br>" +
-                "<span id='student-name'>최호진</span><br>" +
+                "<span id='student-code'>" + plCertificatedInfo[i].name + "</span><br>" +
+                "<span id='dept'>" + plCertificatedInfo[i].dept + "</span><br>" +
+                "<span id='class-div'>" + plCertificatedInfo[i].year + "-" + plCertificatedInfo[i].semester + "(0" + plCertificatedInfo[i].classNo + ")</span><br>" +
+                "<span id='student-name'>" + plCertificatedInfo[i].name + "</span><br>" +
 
                 plCertificatedTemplate2 +
 

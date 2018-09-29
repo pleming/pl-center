@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.WorkingDiaryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,10 @@ public class WorkingDiaryDAO {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("nowYearMonth", nowYearMonth);
         return sqlSession.selectList("workingDiary.loadWorkingDiary", param);
+    }
+
+    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin() {
+        return sqlSession.selectList("workingDiary.loadWorkingDiaryForAdmin");
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

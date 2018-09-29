@@ -1,0 +1,61 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-working-diary-filter {
+    margin-bottom: 16px;
+}
+
+.working-diary-filter-elem {
+    display: inline-block;
+    float: right;
+    margin-right: 8px;
+    width: 16%;
+}
+
+.div-working-diary-filter-calendar {
+    display: inline-block;
+    float: right;
+    margin-right: 8px;
+}
+
+.div-working-diary-filter-calendar > * {
+    float: inherit;
+    width: inherit;
+}
+
+.div-working-diary-filter-calendar > i {
+    margin-top: 10px;
+}
+
+.div-working-diary-filter-calendar > span {
+    margin: 4px 4px 0 4px;
+}
+
+.btn-working-diary-search {
+    float: right;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.btn-working-diary-search:hover {
+    background-color: #ced4da;
+}
+
+.div-working-diary-info > * {
+    margin-top: 16px;
+}
+
+.div-working-diary-info > i {
+    margin: 0 8px 0 8px;
+}
+
+.working-diary-picker-modal {
+    display: inline-block;
+    width: inherit;
+}
+
+.ui-timepicker-container {
+    z-index: 9999 !important;
+}

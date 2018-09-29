@@ -39,7 +39,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-center">출근 도장 찍기</h5>
-                <button type="button" class="close" data-dismiss="modal" aira-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -50,7 +50,7 @@
                     <br>
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                     <span>근무 종료 시간</span>
-                    <input type="text" id="working-end-timepicker" />
+                    <input type="text" id="working-end-timepicker" class="form-control" />
                 </div>
                 <input type="text" id="working-contents" class="form-control" placeholder="근무 내용" />
             </div>

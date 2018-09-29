@@ -1,6 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.WorkingDiaryDAO;
+import org.computerized.pl.model.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.WorkingDiaryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,10 @@ public class WorkingDiaryService {
 
     public List<WorkingDiaryVO> loadWorkingDiary(String nowYearMonth) {
         return workingDiaryDAO.loadWorkingDiary(nowYearMonth);
+    }
+
+    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin() {
+        return workingDiaryDAO.loadWorkingDiaryForAdmin();
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

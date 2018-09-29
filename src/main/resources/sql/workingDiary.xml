@@ -19,6 +19,26 @@
         </if>
     </select>
 
+    <select id="loadWorkingDiaryForAdmin" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
+        SELECT
+            WD.id AS workingDiaryId,
+            U.user_id AS userId,
+            C.college,
+            D.dept,
+            U.student_code AS studentCode,
+            U.name,
+            WD.working_start_datetime AS workingStartDatetime,
+            WD.working_end_datetime AS workingEndDatetime,
+            WD.working_contents AS workingContents
+        FROM pl_center.working_diary AS WD
+        INNER JOIN users AS U
+        ON U.user_code = WD.user_code
+        INNER JOIN college AS C
+        ON U.col_id = C.id
+        INNER JOIN dept AS D
+        ON U.dept_id = D.id
+    </select>
+
     <insert id="attendWorker">
         INSERT INTO
 			working_diary(user_code, working_start_datetime, working_end_datetime, working_contents)

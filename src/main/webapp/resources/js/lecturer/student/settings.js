@@ -67,6 +67,7 @@ $(document).ready(function() {
 
 var addStudentSearch = function() {
     var data = {
+        requireClassInfo: false,
         searchKey: $("input#add-student-search").val()
     };
 

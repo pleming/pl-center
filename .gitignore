@@ -2,7 +2,6 @@
 src/main/resources/rebel.xml
 src/main/webapp/resources/libs/*
 !src/main/webapp/resources/libs/sockjs/
-!src/main/webapp/resources/libs/jquery-ui/jquery-ui.min.css
 target
 .metadata/
 .classpath

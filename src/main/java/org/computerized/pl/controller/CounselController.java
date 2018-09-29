@@ -44,7 +44,7 @@ public class CounselController {
 
         counselService.addCounsel(counselAddListVO);
 
-        return new ResponseVO(true, 1, "상담일지 등록을 성공하였습니다.");
+        return new ResponseVO(true, 1, "상담일지 추가를 성공하였습니다.");
     }
 
     @RequestMapping(value = "delCounsel", method = { RequestMethod.POST })

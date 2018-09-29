@@ -79,7 +79,7 @@
 			dept,
 			student_code AS studentCode,
 			U.name
-			<if test="requireClassInfo != null AND requireClassInfo == true">
+			<if test="requireClassInfo == true">
 				,cls.id AS classId,
 				cls.year,
 				cls.semester,
@@ -92,7 +92,7 @@
 		ON U.col_id = C.id
 		INNER JOIN dept AS D
 		ON U.dept_id = D.id
-		<if test="requireClassInfo != null requireClassInfo == true">
+		<if test="requireClassInfo == true">
 			INNER JOIN class_std AS CS
 			ON U.user_code = CS.user_code
 			INNER JOIN pl_center.class AS cls
@@ -105,5 +105,40 @@
 					OR U.student_code LIKE #{searchKey}
 					OR U.name LIKE #{searchKey}
 			  )
+	</select>
+
+	<select id="loadStudentForAdmin" resultType="org.computerized.pl.model.StdSearchVO">
+		SELECT
+		U.user_code AS userCode,
+		user_id AS userId,
+		college,
+		dept,
+		student_code AS studentCode,
+		U.name
+		<if test="requireClassInfo == true">
+			,cls.id AS classId,
+			cls.year,
+			cls.semester,
+			cls.class_no AS classNo
+		</if>
+		FROM users AS U
+		INNER JOIN auth AS A
+		ON U.user_code = A.user_code
+		INNER JOIN college AS C
+		ON U.col_id = C.id
+		INNER JOIN dept AS D
+		ON U.dept_id = D.id
+		<if test="requireClassInfo == true">
+			INNER JOIN class_std AS CS
+			ON U.user_code = CS.user_code
+			INNER JOIN pl_center.class AS cls
+			ON CS.class_id = cls.id
+		</if>
+		WHERE
+			U.user_id LIKE #{searchKey}
+			OR college LIKE #{searchKey}
+			OR dept LIKE #{searchKey}
+			OR U.student_code LIKE #{searchKey}
+			OR U.name LIKE #{searchKey}
 	</select>
 </mapper>

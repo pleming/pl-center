@@ -18,7 +18,7 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" onclick="delCounsel()">- 상담일지 삭제</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지 등록</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지 추가</button>
         <input type="text" id="counsel-search" class="form-control counsel-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
         <select class="form-control counsel-filter-elem" id="class-no"></select>
         <select class="form-control counsel-filter-elem" id="semester"></select>
@@ -48,8 +48,8 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center">상담일지 등록</h5>
-                <button type="button" class="close" data-dismiss="modal" aira-label="Close">
+                <h5 class="modal-title text-center">상담일지 추가</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                <button type="button" class="btn btn-primary" onclick="addCounsel()">상담일지 등록</button>
+                <button type="button" class="btn btn-primary" onclick="addCounsel()">상담일지 추가</button>
             </div>
         </div>
     </div>

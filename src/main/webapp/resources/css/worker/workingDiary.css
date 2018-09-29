@@ -43,6 +43,11 @@
     margin-bottom: 16px;
 }
 
+#working-end-timepicker {
+    display: inline-block;
+    width: inherit;
+}
+
 .ui-timepicker-container {
     z-index: 9999 !important;
 }

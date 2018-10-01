@@ -2,6 +2,7 @@ package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.model.WorkingDiaryForAdminVO;
+import org.computerized.pl.model.WorkingDiarySearchVO;
 import org.computerized.pl.model.WorkingDiaryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,16 @@ public class WorkingDiaryDAO {
 
     public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin() {
         return sqlSession.selectList("workingDiary.loadWorkingDiaryForAdmin");
+    }
+
+    public List<WorkingDiaryForAdminVO> searchWorkingDiary(WorkingDiarySearchVO workingDiarySearchVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startDate", workingDiarySearchVO.getWorkingDiarySearchStartDate());
+        param.put("endDate", workingDiarySearchVO.getWorkingDiarySearchEndDate());
+        param.put("searchKey", "%" + workingDiarySearchVO.getSearchKey() + "%");
+
+        return sqlSession.selectList("workingDiary.searchWorkingDiary", param);
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

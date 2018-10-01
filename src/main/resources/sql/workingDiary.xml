@@ -14,9 +14,6 @@
         INNER JOIN users
         ON WD.user_code = users.user_code
         WHERE working_start_datetime BETWEEN #{nowYearMonth} AND LAST_DAY(#{nowYearMonth})
-        <if test="userCode != null">
-            WHERE user_code = ${userCode}
-        </if>
     </select>
 
     <select id="loadWorkingDiaryForAdmin" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
@@ -37,6 +34,35 @@
         ON U.col_id = C.id
         INNER JOIN dept AS D
         ON U.dept_id = D.id
+    </select>
+
+    <select id="searchWorkingDiary" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
+        SELECT
+            WD.id AS workingDiaryId,
+            U.user_id AS userId,
+            C.college,
+            D.dept,
+            U.student_code AS studentCode,
+            U.name,
+            WD.working_start_datetime AS workingStartDatetime,
+            WD.working_end_datetime AS workingEndDatetime,
+            WD.working_contents AS workingContents
+        FROM pl_center.working_diary AS WD
+        INNER JOIN users AS U
+        ON U.user_code = WD.user_code
+        INNER JOIN college AS C
+        ON U.col_id = C.id
+        INNER JOIN dept AS D
+        ON U.dept_id = D.id
+        WHERE WD.id IS NOT NULL
+            <if test="startDate != null and endDate != null">
+                AND (working_start_datetime BETWEEN #{startDate} AND #{endDate})
+            </if>
+            AND (U.user_id LIKE #{searchKey}
+                OR college LIKE #{searchKey}
+                OR dept LIKE #{searchKey}
+                OR U.student_code LIKE #{searchKey}
+                OR U.name LIKE #{searchKey})
     </select>
 
     <insert id="attendWorker">

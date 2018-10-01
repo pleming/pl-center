@@ -34,6 +34,7 @@
 
 .btn-working-diary-search {
     float: right;
+    margin-right: 8px;
     background-color: transparent;
     border: 1px solid #ced4da;
     cursor: pointer;
@@ -41,6 +42,10 @@
 
 .btn-working-diary-search:hover {
     background-color: #ced4da;
+}
+
+.btn-working-diary-list-all {
+    width: inherit;
 }
 
 .div-working-diary-info > * {

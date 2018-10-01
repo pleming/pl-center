@@ -16,10 +16,15 @@
     <div class="div-working-diary-filter">
         <button type="button" class="btn btn-danger" onclick="delWorkingDiary()">- 근무일지 삭제</button>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addWorkingDiaryModal">+ 근무일지 추가</button>
+
+        <button type="button" class="btn btn-primary btn-working-diary-list-all working-diary-filter-elem" onclick="listAllWorkingDiary()">전체 보기</button>
+
         <button class="btn btn-working-diary-search" onclick="searchWorkingDiary()">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
+
         <input type="text" id="working-diary-search" class="form-control working-diary-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
+
         <div class="div-working-diary-filter-calendar">
             <input type="text" id="working-diary-end-datepicker" class="form-control" />
             <span>~</span>

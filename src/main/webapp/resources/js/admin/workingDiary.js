@@ -4,7 +4,7 @@ $(document).ready(function() {
         method: "GET"
     }, function(err, res) {
         if (err) {
-            alert("근무일지 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            alert("근무일지 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
@@ -88,13 +88,13 @@ $(document).ready(function() {
 
 var searchWorkingDiary = function() {
     var data = {
-        workingDiarySearchStartDate: Number($("input#working-diary-start-datepicker").val()),
-        workingDiarySearchEndDate: Number($("input#working-diary-end-datepicker").val()),
+        workingDiarySearchStartDate: $("input#working-diary-start-datepicker").val(),
+        workingDiarySearchEndDate: $("input#working-diary-end-datepicker").val(),
         searchKey: $("input#working-diary-search").val()
     };
 
     $ajax.request({
-        url: "",
+        url: "/admin/searchWorkingDiary",
         method: "POST",
         data: JSON.stringify(data)
     }, function (err, res) {
@@ -107,7 +107,7 @@ var searchWorkingDiary = function() {
 
         $("tbody#working-diary-row").html("");
 
-        if(counselList.length == 0) {
+        if(workingDiaryList.length == 0) {
             $("tbody#working-diary-row").append(
                 "<tr>" +
                 "<td><input type='checkbox' name='working-diary-id' value='" + workingDiaryList[i].workingDiaryId + "'/></td>" +
@@ -136,7 +136,37 @@ var searchWorkingDiary = function() {
                 "<td class='working-contents'>" + workingDiaryList[i].workingContents + "</td>" +
                 "</tr>"
             );
+        }
+    });
+};
+
+var listAllWorkingDiary = function() {
+    $ajax.request({
+        url: "/admin/loadWorkingDiary",
+        method: "GET"
+    }, function(err, res) {
+        if (err) {
+            alert("근무일지 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
+        }
+
+        var workingDiaryList = res.contents;
+
+        $("tbody#working-diary-row").html("");
+
+        for(var i = 0; i < workingDiaryList.length; i++) {
+            $("tbody#working-diary-row").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='working-diary-id' value='" + workingDiaryList[i].workingDiaryId + "'/></td>" +
+                "<td class='user-id'>" + workingDiaryList[i].userId + "</td>" +
+                "<td class='college'>" + workingDiaryList[i].college + "</td>" +
+                "<td class='dept'>" + workingDiaryList[i].dept + "</td>" +
+                "<td class='student-code'>" + workingDiaryList[i].studentCode + "</td>" +
+                "<td class='name'>" + workingDiaryList[i].name + "</td>" +
+                "<td class='working-datetime'>" + new Date(workingDiaryList[i].workingStartDatetime).format("yyyy-MM-dd HH:mm") + "~" + new Date(workingDiaryList[i].workingEndDatetime).format("HH:mm") + "</td>" +
+                "<td class='working-contents'>" + workingDiaryList[i].workingContents + "</td>" +
+                "</tr>"
+            );
         }
     });
 };

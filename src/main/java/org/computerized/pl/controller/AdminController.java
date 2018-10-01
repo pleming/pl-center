@@ -1,9 +1,6 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.AuthVO;
-import org.computerized.pl.model.ResponseVO;
-import org.computerized.pl.model.StdSearchVO;
-import org.computerized.pl.model.WorkingDiaryForAdminVO;
+import org.computerized.pl.model.*;
 import org.computerized.pl.service.UserService;
 import org.computerized.pl.service.WorkingDiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +37,13 @@ public class AdminController {
     @ResponseBody
     public ResponseVO loadWorkingDiary() {
         List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.loadWorkingDiaryForAdmin();
+        return new ResponseVO(true, 1, workingDiaryForAdminVOList);
+    }
+
+    @RequestMapping(value = "searchWorkingDiary", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO searchWorkingDiary(@RequestBody WorkingDiarySearchVO workingDiarySearchVO) {
+        List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.searchWorkingDiary(workingDiarySearchVO);
         return new ResponseVO(true, 1, workingDiaryForAdminVOList);
     }
 

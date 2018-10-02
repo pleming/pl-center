@@ -1,6 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.WorkingDiaryDAO;
+import org.computerized.pl.model.WorkingDiaryAddListVO;
 import org.computerized.pl.model.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.WorkingDiarySearchVO;
 import org.computerized.pl.model.WorkingDiaryVO;
@@ -24,6 +25,10 @@ public class WorkingDiaryService {
 
     public List<WorkingDiaryForAdminVO> searchWorkingDiary(WorkingDiarySearchVO workingDiarySearchVO) {
         return workingDiaryDAO.searchWorkingDiary(workingDiarySearchVO);
+    }
+
+    public void addWorkingDiary(WorkingDiaryAddListVO workingDiaryAddListVO) {
+        workingDiaryDAO.addWorkingDiary(workingDiaryAddListVO);
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

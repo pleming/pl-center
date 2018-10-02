@@ -88,8 +88,8 @@ $(document).ready(function() {
 
 var searchWorkingDiary = function() {
     var data = {
-        workingDiarySearchStartDate: $("input#working-diary-start-datepicker").val(),
-        workingDiarySearchEndDate: $("input#working-diary-end-datepicker").val(),
+        workingDiarySearchStartDate: new Date($("input#working-diary-start-datepicker").val()).format("yyyy-MM-dd") + " 00:00:00",
+        workingDiarySearchEndDate: new Date($("input#working-diary-end-datepicker").val()).format("yyyy-MM-dd") + " 23:59:59",
         searchKey: $("input#working-diary-search").val()
     };
 
@@ -229,8 +229,8 @@ var addWorkingDiary = function() {
     $("tbody#student-row-modal input[name=user-code]:checked").each(function() {
         var __data = {
             userCode: $(this).val(),
-            workingStartDatetime: $("#working-diary-start-datepicker-modal").val() + " " + $("#working-diary-start-timepicker-modal").val() + ":00",
-            workingEndDatetime: $("#working-diary-end-datepicker-modal").val() + " " + $("#working-diary-end-timepicker-modal").val() + ":00",
+            workingStartDatetime: new Date($("#working-diary-start-datepicker-modal").val() + " " + $("#working-diary-start-timepicker-modal").val() + ":00"),
+            workingEndDatetime: new Date($("#working-diary-end-datepicker-modal").val() + " " + $("#working-diary-end-timepicker-modal").val() + ":00"),
             workingContents: $("input[name=working-contents]").val()
         };
 

@@ -1,25 +1,23 @@
 package org.computerized.pl.model;
 
-import java.util.Date;
-
 public class WorkingDiarySearchVO {
-    private Date workingDiarySearchStartDate;
-    private Date workingDiarySearchEndDate;
+    private String workingDiarySearchStartDate;
+    private String workingDiarySearchEndDate;
     private String searchKey;
 
-    public Date getWorkingDiarySearchStartDate() {
+    public String getWorkingDiarySearchStartDate() {
         return workingDiarySearchStartDate;
     }
 
-    public void setWorkingDiarySearchStartDate(Date workingDiarySearchStartDate) {
+    public void setWorkingDiarySearchStartDate(String workingDiarySearchStartDate) {
         this.workingDiarySearchStartDate = workingDiarySearchStartDate;
     }
 
-    public Date getWorkingDiarySearchEndDate() {
+    public String getWorkingDiarySearchEndDate() {
         return workingDiarySearchEndDate;
     }
 
-    public void setWorkingDiarySearchEndDate(Date workingDiarySearchEndDate) {
+    public void setWorkingDiarySearchEndDate(String workingDiarySearchEndDate) {
         this.workingDiarySearchEndDate = workingDiarySearchEndDate;
     }
 

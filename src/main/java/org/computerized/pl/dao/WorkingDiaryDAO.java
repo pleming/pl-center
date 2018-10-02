@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.WorkingDiaryAddListVO;
 import org.computerized.pl.model.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.WorkingDiarySearchVO;
 import org.computerized.pl.model.WorkingDiaryVO;
@@ -34,6 +35,12 @@ public class WorkingDiaryDAO {
         param.put("searchKey", "%" + workingDiarySearchVO.getSearchKey() + "%");
 
         return sqlSession.selectList("workingDiary.searchWorkingDiary", param);
+    }
+
+    public void addWorkingDiary(WorkingDiaryAddListVO workingDiaryAddListVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("workingDiaryAddList", workingDiaryAddListVO.getWorkingDiaryAddList());
+        sqlSession.insert("workingDiary.addWorkingDiary", param);
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

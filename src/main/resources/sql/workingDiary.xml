@@ -34,6 +34,7 @@
         ON U.col_id = C.id
         INNER JOIN dept AS D
         ON U.dept_id = D.id
+        ORDER BY WD.working_start_datetime DESC
     </select>
 
     <select id="searchWorkingDiary" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
@@ -64,6 +65,15 @@
                 OR U.student_code LIKE #{searchKey}
                 OR U.name LIKE #{searchKey})
     </select>
+
+    <insert id="addWorkingDiary">
+        INSERT INTO
+            working_diary(user_code, working_start_datetime, working_end_datetime, working_contents)
+        VALUES
+            <foreach item="item" index="index" collection="workingDiaryAddList" separator=",">
+                (${item.userCode}, #{item.workingStartDatetime}, #{item.workingEndDatetime}, #{item.workingContents})
+            </foreach>
+    </insert>
 
     <insert id="attendWorker">
         INSERT INTO

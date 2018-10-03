@@ -1,10 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.WorkingDiaryDAO;
-import org.computerized.pl.model.WorkingDiaryAddListVO;
-import org.computerized.pl.model.WorkingDiaryForAdminVO;
-import org.computerized.pl.model.WorkingDiarySearchVO;
-import org.computerized.pl.model.WorkingDiaryVO;
+import org.computerized.pl.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +26,10 @@ public class WorkingDiaryService {
 
     public void addWorkingDiary(WorkingDiaryAddListVO workingDiaryAddListVO) {
         workingDiaryDAO.addWorkingDiary(workingDiaryAddListVO);
+    }
+
+    public void delWorkingDiary(WorkingDiaryIdListVO workingDiaryIdListVO) {
+        workingDiaryDAO.deldWorkingDiary(workingDiaryIdListVO);
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

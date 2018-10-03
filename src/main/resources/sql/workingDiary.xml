@@ -75,6 +75,14 @@
             </foreach>
     </insert>
 
+    <delete id="delWorkingDiary">
+        DELETE FROM working_diary
+        WHERE id IN
+        <foreach item="item" index="index" collection="workingDiaryIdList" open="(" separator="," close=")">
+            ${item}
+        </foreach>
+    </delete>
+
     <insert id="attendWorker">
         INSERT INTO
 			working_diary(user_code, working_start_datetime, working_end_datetime, working_contents)

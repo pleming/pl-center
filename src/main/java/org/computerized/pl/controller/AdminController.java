@@ -61,6 +61,13 @@ public class AdminController {
         return new ResponseVO(true, 1, "근무일지 추가를 성공하였습니다.");
     }
 
+    @RequestMapping(value = "delWorkingDiary", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO delWorkingDiary(@RequestBody WorkingDiaryIdListVO workingDiaryIdListVO) {
+        workingDiaryService.delWorkingDiary(workingDiaryIdListVO);
+        return new ResponseVO(true, 1, "근무일지 삭제를 성공하였습니다.");
+    }
+
     @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })
     @ResponseBody
     public ResponseVO updateAuth(@RequestBody AuthVO authVO) {

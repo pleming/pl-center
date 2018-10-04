@@ -7,8 +7,8 @@
     <div class="sidebar-list list-group">
         <a href="/admin/workingDiary" class="list-group-item list-group-item-action">근무일지 현황</a>
         <a href="/admin/counsel" class="list-group-item list-group-item-action">상담일지 현황</a>
-        <a href="#" class="list-group-item list-group-item-action">단과대학 설정</a>
-        <a href="#" class="list-group-item list-group-item-action">학과 설정</a>
+        <a href="/admin/college" class="list-group-item list-group-item-action">단과대학 설정</a>
+        <a href="/admin/dept" class="list-group-item list-group-item-action">학과 설정</a>
         <a href="/admin/auth" class="list-group-item list-group-item-action">권한 설정</a>
     </div>
 </div>

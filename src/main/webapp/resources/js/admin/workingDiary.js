@@ -257,11 +257,11 @@ var delWorkingDiary = function() {
         return;
 
     var data = {
-        workingDiaryIdList: []
+        idList: []
     };
 
     $("tbody#working-diary-row input[name=working-diary-id]:checked").each(function() {
-        data.workingDiaryIdList.push(Number($(this).val()));
+        data.idList.push(Number($(this).val()));
     });
 
     $ajax.request({

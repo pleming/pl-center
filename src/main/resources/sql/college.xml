@@ -5,4 +5,19 @@
     <select id="loadCollege" resultType="org.computerized.pl.model.CollegeVO">
         SELECT * FROM college
     </select>
+
+    <insert id="addCollege">
+        INSERT INTO
+			college(college)
+        VALUES
+        	(#{collegeName})
+    </insert>
+
+    <delete id="delCollege">
+        DELETE FROM college
+        WHERE id IN
+        <foreach item="item" index="index" collection="collegeList" open="(" separator="," close=")">
+            ${item}
+        </foreach>
+    </delete>
 </mapper>

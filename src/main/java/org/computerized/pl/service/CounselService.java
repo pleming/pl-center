@@ -1,10 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.CounselDAO;
-import org.computerized.pl.model.CounselAddListVO;
-import org.computerized.pl.model.CounselIdListVO;
-import org.computerized.pl.model.CounselSearchVO;
-import org.computerized.pl.model.CounselVO;
+import org.computerized.pl.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +24,8 @@ public class CounselService {
         counselDAO.addCounsel(counselAddListVO);
     }
 
-    public void delCounsel(CounselIdListVO counselIdListVO) {
-        counselDAO.delCounsel(counselIdListVO);
+    public void delCounsel(IdListVO idListVO) {
+        counselDAO.delCounsel(idListVO);
     }
 
     public List<CounselVO> loadPlCertificated(Integer userCode) {

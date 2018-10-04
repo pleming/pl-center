@@ -28,8 +28,8 @@ public class WorkingDiaryService {
         workingDiaryDAO.addWorkingDiary(workingDiaryAddListVO);
     }
 
-    public void delWorkingDiary(WorkingDiaryIdListVO workingDiaryIdListVO) {
-        workingDiaryDAO.deldWorkingDiary(workingDiaryIdListVO);
+    public void delWorkingDiary(IdListVO idListVO) {
+        workingDiaryDAO.deldWorkingDiary(idListVO);
     }
 
     public void attendWorker(WorkingDiaryVO workingDiaryVO) {

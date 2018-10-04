@@ -1,6 +1,7 @@
 package org.computerized.pl.controller;
 
 import org.computerized.pl.model.*;
+import org.computerized.pl.service.CollegeService;
 import org.computerized.pl.service.UserService;
 import org.computerized.pl.service.WorkingDiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private WorkingDiaryService workingDiaryService;
+    @Autowired
+    private CollegeService collegeService;
 
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
@@ -29,6 +32,12 @@ public class AdminController {
 
     @RequestMapping(value = "counsel")
     public void renderCounsel(){}
+
+    @RequestMapping(value = "college")
+    public void renderCollege(){}
+
+    @RequestMapping(value = "dept")
+    public void renderDept(){}
 
     @RequestMapping(value = "auth")
     public void renderAuth(){}
@@ -63,9 +72,23 @@ public class AdminController {
 
     @RequestMapping(value = "delWorkingDiary", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO delWorkingDiary(@RequestBody WorkingDiaryIdListVO workingDiaryIdListVO) {
-        workingDiaryService.delWorkingDiary(workingDiaryIdListVO);
+    public ResponseVO delWorkingDiary(@RequestBody IdListVO idListVO) {
+        workingDiaryService.delWorkingDiary(idListVO);
         return new ResponseVO(true, 1, "근무일지 삭제를 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "addCollege", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO addCollege(@RequestBody CollegeVO collegeVO) {
+        collegeService.addCollege(collegeVO);
+        return new ResponseVO(true, 1, "단과대학 추가를 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "delCollege", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO delCollege(@RequestBody IdListVO idListVO) {
+        collegeService.delCollege(idListVO);
+        return new ResponseVO(true, 1, "단과대학 삭제를 성공하였습니다.");
     }
 
     @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })

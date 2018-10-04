@@ -40,9 +40,9 @@ public class WorkingDiaryDAO {
         sqlSession.insert("workingDiary.addWorkingDiary", param);
     }
 
-    public void deldWorkingDiary(WorkingDiaryIdListVO workingDiaryIdListVO) {
+    public void deldWorkingDiary(IdListVO idListVO) {
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("workingDiaryIdList", workingDiaryIdListVO.getWorkingDiaryIdList());
+        param.put("workingDiaryIdList", idListVO.getIdList());
         sqlSession.insert("workingDiary.delWorkingDiary", param);
     }
 

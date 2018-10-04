@@ -143,11 +143,11 @@ var delCounsel = function() {
         return;
 
     var data = {
-        counselIdList: []
+        idList: []
     };
 
     $("tbody#counsel-row input[name=counsel-id]:checked").each(function() {
-        data.counselIdList.push(Number($(this).val()));
+        data.idList.push(Number($(this).val()));
     });
 
     $ajax.request({

@@ -1,10 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.CounselAddListVO;
-import org.computerized.pl.model.CounselIdListVO;
-import org.computerized.pl.model.CounselSearchVO;
-import org.computerized.pl.model.CounselVO;
+import org.computerized.pl.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,9 +35,9 @@ public class CounselDAO {
         sqlSession.insert("counsel.addCounsel", param);
     }
 
-    public void delCounsel(CounselIdListVO counselIdListVO) {
+    public void delCounsel(IdListVO idListVO) {
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("counselList", counselIdListVO.getCounselIdList());
+        param.put("counselList", idListVO.getIdList());
         sqlSession.insert("counsel.delCounsel", param);
     }
 

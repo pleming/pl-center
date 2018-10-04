@@ -49,8 +49,8 @@ public class CounselController {
 
     @RequestMapping(value = "delCounsel", method = { RequestMethod.POST })
     @ResponseBody
-    public ResponseVO delCounsel(@RequestBody CounselIdListVO counselIdListVO) {
-        counselService.delCounsel(counselIdListVO);
+    public ResponseVO delCounsel(@RequestBody IdListVO idListVO) {
+        counselService.delCounsel(idListVO);
         return new ResponseVO(true, 1, "상담일지 삭제를 성공하였습니다.");
     }
 

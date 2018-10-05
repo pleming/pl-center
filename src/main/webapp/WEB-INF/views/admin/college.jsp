@@ -6,7 +6,7 @@
     <%@ include file="/resources/jsp/header.jsp" %>
     <link rel="stylesheet" href="/resources/css/admin/college.css">
     <script src="/resources/js/admin/college.js"></script>
-    <title>PL Center - 근무일지</title>
+    <title>PL Center - 단과대학</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
@@ -40,7 +40,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="text" name="collage" class="form-control" placeholder="단과대학 이름"/>
+                <input type="text" name="college" class="form-control" placeholder="단과대학 이름"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

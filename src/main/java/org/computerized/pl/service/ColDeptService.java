@@ -1,6 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.ColDeptDAO;
+import org.computerized.pl.model.ColDeptIdVO;
 import org.computerized.pl.model.DeptVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,21 @@ public class ColDeptService {
 
     public List<DeptVO> loadDeptListByColId(Integer colId) {
         return colDeptDAO.loadDeptListByColId(colId);
+    }
+
+    public void addDept(String deptName) {
+        colDeptDAO.addDept(deptName);
+    }
+
+    public void delDept(List<ColDeptIdVO> colDeptIdVOList) {
+        colDeptDAO.delDept(colDeptIdVOList);
+    }
+
+    public void mappingColDept(Integer collegeId) {
+        colDeptDAO.mappingColDept(collegeId);
+    }
+
+    public void removeMappingColDept(List<ColDeptIdVO> colDeptIdVOList) {
+        colDeptDAO.removeMappingColDept(colDeptIdVOList);
     }
 }

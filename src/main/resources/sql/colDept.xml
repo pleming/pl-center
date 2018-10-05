@@ -10,4 +10,32 @@
         INNER JOIN dept AS D
         ON CD.col_id = ${colId} AND D.id = CD.dept_id
     </select>
+
+    <insert id="addDept">
+        INSERT INTO
+            dept(dept)
+        VALUES(#{deptName})
+    </insert>
+
+    <delete id="delDept">
+        DELETE FROM dept
+        WHERE id IN
+        <foreach item="item" index="index" collection="colDeptIdList" open="(" separator="," close=")">
+            ${item.deptId}
+        </foreach>
+    </delete>
+
+    <insert id="mappingColDept">
+        INSERT INTO
+            col_dept(col_id, dept_id)
+        VALUES(${collegeId}, LAST_INSERT_ID())
+    </insert>
+
+    <delete id="removeMappingColDept">
+        DELETE FROM col_dept
+        WHERE col_id IS NULL OR
+        <foreach item="item" index="index" collection="colDeptIdList" separator="OR">
+            (col_id = ${item.collegeId} AND dept_id = ${item.deptId})
+        </foreach>
+    </delete>
 </mapper>

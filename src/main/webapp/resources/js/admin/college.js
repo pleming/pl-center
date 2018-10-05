@@ -35,7 +35,7 @@ var addCollege = function() {
         return;
 
     var data = {
-        college: $("input[name=collage]").val()
+        college: $("input[name=college]").val()
     };
 
     $ajax.request({
@@ -54,7 +54,7 @@ var addCollege = function() {
 };
 
 var delCollege = function() {
-    if(!confirm("선택한 단과대학을 삭제하시겠습니까?\n삭제 시, 해당 단과대학에 소속된 학생의 데이터가 제대로 출력되지 않을 수 있습니다."))
+    if(!confirm("선택한 단과대학을 삭제하시겠습니까?\n삭제 시, 해당 단과대학에 소속된 학생의 단과대학 데이터가 제대로 출력되지 않을 수 있습니다."))
         return;
 
     var data = {

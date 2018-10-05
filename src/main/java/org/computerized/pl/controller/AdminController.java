@@ -1,6 +1,7 @@
 package org.computerized.pl.controller;
 
 import org.computerized.pl.model.*;
+import org.computerized.pl.service.ColDeptService;
 import org.computerized.pl.service.CollegeService;
 import org.computerized.pl.service.UserService;
 import org.computerized.pl.service.WorkingDiaryService;
@@ -23,6 +24,8 @@ public class AdminController {
     private WorkingDiaryService workingDiaryService;
     @Autowired
     private CollegeService collegeService;
+    @Autowired
+    private ColDeptService colDeptService;
 
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
@@ -89,6 +92,25 @@ public class AdminController {
     public ResponseVO delCollege(@RequestBody IdListVO idListVO) {
         collegeService.delCollege(idListVO);
         return new ResponseVO(true, 1, "단과대학 삭제를 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "addDept", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO addDept(@RequestBody ColDeptAddVO colDeptAddVO) {
+        colDeptService.addDept(colDeptAddVO.getDeptName());
+        colDeptService.mappingColDept(colDeptAddVO.getCollegeId());
+        return new ResponseVO(true, 1, "학과 추가를 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "delDept", method = { RequestMethod.POST })
+    @ResponseBody
+    public ResponseVO delDept(@RequestBody ColDeptDeleteListVO colDeptDeleteListVO) {
+        List<ColDeptIdVO> colDeptIdVOList = colDeptDeleteListVO.getColDeptIdList();
+
+        colDeptService.delDept(colDeptIdVOList);
+        colDeptService.removeMappingColDept(colDeptIdVOList);
+
+        return new ResponseVO(true, 1, "학과 삭제를 성공하였습니다.");
     }
 
     @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })

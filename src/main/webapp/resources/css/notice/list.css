@@ -1,0 +1,28 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-notice-controller {
+    float: right;
+    margin-bottom: 16px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}

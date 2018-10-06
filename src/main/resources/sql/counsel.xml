@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="counsel">
-    <select id="loadCounsel" resultType="org.computerized.pl.model.CounselVO">
+    <select id="loadCounsel" resultType="org.computerized.pl.model.counsel.CounselVO">
         SELECT
             counsel.id AS counselId,
             U.user_id AS userId,
@@ -33,7 +33,7 @@
         ORDER BY counsel.counsel_datetime DESC
     </select>
 
-    <select id="loadCounselByCondition" resultType="org.computerized.pl.model.CounselVO">
+    <select id="loadCounselByCondition" resultType="org.computerized.pl.model.counsel.CounselVO">
         SELECT
             counsel.id AS counselId,
             U.user_id AS userId,

@@ -23,6 +23,7 @@
 <script src="/resources/libs/jquery-timepicker-wvega/jquery.timepicker.js"></script>
 <script src="/resources/libs/moment/min/moment.min.js"></script>
 <script src="/resources/libs/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="/resources/libs/tinymce/tinymce.min.js"></script>
 
 <!-- Import Custom Library(JS)-->
 <script src="/resources/js/ajax.js"></script>

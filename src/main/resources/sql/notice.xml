@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+    <select id="loadNoticeList" resultType="org.computerized.pl.model.notice.NoticeListVO">
+        SELECT
+            id,
+            title,
+            U.name AS writer,
+            write_datetime AS writeDatetime,
+            views
+        FROM notice AS N
+        INNER JOIN users AS U
+        ON N.writer = U.user_code
+        ORDER BY write_datetime DESC
+    </select>
+
+    <select id="loadNoticeById" resultType="org.computerized.pl.model.notice.NoticeVO">
+        SELECT
+            id,
+            title,
+            contents,
+            U.name AS writer,
+            write_datetime AS writeDatetime,
+            views
+        FROM notice AS N
+        INNER JOIN users AS U
+        ON N.writer = U.user_code
+        WHERE N.id = ${noticeId}
+    </select>
+</mapper>

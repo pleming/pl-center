@@ -1,7 +1,10 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.*;
+import org.computerized.pl.model.counsel.CounselAddListVO;
+import org.computerized.pl.model.counsel.CounselSearchVO;
+import org.computerized.pl.model.counsel.CounselVO;
+import org.computerized.pl.model.general.IdListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

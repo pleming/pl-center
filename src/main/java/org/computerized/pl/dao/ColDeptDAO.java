@@ -1,8 +1,8 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.ColDeptIdVO;
-import org.computerized.pl.model.DeptVO;
+import org.computerized.pl.model.colDept.ColDeptIdVO;
+import org.computerized.pl.model.colDept.DeptVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

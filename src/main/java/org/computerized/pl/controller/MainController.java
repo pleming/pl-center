@@ -1,7 +1,7 @@
 package org.computerized.pl.controller;
 
 import org.computerized.pl.code.CodeDefinition;
-import org.computerized.pl.model.SessionVO;
+import org.computerized.pl.model.general.SessionVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +14,6 @@ public class MainController {
     @RequestMapping(value = "", method = { RequestMethod.GET })
     public String renderIndex(HttpSession httpSession) {
         SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
-
         Integer auth = sessionVO.getAuth();
 
         if(auth.equals(CodeDefinition.Auth.STUDENT.getCode()))

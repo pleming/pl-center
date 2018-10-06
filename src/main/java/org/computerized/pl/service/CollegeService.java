@@ -1,8 +1,8 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.CollegeDAO;
-import org.computerized.pl.model.CollegeVO;
-import org.computerized.pl.model.IdListVO;
+import org.computerized.pl.model.colDept.CollegeVO;
+import org.computerized.pl.model.general.IdListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

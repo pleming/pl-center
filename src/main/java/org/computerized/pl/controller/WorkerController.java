@@ -1,8 +1,8 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.ResponseVO;
-import org.computerized.pl.model.SessionVO;
-import org.computerized.pl.model.WorkingDiaryVO;
+import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryVO;
 import org.computerized.pl.service.WorkingDiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

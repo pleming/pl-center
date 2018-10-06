@@ -1,8 +1,8 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.ClassStdListVO;
-import org.computerized.pl.model.ClassStdVO;
-import org.computerized.pl.model.ResponseVO;
+import org.computerized.pl.model.classStd.ClassStdListVO;
+import org.computerized.pl.model.classStd.ClassStdVO;
+import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.service.ClassStdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

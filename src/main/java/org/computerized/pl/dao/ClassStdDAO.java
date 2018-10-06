@@ -1,8 +1,8 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.ClassStdListVO;
-import org.computerized.pl.model.StudentVO;
+import org.computerized.pl.model.classStd.ClassStdListVO;
+import org.computerized.pl.model.classStd.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

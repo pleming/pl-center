@@ -1,6 +1,16 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.*;
+import org.computerized.pl.model.classStd.StdSearchVO;
+import org.computerized.pl.model.colDept.ColDeptAddVO;
+import org.computerized.pl.model.colDept.ColDeptDeleteListVO;
+import org.computerized.pl.model.colDept.ColDeptIdVO;
+import org.computerized.pl.model.colDept.CollegeVO;
+import org.computerized.pl.model.general.AuthVO;
+import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
+import org.computerized.pl.model.workingDiary.WorkingDiarySearchVO;
 import org.computerized.pl.service.ColDeptService;
 import org.computerized.pl.service.CollegeService;
 import org.computerized.pl.service.UserService;
@@ -30,19 +40,19 @@ public class AdminController {
     @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
     public void renderDashboard(){}
 
-    @RequestMapping(value = "workingDiary")
+    @RequestMapping(value = "workingDiary", method = { RequestMethod.GET })
     public void renderWorkingDiary(){}
 
-    @RequestMapping(value = "counsel")
+    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
     public void renderCounsel(){}
 
-    @RequestMapping(value = "college")
+    @RequestMapping(value = "college", method = { RequestMethod.GET })
     public void renderCollege(){}
 
-    @RequestMapping(value = "dept")
+    @RequestMapping(value = "dept", method = { RequestMethod.GET })
     public void renderDept(){}
 
-    @RequestMapping(value = "auth")
+    @RequestMapping(value = "auth", method = { RequestMethod.GET })
     public void renderAuth(){}
 
     @RequestMapping(value = "loadWorkingDiary", method = { RequestMethod.GET })

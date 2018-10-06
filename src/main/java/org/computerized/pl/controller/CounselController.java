@@ -1,6 +1,12 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.*;
+import org.computerized.pl.model.counsel.CounselAddListVO;
+import org.computerized.pl.model.counsel.CounselAddVO;
+import org.computerized.pl.model.counsel.CounselSearchVO;
+import org.computerized.pl.model.counsel.CounselVO;
+import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.general.SessionVO;
 import org.computerized.pl.service.CounselService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

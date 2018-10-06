@@ -2,9 +2,9 @@ package org.computerized.pl.controller;
 
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
-import org.computerized.pl.model.ResponseVO;
-import org.computerized.pl.model.SessionVO;
-import org.computerized.pl.model.UserVO;
+import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.general.UserVO;
 import org.computerized.pl.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

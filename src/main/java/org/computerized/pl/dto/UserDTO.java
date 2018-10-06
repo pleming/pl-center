@@ -1,6 +1,6 @@
 package org.computerized.pl.dto;
 
-import org.computerized.pl.model.UserVO;
+import org.computerized.pl.model.general.UserVO;
 
 public class UserDTO {
     private String userId;

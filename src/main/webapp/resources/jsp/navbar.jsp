@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">공지사항</a>
+                    <a class="nav-link" href="/notice/list">공지사항</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">건의사항</a>

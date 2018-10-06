@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="classStd">
-    <select id="loadStudentInClass" resultType="org.computerized.pl.model.StudentVO">
+    <select id="loadStudentInClass" resultType="org.computerized.pl.model.classStd.StudentVO">
         SELECT
             U.user_code AS userCode,
             U.user_id AS userId,

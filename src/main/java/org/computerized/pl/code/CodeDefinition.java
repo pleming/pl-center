@@ -17,4 +17,21 @@ public final class CodeDefinition {
             return code;
         }
     }
+
+    public static enum SidebarPath {
+        STUDENT("/resources/jsp/student/sidebar.jsp"),
+        WORKER("/resources/jsp/worker/sidebar.jsp"),
+        LECTURER("/resources/jsp/lecturer/sidebar.jsp"),
+        ADMIN("/resources/jsp/admin/sidebar.jsp");
+
+        private final String path;
+
+        SidebarPath(String path) {
+            this.path = path;
+        }
+
+        public String getPath() {
+            return path;
+        }
+    }
 }

@@ -4,9 +4,9 @@ import org.computerized.pl.dao.AuthDAO;
 import org.computerized.pl.dao.UserDAO;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
-import org.computerized.pl.model.AuthVO;
-import org.computerized.pl.model.StdSearchVO;
-import org.computerized.pl.model.StudentVO;
+import org.computerized.pl.model.general.AuthVO;
+import org.computerized.pl.model.classStd.StdSearchVO;
+import org.computerized.pl.model.classStd.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

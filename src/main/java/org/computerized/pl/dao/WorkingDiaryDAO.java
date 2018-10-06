@@ -1,7 +1,11 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.*;
+import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
+import org.computerized.pl.model.workingDiary.WorkingDiarySearchVO;
+import org.computerized.pl.model.workingDiary.WorkingDiaryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

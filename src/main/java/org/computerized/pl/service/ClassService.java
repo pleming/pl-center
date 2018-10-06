@@ -1,7 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.ClassDAO;
-import org.computerized.pl.model.ClassVO;
+import org.computerized.pl.model.classStd.ClassVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

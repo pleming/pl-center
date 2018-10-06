@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="class">
-    <select id="loadClass" resultType="org.computerized.pl.model.ClassVO">
+    <select id="loadClass" resultType="org.computerized.pl.model.classStd.ClassVO">
         SELECT
             id,
             C.year,
@@ -12,7 +12,7 @@
         ORDER BY C.year DESC, semester ASC
     </select>
 
-    <select id="loadClassById" resultType="org.computerized.pl.model.ClassVO">
+    <select id="loadClassById" resultType="org.computerized.pl.model.classStd.ClassVO">
         SELECT
             id,
             C.year,
@@ -23,7 +23,7 @@
         ORDER BY C.year DESC, semester ASC
     </select>
 
-    <select id="loadClassByYear" resultType="org.computerized.pl.model.ClassVO">
+    <select id="loadClassByYear" resultType="org.computerized.pl.model.classStd.ClassVO">
         SELECT
             id,
             C.year,

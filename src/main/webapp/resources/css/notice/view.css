@@ -1,0 +1,35 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-notice-controller {
+    float: right;
+    margin-bottom: 16px;
+}
+
+.post-container {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.post-header {
+    display: inline-block;
+    float: right;
+}
+
+#post-writer {
+    margin-bottom: inherit;
+}
+
+#post-contents {
+    margin-top: 28px;
+}
+
+.div-notice-view-menu {
+    float: right;
+    margin-top: 16px;
+}
+
+.div-notice-view-menu > button {
+    cursor: pointer;
+}

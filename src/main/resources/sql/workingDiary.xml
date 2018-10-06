@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="workingDiary">
-    <select id="loadWorkingDiary" resultType="org.computerized.pl.model.WorkingDiaryVO">
+    <select id="loadWorkingDiary" resultType="org.computerized.pl.model.workingDiary.WorkingDiaryVO">
         SELECT
             WD.id AS workingDiaryId,
             WD.user_code AS userCode,
@@ -16,7 +16,7 @@
         WHERE working_start_datetime BETWEEN #{nowYearMonth} AND LAST_DAY(#{nowYearMonth})
     </select>
 
-    <select id="loadWorkingDiaryForAdmin" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
+    <select id="loadWorkingDiaryForAdmin" resultType="org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO">
         SELECT
             WD.id AS workingDiaryId,
             U.user_id AS userId,
@@ -37,7 +37,7 @@
         ORDER BY WD.working_start_datetime DESC
     </select>
 
-    <select id="searchWorkingDiary" resultType="org.computerized.pl.model.WorkingDiaryForAdminVO">
+    <select id="searchWorkingDiary" resultType="org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO">
         SELECT
             WD.id AS workingDiaryId,
             U.user_id AS userId,

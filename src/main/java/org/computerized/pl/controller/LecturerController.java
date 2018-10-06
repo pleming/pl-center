@@ -1,6 +1,6 @@
 package org.computerized.pl.controller;
 
-import org.computerized.pl.model.ClassVO;
+import org.computerized.pl.model.classStd.ClassVO;
 import org.computerized.pl.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +31,7 @@ public class LecturerController {
     public void renderAddClass() {}
 
     @RequestMapping(value = "class/mod/{classId}", method = { RequestMethod.GET })
-    public ModelAndView renderModClass(@PathVariable long classId) {
-        ModelAndView mav = new ModelAndView();
-
+    public ModelAndView renderModClass(ModelAndView mav, @PathVariable long classId) {
         mav.addObject("classId", classId);
         mav.setViewName("lecturer/class/mod");
 

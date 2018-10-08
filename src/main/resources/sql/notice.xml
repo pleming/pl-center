@@ -12,7 +12,7 @@
         FROM notice AS N
         INNER JOIN users AS U
         ON N.writer = U.user_code
-        ORDER BY write_datetime DESC
+        ORDER BY id DESC
     </select>
 
     <select id="loadNoticeById" resultType="org.computerized.pl.model.notice.NoticeVO">
@@ -20,6 +20,7 @@
             id,
             title,
             contents,
+            N.writer AS writerUserCode,
             U.name AS writer,
             write_datetime AS writeDatetime,
             views
@@ -28,4 +29,25 @@
         ON N.writer = U.user_code
         WHERE N.id = ${noticeId}
     </select>
+
+    <insert id="initAddNotice">
+        INSERT INTO
+			notice(title, contents, writer)
+        VALUES
+        	(#{title}, #{contents}, #{writer})
+        <selectKey keyProperty="noticeId" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="ConfirmPostNotice">
+        UPDATE notice
+        SET title = #{title}, contents = #{contents}
+        WHERE id = ${noticeId}
+    </update>
+
+    <delete id="delNotice">
+        DELETE FROM notice
+        WHERE id = ${noticeId}
+    </delete>
 </mapper>

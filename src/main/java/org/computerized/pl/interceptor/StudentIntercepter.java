@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 public class StudentIntercepter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        SessionVO sessionVO = (SessionVO)request.getSession().getAttribute("sessionInfo");
+        SessionVO sessionVO = (SessionVO) request.getSession().getAttribute("sessionInfo");
 
-        if(sessionVO.getAuth().intValue() < CodeDefinition.Auth.STUDENT.getCode().intValue()) {
+        if (sessionVO.getAuth().intValue() < CodeDefinition.Auth.STUDENT.getCode().intValue()) {
             response.sendRedirect("/error/400");
             return false;
         }

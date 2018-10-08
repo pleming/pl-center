@@ -13,6 +13,9 @@
 <%@ include file="/resources/jsp/admin/sidebar.jsp" %>
 
 <div class="container-box">
+    <div class="text-center">
+        <h2><b>권한 설정</b></h2>
+    </div>
     <div class="div-auth-filter">
         <button class="btn btn-auth-search" onclick="searchAuth()">
             <i class="fa fa-search" aria-hidden="true"></i>

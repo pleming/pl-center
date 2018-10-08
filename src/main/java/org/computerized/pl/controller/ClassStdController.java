@@ -17,26 +17,26 @@ public class ClassStdController {
     @Autowired
     private ClassStdService classStdService;
 
-    @RequestMapping(value = "loadStudentInClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadStudentInClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadClassById(@RequestBody ClassStdVO classStdVO) {
         return new ResponseVO(true, 1, classStdService.loadStudentInClass(classStdVO.getClassId()));
     }
 
-    @RequestMapping(value = "loadClassByUserCode", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadClassByUserCode", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadClassByUserCode(@RequestBody ClassStdVO classStdVO) {
         return new ResponseVO(true, 1, classStdService.loadStudentInClass(classStdVO.getClassId()));
     }
 
-    @RequestMapping(value = "addStudentInClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "addStudentInClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addStudentInClass(@RequestBody ClassStdListVO classStdListVO) {
         classStdService.addStudentInClass(classStdListVO);
         return new ResponseVO(true, 1, "학생 추가를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "delStudentInClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "delStudentInClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO delStudentInClass(@RequestBody ClassStdListVO classStdListVO) {
         classStdService.delStudentInClass(classStdListVO);

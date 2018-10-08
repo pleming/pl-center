@@ -11,7 +11,7 @@ public class SessionCheckInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
 
-        if(session != null && session.getAttribute("sessionInfo") != null)
+        if (session != null && session.getAttribute("sessionInfo") != null)
             return true;
 
         response.sendRedirect(request.getContextPath() + "/users/signin");

@@ -5,11 +5,11 @@ var signin = function () {
     };
 
     $ajax.request({
-       url: "/users/signin",
-       method: "POST",
-       data: JSON.stringify(data)
+        url: "/users/signin",
+        method: "POST",
+        data: JSON.stringify(data)
     }, function (err, res) {
-        if(err) {
+        if (err) {
             alert("로그인을 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
@@ -23,7 +23,7 @@ var signin = function () {
     });
 };
 
-var signinEnterKey = function() {
-    if(event.keyCode == 13)
+var signinEnterKey = function () {
+    if (event.keyCode == 13)
         signin();
 };

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $ajax.request({
         url: "/student/loadStudent",
         method: "GET"
@@ -10,7 +10,7 @@ $(document).ready(function() {
 
         var userList = res.contents;
 
-        for(var i = 0; i < userList.length; i++) {
+        for (var i = 0; i < userList.length; i++) {
             $("tbody#student-row").append(
                 "<tr>" +
                 "<td class='user-code'>" + userList[i].userCode + "</td>" +
@@ -35,9 +35,9 @@ $(document).ready(function() {
 
         var prevSelectValue = null;
 
-        $("select#auth").focus(function() {
+        $("select#auth").focus(function () {
             prevSelectValue = $(this).val();
-        }).change(function() {
+        }).change(function () {
             if (confirm("권한을 변경하시겠습니까?")) {
                 var authData = {
                     userCode: Number($(this).parent("td").siblings("td.user-code").text()),
@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
 });
 
-var searchAuth = function() {
+var searchAuth = function () {
     var data = {
         searchKey: $("input#auth-search").val()
     };
@@ -81,7 +81,7 @@ var searchAuth = function() {
 
         $("tbody#student-row").html("");
 
-        for(var i = 0; i < userList.length; i++) {
+        for (var i = 0; i < userList.length; i++) {
             $("tbody#student-row").append(
                 "<tr>" +
                 "<td class='user-code'>" + userList[i].userCode + "</td>" +

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="suggestion">
+    <select id="loadSuggestionList" resultType="org.computerized.pl.model.suggestion.SuggestionListVO">
+        SELECT
+            id,
+            title,
+            U.name AS writer,
+            write_datetime AS writeDatetime,
+            views
+        FROM suggestion AS S
+        INNER JOIN users AS U
+        ON S.writer = U.user_code
+        ORDER BY id DESC
+    </select>
+
+    <select id="loadSuggestionById" resultType="org.computerized.pl.model.suggestion.SuggestionVO">
+        SELECT
+            id,
+            title,
+            contents,
+            S.writer AS writerUserCode,
+            U.name AS writer,
+            write_datetime AS writeDatetime,
+            views
+        FROM suggestion AS S
+        INNER JOIN users AS U
+        ON S.writer = U.user_code
+        WHERE S.id = ${suggestionId}
+    </select>
+
+    <insert id="initAddSuggestion">
+        INSERT INTO
+			suggestion(title, contents, writer)
+        VALUES
+        	(#{title}, #{contents}, #{writer})
+        <selectKey keyProperty="suggestionId" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="ConfirmPostSuggestion">
+        UPDATE suggestion
+        SET title = #{title}, contents = #{contents}
+        WHERE id = ${suggestionId}
+    </update>
+
+    <delete id="delSuggestion">
+        DELETE FROM suggestion
+        WHERE id = ${suggestionId}
+    </delete>
+</mapper>

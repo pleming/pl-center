@@ -19,7 +19,7 @@ public class ClassService {
     public ClassVO loadClassById(Integer id) {
         List<ClassVO> classVOList = classDAO.loadClassById(id);
 
-        if(classVOList.size() == 0)
+        if (classVOList.size() == 0)
             return null;
 
         return classVOList.get(0);

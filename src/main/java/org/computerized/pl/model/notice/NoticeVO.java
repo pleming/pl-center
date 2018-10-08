@@ -6,6 +6,7 @@ public class NoticeVO {
     private Integer id;
     private String title;
     private String contents;
+    private Integer writerUserCode;
     private String writer;
     private Date writeDatetime;
     private Integer views;
@@ -32,6 +33,14 @@ public class NoticeVO {
 
     public void setContents(String contents) {
         this.contents = contents;
+    }
+
+    public Integer getWriterUserCode() {
+        return writerUserCode;
+    }
+
+    public void setWriterUserCode(Integer writerUserCode) {
+        this.writerUserCode = writerUserCode;
     }
 
     public String getWriter() {

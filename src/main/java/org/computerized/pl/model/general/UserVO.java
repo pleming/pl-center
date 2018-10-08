@@ -2,7 +2,7 @@ package org.computerized.pl.model.general;
 
 import java.io.Serializable;
 
-public class UserVO implements Serializable{
+public class UserVO implements Serializable {
     private String userId;
     private String passwd;
     private String chkPasswd;

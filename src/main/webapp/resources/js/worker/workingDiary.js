@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $ajax.request({
         url: "/worker/loadWorkingDiary",
         method: "POST",
-        data: JSON.stringify({ nowYearMonth: new Date().format("yyyy-MM") + "-01" })
-    }, function(err, res) {
+        data: JSON.stringify({nowYearMonth: new Date().format("yyyy-MM") + "-01"})
+    }, function (err, res) {
         if (err) {
             alert("근무일지 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
@@ -15,7 +15,7 @@ $(document).ready(function() {
         $("button.fc-next-button").click(loadWorkingDiaryByCalendarMonth);
     });
 
-    $("#attendWorkerModal").on("show.bs.modal", function(event) {
+    $("#attendWorkerModal").on("show.bs.modal", function (event) {
         $(".span-working-start-datetime").text(new Date().format("yyyy-MM-dd HH") + ":00");
 
         $("#working-end-timepicker").timepicker({
@@ -32,7 +32,7 @@ $(document).ready(function() {
     });
 });
 
-var attendWorker = function() {
+var attendWorker = function () {
     var data = {
         workingStartDatetime: new Date($(".span-working-start-datetime").text()),
         workingEndDatetime: new Date(new Date().format("yyyy-MM-dd") + " " + $("#working-end-timepicker").val()),
@@ -43,7 +43,7 @@ var attendWorker = function() {
         url: "/worker/attendWorker",
         method: "POST",
         data: JSON.stringify(data)
-    }, function(err, res) {
+    }, function (err, res) {
         if (err) {
             alert("출근 도장 찍기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
@@ -54,7 +54,7 @@ var attendWorker = function() {
     });
 };
 
-var initWorkingDiaryCalendar = function(workingDiaryCalendarInfo) {
+var initWorkingDiaryCalendar = function (workingDiaryCalendarInfo) {
     var eventsInfo = generateEventsInfo(workingDiaryCalendarInfo);
 
     $("div#working-diary-calendar").fullCalendar({
@@ -69,19 +69,19 @@ var initWorkingDiaryCalendar = function(workingDiaryCalendarInfo) {
     });
 };
 
-var updateWorkingDiaryCalendar = function(workingDiaryCalendarInfo) {
+var updateWorkingDiaryCalendar = function (workingDiaryCalendarInfo) {
     var eventsInfo = generateEventsInfo(workingDiaryCalendarInfo);
 
     $("div#working-diary-calendar").fullCalendar("removeEvents");
     $("div#working-diary-calendar").fullCalendar("addEventSource", eventsInfo);
 };
 
-var generateEventsInfo = function(workingDiaryCalendarInfo) {
+var generateEventsInfo = function (workingDiaryCalendarInfo) {
     var eventsInfo = [];
 
-    for(var i = 0; i < workingDiaryCalendarInfo.length; i++) {
+    for (var i = 0; i < workingDiaryCalendarInfo.length; i++) {
         eventsInfo.push({
-            title: workingDiaryCalendarInfo[i].name + "(" + new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("HH:mm") + "~" + new Date(workingDiaryCalendarInfo[i].workingEndDatetime).format("HH:mm") +  ")",
+            title: workingDiaryCalendarInfo[i].name + "(" + new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("HH:mm") + "~" + new Date(workingDiaryCalendarInfo[i].workingEndDatetime).format("HH:mm") + ")",
             start: new Date(workingDiaryCalendarInfo[i].workingStartDatetime).format("yyyy-MM-dd")
         });
     }
@@ -89,12 +89,12 @@ var generateEventsInfo = function(workingDiaryCalendarInfo) {
     return eventsInfo;
 };
 
-var loadWorkingDiaryByCalendarMonth = function() {
+var loadWorkingDiaryByCalendarMonth = function () {
     $ajax.request({
         url: "/worker/loadWorkingDiary",
         method: "POST",
-        data: JSON.stringify({ nowYearMonth: new Date($("div#working-diary-calendar").fullCalendar("getDate")).format("yyyy-MM") + "-01" })
-    }, function(err, res) {
+        data: JSON.stringify({nowYearMonth: new Date($("div#working-diary-calendar").fullCalendar("getDate")).format("yyyy-MM") + "-01"})
+    }, function (err, res) {
         if (err) {
             alert("근무일지 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;

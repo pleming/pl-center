@@ -24,14 +24,14 @@ public class CounselController {
     @Autowired
     private CounselService counselService;
 
-    @RequestMapping(value = "loadCounsel", method = { RequestMethod.GET })
+    @RequestMapping(value = "loadCounsel", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadCounsel() {
         List<CounselVO> counselVOList = counselService.loadCounsel();
         return new ResponseVO(true, 1, counselVOList);
     }
 
-    @RequestMapping(value = "loadCounselByCondition", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadCounselByCondition", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadCounselByCondition(@RequestBody CounselSearchVO counselSearchVO) {
         List<CounselVO> counselVOList = null;
@@ -39,13 +39,13 @@ public class CounselController {
         return new ResponseVO(true, 1, counselVOList);
     }
 
-    @RequestMapping(value = "addCounsel", method = { RequestMethod.POST })
+    @RequestMapping(value = "addCounsel", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addCounsel(HttpSession httpSession, @RequestBody CounselAddListVO counselAddListVO) {
-        SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
         List<CounselAddVO> counselAddList = counselAddListVO.getCounselAddList();
 
-        for(int i = 0; i < counselAddList.size(); i++)
+        for (int i = 0; i < counselAddList.size(); i++)
             counselAddList.get(i).setCounselorUserCode(sessionVO.getUserCode());
 
         counselService.addCounsel(counselAddListVO);
@@ -53,17 +53,17 @@ public class CounselController {
         return new ResponseVO(true, 1, "상담일지 추가를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "delCounsel", method = { RequestMethod.POST })
+    @RequestMapping(value = "delCounsel", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO delCounsel(@RequestBody IdListVO idListVO) {
         counselService.delCounsel(idListVO);
         return new ResponseVO(true, 1, "상담일지 삭제를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "loadPlCertificated", method = { RequestMethod.GET })
+    @RequestMapping(value = "loadPlCertificated", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadPlCertificated(HttpSession httpSession) {
-        SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
         Integer userCode = sessionVO.getUserCode();
 
         List<CounselVO> counselVOList = counselService.loadPlCertificated(userCode);

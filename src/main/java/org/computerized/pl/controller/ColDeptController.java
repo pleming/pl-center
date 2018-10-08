@@ -19,13 +19,13 @@ public class ColDeptController {
     @Autowired
     private ColDeptService colDeptService;
 
-    @RequestMapping(value = "loadCollege", method = { RequestMethod.GET })
+    @RequestMapping(value = "loadCollege", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadCollege() {
         return new ResponseVO(true, 1, collegeService.loadCollege());
     }
 
-    @RequestMapping(value = "loadDept", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadDept", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadDept(@RequestBody CollegeVO collegeVO) {
         return new ResponseVO(true, 1, colDeptService.loadDeptListByColId(collegeVO.getId()));

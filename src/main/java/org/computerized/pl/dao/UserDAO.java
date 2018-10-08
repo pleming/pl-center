@@ -60,7 +60,7 @@ public class UserDAO {
     public List<StdSearchVO> loadStudentByCondition(Map<String, Object> param) {
         Map<String, Object> dbParam = new HashMap<String, Object>();
 
-        dbParam.put("requireClassInfo", (boolean)param.get("requireClassInfo"));
+        dbParam.put("requireClassInfo", (boolean) param.get("requireClassInfo"));
         dbParam.put("searchKey", "%" + param.get("searchKey").toString() + "%");
 
         return sqlSession.selectList("users.loadStudentByCondition", dbParam);
@@ -69,7 +69,7 @@ public class UserDAO {
     public List<StdSearchVO> loadStudentForAdmin(Map<String, Object> param) {
         Map<String, Object> dbParam = new HashMap<String, Object>();
 
-        dbParam.put("requireClassInfo", (boolean)param.get("requireClassInfo"));
+        dbParam.put("requireClassInfo", (boolean) param.get("requireClassInfo"));
         dbParam.put("searchKey", "%" + param.get("searchKey").toString() + "%");
 
         return sqlSession.selectList("users.loadStudentForAdmin", dbParam);

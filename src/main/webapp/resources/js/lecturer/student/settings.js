@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var classId = Number($("input[name=class-id]").val());
 
     $ajax.request({
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
         var userList = res.contents;
 
-        for(var i = 0; i < userList.length; i++) {
+        for (var i = 0; i < userList.length; i++) {
             $("tbody#student-row").append(
                 "<tr>" +
                 "<td><input type='checkbox' name='user-code' value='" + userList[i].userCode + "'/></td>" +
@@ -29,23 +29,23 @@ $(document).ready(function() {
         }
     });
 
-    $("input[name=checkAll]").change(function() {
-        if($(this).prop("checked"))
+    $("input[name=checkAll]").change(function () {
+        if ($(this).prop("checked"))
             $("tbody#student-row input[name=user-code]").prop("checked", true);
         else {
             $("tbody#student-row input[name=user-code]").prop("checked", false);
         }
     });
 
-    $("input[name=checkAll-modal]").change(function() {
-        if($(this).prop("checked"))
+    $("input[name=checkAll-modal]").change(function () {
+        if ($(this).prop("checked"))
             $("tbody#student-row-modal input[name=user-code]").prop("checked", true);
         else {
             $("tbody#student-row-modal input[name=user-code]").prop("checked", false);
         }
     });
 
-    $("#addStudentModal").on("show.bs.modal", function(event) {
+    $("#addStudentModal").on("show.bs.modal", function (event) {
         $("tbody#student-row-modal").html("");
         $("input#add-student-search").val("");
 
@@ -60,12 +60,12 @@ $(document).ready(function() {
         );
     });
 
-    $("input#add-student-search").change(function() {
+    $("input#add-student-search").change(function () {
         addStudentSearch();
     });
 });
 
-var addStudentSearch = function() {
+var addStudentSearch = function () {
     var data = {
         requireClassInfo: false,
         searchKey: $("input#add-student-search").val()
@@ -85,7 +85,7 @@ var addStudentSearch = function() {
 
         $("tbody#student-row-modal").html("");
 
-        if(userList.length == 0) {
+        if (userList.length == 0) {
             $("tbody#student-row-modal").append(
                 "<tr>" +
                 "<td><input type='checkbox' name='user-code' value='-1'/></td>" +
@@ -98,7 +98,7 @@ var addStudentSearch = function() {
             return;
         }
 
-        for(var i = 0; i < userList.length; i++) {
+        for (var i = 0; i < userList.length; i++) {
             $("tbody#student-row-modal").append(
                 "<tr>" +
                 "<td><input type='checkbox' name='user-code' value='" + userList[i].userCode + "'/></td>" +
@@ -112,8 +112,8 @@ var addStudentSearch = function() {
     });
 };
 
-var addStudent = function() {
-    if(!confirm("선택한 학생을 추가하시겠습니까?"))
+var addStudent = function () {
+    if (!confirm("선택한 학생을 추가하시겠습니까?"))
         return;
 
     var data = {
@@ -121,7 +121,7 @@ var addStudent = function() {
         userList: []
     };
 
-    $("tbody#student-row-modal input[name=user-code]:checked").each(function() {
+    $("tbody#student-row-modal input[name=user-code]:checked").each(function () {
         data.userList.push($(this).val());
     });
 
@@ -140,8 +140,8 @@ var addStudent = function() {
     });
 };
 
-var delStudent = function() {
-    if(!confirm("선택한 학생을 삭제하시겠습니까?"))
+var delStudent = function () {
+    if (!confirm("선택한 학생을 삭제하시겠습니까?"))
         return;
 
     var data = {
@@ -149,7 +149,7 @@ var delStudent = function() {
         userList: []
     };
 
-    $("tbody#student-row input[name=user-code]:checked").each(function() {
+    $("tbody#student-row input[name=user-code]:checked").each(function () {
         data.userList.push($(this).val());
     });
 
@@ -157,8 +157,8 @@ var delStudent = function() {
         url: "/class/std/delStudentInClass",
         method: "POST",
         data: JSON.stringify(data)
-    }, function(err, res) {
-        if(err) {
+    }, function (err, res) {
+        if (err) {
             alert("학생 삭제를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }

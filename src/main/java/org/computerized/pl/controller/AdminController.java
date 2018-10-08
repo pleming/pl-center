@@ -37,74 +37,80 @@ public class AdminController {
     @Autowired
     private ColDeptService colDeptService;
 
-    @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
-    public void renderDashboard(){}
+    @RequestMapping(value = "dashboard", method = {RequestMethod.GET})
+    public void renderDashboard() {
+    }
 
-    @RequestMapping(value = "workingDiary", method = { RequestMethod.GET })
-    public void renderWorkingDiary(){}
+    @RequestMapping(value = "workingDiary", method = {RequestMethod.GET})
+    public void renderWorkingDiary() {
+    }
 
-    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
-    public void renderCounsel(){}
+    @RequestMapping(value = "counsel", method = {RequestMethod.GET})
+    public void renderCounsel() {
+    }
 
-    @RequestMapping(value = "college", method = { RequestMethod.GET })
-    public void renderCollege(){}
+    @RequestMapping(value = "college", method = {RequestMethod.GET})
+    public void renderCollege() {
+    }
 
-    @RequestMapping(value = "dept", method = { RequestMethod.GET })
-    public void renderDept(){}
+    @RequestMapping(value = "dept", method = {RequestMethod.GET})
+    public void renderDept() {
+    }
 
-    @RequestMapping(value = "auth", method = { RequestMethod.GET })
-    public void renderAuth(){}
+    @RequestMapping(value = "auth", method = {RequestMethod.GET})
+    public void renderAuth() {
+    }
 
-    @RequestMapping(value = "loadWorkingDiary", method = { RequestMethod.GET })
+    @RequestMapping(value = "loadWorkingDiary", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadWorkingDiary() {
         List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.loadWorkingDiaryForAdmin();
         return new ResponseVO(true, 1, workingDiaryForAdminVOList);
     }
 
-    @RequestMapping(value = "searchWorkingDiary", method = { RequestMethod.POST })
+    @RequestMapping(value = "searchWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO searchWorkingDiary(@RequestBody WorkingDiarySearchVO workingDiarySearchVO) {
         List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.searchWorkingDiary(workingDiarySearchVO);
         return new ResponseVO(true, 1, workingDiaryForAdminVOList);
     }
 
-    @RequestMapping(value = "loadStudentForAdmin", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadStudentForAdmin", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadStudent(@RequestBody Map<String, Object> param) {
         List<StdSearchVO> stdSearchVOList = userService.loadStudentForAdmin(param);
         return new ResponseVO(true, 1, stdSearchVOList);
     }
 
-    @RequestMapping(value = "addWorkingDiary", method = { RequestMethod.POST })
+    @RequestMapping(value = "addWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addWorkingDiary(@RequestBody WorkingDiaryAddListVO workingDiaryAddListVO) {
         workingDiaryService.addWorkingDiary(workingDiaryAddListVO);
         return new ResponseVO(true, 1, "근무일지 추가를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "delWorkingDiary", method = { RequestMethod.POST })
+    @RequestMapping(value = "delWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO delWorkingDiary(@RequestBody IdListVO idListVO) {
         workingDiaryService.delWorkingDiary(idListVO);
         return new ResponseVO(true, 1, "근무일지 삭제를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "addCollege", method = { RequestMethod.POST })
+    @RequestMapping(value = "addCollege", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addCollege(@RequestBody CollegeVO collegeVO) {
         collegeService.addCollege(collegeVO);
         return new ResponseVO(true, 1, "단과대학 추가를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "delCollege", method = { RequestMethod.POST })
+    @RequestMapping(value = "delCollege", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO delCollege(@RequestBody IdListVO idListVO) {
         collegeService.delCollege(idListVO);
         return new ResponseVO(true, 1, "단과대학 삭제를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "addDept", method = { RequestMethod.POST })
+    @RequestMapping(value = "addDept", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addDept(@RequestBody ColDeptAddVO colDeptAddVO) {
         colDeptService.addDept(colDeptAddVO.getDeptName());
@@ -112,7 +118,7 @@ public class AdminController {
         return new ResponseVO(true, 1, "학과 추가를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "delDept", method = { RequestMethod.POST })
+    @RequestMapping(value = "delDept", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO delDept(@RequestBody ColDeptDeleteListVO colDeptDeleteListVO) {
         List<ColDeptIdVO> colDeptIdVOList = colDeptDeleteListVO.getColDeptIdList();
@@ -123,7 +129,7 @@ public class AdminController {
         return new ResponseVO(true, 1, "학과 삭제를 성공하였습니다.");
     }
 
-    @RequestMapping(value = "updateAuth", method = { RequestMethod.POST })
+    @RequestMapping(value = "updateAuth", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO updateAuth(@RequestBody AuthVO authVO) {
         userService.updateAuth(authVO);

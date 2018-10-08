@@ -1,0 +1,60 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-suggestion-controller {
+    float: right;
+    margin-bottom: 16px;
+}
+
+.post-container {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.post-header {
+    display: inline-block;
+    float: right;
+}
+
+#post-writer {
+    margin-bottom: inherit;
+}
+
+#post-contents {
+    margin-top: 28px;
+}
+
+.div-post-view-menu {
+    float: right;
+    margin-top: 16px;
+}
+
+.div-post-view-menu > button {
+    cursor: pointer;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.span-del:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

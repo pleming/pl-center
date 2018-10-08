@@ -21,16 +21,19 @@ public class WorkerController {
     @Autowired
     private WorkingDiaryService workingDiaryService;
 
-    @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
-    public void renderDashboard(){}
+    @RequestMapping(value = "dashboard", method = {RequestMethod.GET})
+    public void renderDashboard() {
+    }
 
-    @RequestMapping(value = "workingDiary", method = { RequestMethod.GET })
-    public void renderWorkingDiary(){}
+    @RequestMapping(value = "workingDiary", method = {RequestMethod.GET})
+    public void renderWorkingDiary() {
+    }
 
-    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
-    public void renderCounsel(){}
+    @RequestMapping(value = "counsel", method = {RequestMethod.GET})
+    public void renderCounsel() {
+    }
 
-    @RequestMapping(value = "loadWorkingDiary", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadWorkingDiary(@RequestBody Map<String, Object> param) {
         String nowYearMonth = param.get("nowYearMonth").toString();
@@ -38,10 +41,10 @@ public class WorkerController {
         return new ResponseVO(true, 1, workingDiaryVOList);
     }
 
-    @RequestMapping(value = "attendWorker", method = { RequestMethod.POST })
+    @RequestMapping(value = "attendWorker", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO attendWorker(HttpSession httpSession, @RequestBody WorkingDiaryVO workingDiaryVO) {
-        SessionVO sessionVO = (SessionVO)httpSession.getAttribute("sessionInfo");
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
 
         Integer userCode = sessionVO.getUserCode();
         workingDiaryVO.setUserCode(userCode);

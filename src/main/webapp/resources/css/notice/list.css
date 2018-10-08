@@ -26,3 +26,23 @@ a:active {
     text-decoration: none;
     color: black;
 }
+
+.width-no {
+    width: 8%;
+}
+
+.width-title {
+    width: inherit;
+}
+
+.width-writer {
+    width: 8%;
+}
+
+.width-date {
+    width: 8%;
+}
+
+.width-views {
+    width: 8%;
+}

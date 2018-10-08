@@ -1,0 +1,48 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.div-suggestion-controller {
+    float: right;
+    margin-bottom: 16px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.width-no {
+    width: 8%;
+}
+
+.width-title {
+    width: inherit;
+}
+
+.width-writer {
+    width: 8%;
+}
+
+.width-date {
+    width: 8%;
+}
+
+.width-views {
+    width: 8%;
+}

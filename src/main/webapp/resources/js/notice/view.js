@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var data = {
         noticeId: Number($("input[name=notice-id]").val())
     };
@@ -7,7 +7,7 @@ $(document).ready(function() {
         url: "/notice/loadNoticeById",
         method: "POST",
         data: JSON.stringify(data)
-    }, function(err, res) {
+    }, function (err, res) {
         if (err) {
             alert("게시글 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
@@ -22,3 +22,21 @@ $(document).ready(function() {
     });
 });
 
+var delNotice = function () {
+    $ajax.request({
+        url: "/notice/del/" + $("input[name=notice-id]").val(),
+        method: "GET"
+    }, function (err, res) {
+        if (err) {
+            alert("게시글 삭제를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        if (res.code == 1) {
+            alert(res.contents);
+            return;
+        }
+
+        location.href = "/notice/list";
+    });
+};

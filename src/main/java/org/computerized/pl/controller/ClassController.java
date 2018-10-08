@@ -16,39 +16,39 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
-    @RequestMapping(value = "loadClass", method = { RequestMethod.GET })
+    @RequestMapping(value = "loadClass", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadClass() {
         return new ResponseVO(true, 1, classService.loadClass());
     }
 
-    @RequestMapping(value = "loadClassById", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadClassById", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadClassById(@RequestBody ClassVO classVO) {
         return new ResponseVO(true, 1, classService.loadClassById(classVO.getId()));
     }
 
-    @RequestMapping(value = "loadClassByYear", method = { RequestMethod.POST })
+    @RequestMapping(value = "loadClassByYear", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadClassByYear(@RequestBody ClassVO classVO) {
         return new ResponseVO(true, 1, classService.loadClassByYear(classVO.getYear()));
     }
 
-    @RequestMapping(value = "addClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "addClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO addClass(@RequestBody ClassVO classVO) {
         classService.addClass(classVO);
         return new ResponseVO(true, 1, classService.loadClass());
     }
 
-    @RequestMapping(value = "modClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "modClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO modClass(@RequestBody ClassVO classVO) {
         classService.modClass(classVO);
         return new ResponseVO(true, 1, "분반 수정을 성공하였습니다.");
     }
 
-    @RequestMapping(value = "removeClass", method = { RequestMethod.POST })
+    @RequestMapping(value = "removeClass", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO removeClass(@RequestBody ClassVO classVO) {
         classService.removeClass(classVO.getId());

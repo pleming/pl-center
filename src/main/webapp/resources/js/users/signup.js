@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $ajax.request({
         url: "/colDept/loadCollege",
         method: "GET"
-    }, function(err, res) {
+    }, function (err, res) {
         if (err || res.status == false) {
             alert("단과대학 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
@@ -13,26 +13,26 @@ $(document).ready(function() {
         $("select#col").append("<option value='-1'>단과대학</option>");
         $("select#dept").append("<option value='-1'>학과</option>");
 
-        for(var i = 0; i < college.length; i++) {
+        for (var i = 0; i < college.length; i++) {
             $("select#col").append(
                 "<option value=" + college[i].id + ">" + college[i].college + "</option>"
             );
         }
     });
 
-    $("select#col").change(function() {
+    $("select#col").change(function () {
         $("select#dept").html("");
         $("select#dept").append("<option value='-1'>학과</option>");
         loadDept(parseInt($(this).val()));
     });
 });
 
-var loadDept = function(colId) {
+var loadDept = function (colId) {
     $ajax.request({
         url: "/colDept/loadDept",
         method: "POST",
         data: JSON.stringify({id: colId})
-    }, function(err, res) {
+    }, function (err, res) {
         if (err || res.status == false) {
             alert("학과 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
@@ -40,7 +40,7 @@ var loadDept = function(colId) {
 
         var dept = res.contents;
 
-        for(var i = 0; i < dept.length; i++) {
+        for (var i = 0; i < dept.length; i++) {
             $("select#dept").append(
                 "<option value=" + dept[i].id + ">" + dept[i].dept + "</option>"
             );
@@ -89,7 +89,7 @@ var signup = function () {
         url: "/users/signup",
         method: "POST",
         data: JSON.stringify(data)
-    }, function(err, res) {
+    }, function (err, res) {
         if (err) {
             alert("회원가입을 실패하였습니다. 관리자에게 문의해주세요.");
             return;

@@ -4,9 +4,9 @@ import org.computerized.pl.dao.AuthDAO;
 import org.computerized.pl.dao.UserDAO;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
-import org.computerized.pl.model.general.AuthVO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
+import org.computerized.pl.model.general.AuthVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class UserService {
     public UserAuthDTO signin(UserDTO userDTO) {
         List<UserAuthDTO> userList = userDAO.signin(userDTO.getUserId(), userDTO.getPasswd());
 
-        if(userList.size() == 0)
+        if (userList.size() == 0)
             return null;
 
         return userList.get(0);

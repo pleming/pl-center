@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $ajax.request({
         url: "/class/loadClass",
         method: "GET"
@@ -11,12 +11,12 @@ $(document).ready(function() {
         var classData = res.contents;
         var yearInfo = {};
 
-        for(var i = 0; i < classData.length; i++) {
+        for (var i = 0; i < classData.length; i++) {
             $("div#div-class-list").append(
                 "<div class='card card-class' data-id='" + classData[i].id + "'>" +
-                    "<div class='card-body'>" +
-                        "<h1 class='card-title text-center'>" + classData[i].year + "-" + classData[i].semester + "(0" + classData[i].classNo + ")</h1>" +
-                    "</div>" +
+                "<div class='card-body'>" +
+                "<h1 class='card-title text-center'>" + classData[i].year + "-" + classData[i].semester + "(0" + classData[i].classNo + ")</h1>" +
+                "</div>" +
                 "</div>"
             );
 
@@ -27,11 +27,11 @@ $(document).ready(function() {
 
         $("select#year").append("<option value='-1'>연도</option>");
 
-        for(var i = 0; i < yearInfo.length; i++)
+        for (var i = 0; i < yearInfo.length; i++)
             $("select#year").append("<option value='" + yearInfo[i] + "'>" + yearInfo[i] + "년</option>");
     });
 
-    $("select#year").change(function() {
+    $("select#year").change(function () {
         var data = {
             year: Number($(this).val())
         };
@@ -53,19 +53,19 @@ $(document).ready(function() {
 
             $("div#div-class-list").html("");
 
-            for(var i = 0; i < classData.length; i++) {
+            for (var i = 0; i < classData.length; i++) {
                 $("div#div-class-list").append(
                     "<div class='card card-class' data-id='" + classData[i].id + "'>" +
-                        "<div class='card-body'>" +
-                            "<h1 class='card-title text-center'>" + classData[i].year + "-" + classData[i].semester + "(0" + classData[i].classNo + ")</h1>" +
-                        "</div>" +
+                    "<div class='card-body'>" +
+                    "<h1 class='card-title text-center'>" + classData[i].year + "-" + classData[i].semester + "(0" + classData[i].classNo + ")</h1>" +
+                    "</div>" +
                     "</div>"
                 );
             }
         });
     });
 
-    $("div#div-class-list").on("click", "div.card-class", function() {
+    $("div#div-class-list").on("click", "div.card-class", function () {
         location.href = "/lecturer/student/settings/" + $(this).attr("data-id");
     });
 });

@@ -25,11 +25,36 @@
     margin-top: 28px;
 }
 
-.div-notice-view-menu {
+.div-post-view-menu {
     float: right;
     margin-top: 16px;
 }
 
-.div-notice-view-menu > button {
+.div-post-view-menu > button {
     cursor: pointer;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.span-del:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }

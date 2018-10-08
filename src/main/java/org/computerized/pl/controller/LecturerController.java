@@ -15,22 +15,27 @@ public class LecturerController {
     @Autowired
     private ClassService classService;
 
-    @RequestMapping(value = "dashboard", method = { RequestMethod.GET })
-    public void renderDashboard() {}
+    @RequestMapping(value = "dashboard", method = {RequestMethod.GET})
+    public void renderDashboard() {
+    }
 
-    @RequestMapping(value = "class", method = { RequestMethod.GET })
-    public void renderClass() {}
+    @RequestMapping(value = "class", method = {RequestMethod.GET})
+    public void renderClass() {
+    }
 
-    @RequestMapping(value = "student", method = { RequestMethod.GET })
-    public void renderClassStudent() {}
+    @RequestMapping(value = "student", method = {RequestMethod.GET})
+    public void renderClassStudent() {
+    }
 
-    @RequestMapping(value = "counsel", method = { RequestMethod.GET })
-    public void renderCounsel() {}
+    @RequestMapping(value = "counsel", method = {RequestMethod.GET})
+    public void renderCounsel() {
+    }
 
-    @RequestMapping(value = "class/add", method = { RequestMethod.GET })
-    public void renderAddClass() {}
+    @RequestMapping(value = "class/add", method = {RequestMethod.GET})
+    public void renderAddClass() {
+    }
 
-    @RequestMapping(value = "class/mod/{classId}", method = { RequestMethod.GET })
+    @RequestMapping(value = "class/mod/{classId}", method = {RequestMethod.GET})
     public ModelAndView renderModClass(ModelAndView mav, @PathVariable long classId) {
         mav.addObject("classId", classId);
         mav.setViewName("lecturer/class/mod");
@@ -38,11 +43,11 @@ public class LecturerController {
         return mav;
     }
 
-    @RequestMapping(value = "student/settings/{classId}", method = { RequestMethod.GET })
+    @RequestMapping(value = "student/settings/{classId}", method = {RequestMethod.GET})
     public ModelAndView renderSettingStudent(@PathVariable long classId) {
         ModelAndView mav = new ModelAndView();
 
-        ClassVO classVO = classService.loadClassById((int)classId);
+        ClassVO classVO = classService.loadClassById((int) classId);
         String title = classVO.getYear() + "-" + classVO.getSemester() + "(0" + classVO.getClassNo() + ") 설정";
 
         mav.addObject("classId", classId);

@@ -126,6 +126,14 @@ public class SuggestionController {
         return new ResponseVO(true, 2, "게시글 삭제를 성공하였습니다.");
     }
 
+    @RequestMapping(value = "search", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO searchSuggestion(@RequestBody Map<String, Object> param) {
+        String searchKey = (String) param.get("searchKey");
+        List<SuggestionListVO> suggestionListVOList = suggestionService.searchSuggestion(searchKey);
+        return new ResponseVO(true, 1, suggestionListVOList);
+    }
+
     private void setSidebarPath(HttpSession httpSession, ModelAndView mav, String viewName) {
         SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
         Integer auth = sessionVO.getAuth();

@@ -4,7 +4,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
-import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,5 +57,11 @@ public class NoticeDAO {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("noticeId", noticePostVO.getNoticeId());
         sqlSession.update("notice.delNotice", param);
+    }
+
+    public List<NoticeListVO> searchNotice(String searchKey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("searchKey", "%" + searchKey + "%");
+        return sqlSession.selectList("notice.loadNoticeList", param);
     }
 }

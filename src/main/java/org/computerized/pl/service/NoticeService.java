@@ -6,7 +6,6 @@ import org.computerized.pl.model.image.ImageVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
-import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -48,6 +47,10 @@ public class NoticeService {
     public void delNotice(HttpSession httpSession, NoticePostVO noticePostVO) {
         noticeDAO.delNotice(noticePostVO);
         deleteImageFiles(httpSession, noticePostVO);
+    }
+
+    public List<NoticeListVO> searchNotice(String searchKey) {
+        return noticeDAO.searchNotice(searchKey);
     }
 
     private void deleteImageFiles(HttpSession httpSession, NoticePostVO noticePostVO) {

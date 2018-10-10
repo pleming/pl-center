@@ -12,6 +12,12 @@
         FROM notice AS N
         INNER JOIN users AS U
         ON N.writer = U.user_code
+        <if test="searchKey != null">
+            WHERE
+                title LIKE #{searchKey}
+                OR contents LIKE #{searchKey}
+                OR U.name LIKE #{searchKey}
+        </if>
         ORDER BY id DESC
     </select>
 

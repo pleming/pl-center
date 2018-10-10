@@ -126,6 +126,14 @@ public class NoticeController {
         return new ResponseVO(true, 2, "게시글 삭제를 성공하였습니다.");
     }
 
+    @RequestMapping(value = "search", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO searchNotice(@RequestBody Map<String, Object> param) {
+        String searchKey = (String) param.get("searchKey");
+        List<NoticeListVO> noticeListVOList = noticeService.searchNotice(searchKey);
+        return new ResponseVO(true, 1, noticeListVOList);
+    }
+
     private void setSidebarPath(HttpSession httpSession, ModelAndView mav, String viewName) {
         SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
         Integer auth = sessionVO.getAuth();

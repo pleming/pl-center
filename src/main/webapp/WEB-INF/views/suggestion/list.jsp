@@ -17,6 +17,10 @@
         <h2><b>건의사항</b></h2>
     </div>
     <div class="div-suggestion-controller">
+        <button class="btn btn-suggestion-search" onclick="searchSuggestion()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <input type="text" id="suggestion-search" class="form-control input-suggestion-search" placeholder="제목, 내용, 작성자 검색" />
         <button type="button" class="btn btn-success" onclick="location.href='/suggestion/add'">+ 글쓰기</button>
     </div>
     <div>

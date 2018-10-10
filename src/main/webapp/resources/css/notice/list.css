@@ -3,8 +3,25 @@
 }
 
 .div-notice-controller {
-    float: right;
     margin-bottom: 16px;
+}
+
+.input-notice-search {
+    display: inline-block;
+    float: right;
+    margin-right: 8px;
+    width: 16%;
+}
+
+.btn-notice-search {
+    float: right;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.btn-notice-search:hover {
+    background-color: #ced4da;
 }
 
 a:link {

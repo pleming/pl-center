@@ -49,6 +49,10 @@ public class SuggestionService {
         deleteImageFiles(httpSession, suggestionPostVO);
     }
 
+    public List<SuggestionListVO> searchSuggestion(String searchKey) {
+        return suggestionDAO.searchSuggestion(searchKey);
+    }
+
     private void deleteImageFiles(HttpSession httpSession, SuggestionPostVO suggestionPostVO) {
         String directoryPath = "/resources/uploads/suggestion/" + suggestionPostVO.getSuggestionId();
         String directoryRealPath = httpSession.getServletContext().getRealPath(directoryPath);

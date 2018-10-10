@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.computerized.pl.model.suggestion.SuggestionVO;
@@ -57,5 +58,11 @@ public class SuggestionDAO {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("suggestionId", suggestionPostVO.getSuggestionId());
         sqlSession.update("suggestion.delSuggestion", param);
+    }
+
+    public List<SuggestionListVO> searchSuggestion(String searchKey) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("searchKey", "%" + searchKey + "%");
+        return sqlSession.selectList("suggestion.loadSuggestionList", param);
     }
 }

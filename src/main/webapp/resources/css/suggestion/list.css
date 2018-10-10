@@ -3,8 +3,25 @@
 }
 
 .div-suggestion-controller {
-    float: right;
     margin-bottom: 16px;
+}
+
+.input-suggestion-search {
+    display: inline-block;
+    float: right;
+    margin-right: 8px;
+    width: 16%;
+}
+
+.btn-suggestion-search {
+    float: right;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.btn-suggestion-search:hover {
+    background-color: #ced4da;
 }
 
 a:link {

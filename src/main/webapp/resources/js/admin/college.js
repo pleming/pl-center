@@ -24,9 +24,8 @@ $(document).ready(function () {
     $("input[name=checkAll]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#college-row input[name=college-id]").prop("checked", true);
-        else {
+        else
             $("tbody#college-row input[name=college-id]").prop("checked", false);
-        }
     });
 });
 

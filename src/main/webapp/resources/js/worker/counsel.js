@@ -73,17 +73,17 @@ $(document).ready(function () {
     $("input[name=checkAll]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#counsel-row input[name=counsel-id]").prop("checked", true);
-        else {
+        else
             $("tbody#counsel-row input[name=counsel-id]").prop("checked", false);
-        }
     });
 
     $("input[name=checkAll-modal]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#student-row-modal input[name=user-code]").prop("checked", true);
-        else {
+        else
             $("tbody#student-row-modal input[name=user-code]").prop("checked", false);
-        }
+
+        $("input[name=user-code]").trigger("change");
     });
 
     $("#addCounselStudentModal").on("show.bs.modal", function (event) {
@@ -100,10 +100,17 @@ $(document).ready(function () {
             "<td class='name'></td>" +
             "</tr>"
         );
+
+        var counselDatetimeObj = new Date();
+        $("span#counsel-datetime").html(counselDatetimeObj.format("yyyy") + "년 " + counselDatetimeObj.format("MM") + "월 " + counselDatetimeObj.format("dd") + "일");
     });
 
     $("input#add-counsel-student-search").change(function () {
         addCounselStudentSearch();
+    });
+
+    $("input[name=counsel-contents]").on("keyup", function () {
+        $("span#counsel-contents").html($(this).val());
     });
 });
 
@@ -211,6 +218,21 @@ var addCounselStudentSearch = function () {
                 "<td class='name'>" + userList[i].name + "</td>" +
                 "</tr>"
             );
+
+            $("input[name=user-code]").change(function () {
+                if($(this).prop("checked")) {
+                    $("span#student-code").html($(this).parent().siblings("td.student-code").html());
+                    $("span#dept").html($(this).parent().siblings("td.dept").html());
+                    $("span#class-div").html($(this).parent().siblings("td.class-div").html());
+                    $("span#student-name").html($(this).parent().siblings("td.name").html());
+                }
+                else {
+                    $("span#student-code").html("");
+                    $("span#dept").html("");
+                    $("span#class-div").html("");
+                    $("span#student-name").html("");
+                }
+            });
         }
     });
 };

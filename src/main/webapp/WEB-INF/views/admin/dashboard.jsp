@@ -5,7 +5,7 @@
 <head>
     <%@ include file="/resources/jsp/header.jsp" %>
     <link rel="stylesheet" href="/resources/css/admin/dashboard.css">
-    <title>PL Center - 대시보드</title>
+    <title>PL Center - 관리자</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>

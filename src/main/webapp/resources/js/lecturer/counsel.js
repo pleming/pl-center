@@ -71,9 +71,8 @@ $(document).ready(function () {
     $("input[name=checkAll]").change(function () {
         if ($(this).prop("checked"))
             $("input[name=counsel-id]").prop("checked", true);
-        else {
+        else
             $("input[name=counsel-id]").prop("checked", false);
-        }
     });
 });
 

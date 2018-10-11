@@ -40,8 +40,7 @@ $(document).ready(function () {
             "</div>" +
             "</div>" +
             "<div class='card-footer text-center'>PL Center Certificated.</div>" +
-            "</div>"
-
+            "</div>";
 
         for (var i = 0; i < plCertificatedInfo.length; i++) {
             plCertificatedInfo[i].counselDatetime = new Date(plCertificatedInfo[i].counselDatetime);
@@ -60,7 +59,7 @@ $(document).ready(function () {
 
                 plCertificatedTemplate3 +
 
-                "<span id='counsel_datetime'>" + plCertificatedInfo[i].counselDatetime.format("yyyy") + "년 " + plCertificatedInfo[i].counselDatetime.format("MM") + "월 " + plCertificatedInfo[i].counselDatetime.format("dd") + "일</span>" +
+                "<span id='counsel-datetime'>" + plCertificatedInfo[i].counselDatetime.format("yyyy") + "년 " + plCertificatedInfo[i].counselDatetime.format("MM") + "월 " + plCertificatedInfo[i].counselDatetime.format("dd") + "일</span>" +
 
                 plCertificatedTemplate4 +
 

@@ -32,9 +32,8 @@ $(document).ready(function () {
     $("input[name=checkAll]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#dept-row input[name=dept-id]").prop("checked", true);
-        else {
+        else
             $("tbody#dept-row input[name=dept-id]").prop("checked", false);
-        }
     });
 });
 

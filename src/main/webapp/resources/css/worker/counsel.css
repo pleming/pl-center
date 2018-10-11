@@ -27,3 +27,21 @@
 .input-counsel-contents {
     margin-top: 16px;
 }
+
+.div-student-info-header {
+    display: inline-block;
+    float: right;
+}
+
+.div-student-info {
+    display: inline-block;
+    float: right;
+}
+
+.div-pl-certificated-contents {
+    margin-top: 112px;
+}
+
+.div-pl-certificated-counselor > p:last-child {
+    margin-bottom: 0;
+}

@@ -18,8 +18,11 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" onclick="delCounsel()">- 상담일지 삭제</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지 추가</button>
-        <input type="text" id="counsel-search" class="form-control counsel-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지
+            추가
+        </button>
+        <input type="text" id="counsel-search" class="form-control counsel-filter-elem"
+               placeholder="아이디, 학과, 학번, 이름 검색"/>
         <select class="form-control counsel-filter-elem" id="class-no"></select>
         <select class="form-control counsel-filter-elem" id="semester"></select>
         <select class="form-control counsel-filter-elem" id="year"></select>
@@ -44,7 +47,8 @@
     </table>
 </div>
 
-<div class="modal fade" id="addCounselStudentModal" tabindex="-1" role="dialog" aria-labelledby="addCounselStudentModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCounselStudentModal" tabindex="-1" role="dialog"
+     aria-labelledby="addCounselStudentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,7 +58,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="text" id="add-counsel-student-search" class="form-control" placeholder="아이디, 학과, 학번, 이름 검색" />
+                <input type="text" id="add-counsel-student-search" class="form-control"
+                       placeholder="아이디, 학과, 학번, 이름 검색"/>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -69,7 +74,50 @@
                     <tbody id="student-row-modal"></tbody>
                 </table>
                 <div class="dropdown-divider"></div>
-                <input class="form-control input-counsel-contents" type="text" name="counsel-contents" placeholder="상담 내용"/>
+                <div class="div-pl-certificated">
+                    <div class='card card-pl-certificated'>
+                        <div class='card-header text-center'>프로그래밍언어지원센터 상담확인증</div>
+                        <div class='card-body'>
+                            <div class='div-student-info'>
+                                <span id='student-code'></span><br>
+                                <span id='dept'></span><br>
+                                <span id='class-div'></span><br>
+                                <span id='student-name'></span><br>
+                            </div>
+                            <div class='div-student-info-header'>
+                                <div>
+                                    학번 : <br>
+                                    학과 : <br>
+                                    분반 : <br>
+                                    이름 : <br>
+                                </div>
+                            </div>
+                            <div class='div-pl-certificated-contents text-center'>
+                                <p class='card-text'>위 학생은 <span id='pl-certificated-year'></span>학년도 <span
+                                        id='pl-certificated-semester'></span>학기 프로그래밍 언어
+                                    <br>
+                                    지원센터를 이용하였음을 확인합니다.
+                                    <br><br>
+                                    * 여러 명일 경우 대표자 1명만 화면에 표시됩니다만,<br>
+                                    실제로는 모두가 등록됩니다.
+                                </p>
+                                <p>
+                                    <span id='counsel-datetime'></span>
+                                </p>
+                            </div>
+                            <div class='div-pl-certificated-counselor'>
+                                <p>
+                                    상담내용 : <span id='counsel-contents'></span><br>
+                                    상담자 : <span id='counselor-name'>${sessionInfo.name}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class='card-footer text-center'>PL Center Certificated.</div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <input class="form-control input-counsel-contents" type="text" name="counsel-contents"
+                       placeholder="상담 내용"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

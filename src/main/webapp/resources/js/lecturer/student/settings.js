@@ -32,17 +32,15 @@ $(document).ready(function () {
     $("input[name=checkAll]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#student-row input[name=user-code]").prop("checked", true);
-        else {
+        else
             $("tbody#student-row input[name=user-code]").prop("checked", false);
-        }
     });
 
     $("input[name=checkAll-modal]").change(function () {
         if ($(this).prop("checked"))
             $("tbody#student-row-modal input[name=user-code]").prop("checked", true);
-        else {
+        else
             $("tbody#student-row-modal input[name=user-code]").prop("checked", false);
-        }
     });
 
     $("#addStudentModal").on("show.bs.modal", function (event) {

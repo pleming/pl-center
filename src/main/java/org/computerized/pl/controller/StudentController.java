@@ -24,6 +24,10 @@ public class StudentController {
     public void renderDashboard() {
     }
 
+    @RequestMapping(value = "counsel", method = {RequestMethod.GET})
+    public void renderCounsel() {
+    }
+
     @RequestMapping(value = "loadStudent", method = {RequestMethod.GET})
     @ResponseBody
     public ResponseVO loadStudent() {

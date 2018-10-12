@@ -23,12 +23,9 @@ public class UserDAO {
         return sqlSession.selectList("users.isExistUser", param);
     }
 
-    public List<UserAuthDTO> signin(String userId, String passwd) {
+    public List<UserAuthDTO> signin(String userId) {
         Map<String, Object> param = new HashMap<String, Object>();
-
         param.put("userId", userId);
-        param.put("passwd", passwd);
-
         return sqlSession.selectList("users.signin", param);
     }
 

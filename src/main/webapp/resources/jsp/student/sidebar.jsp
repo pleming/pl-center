@@ -5,6 +5,6 @@
 
 <div class="sidebar-box navbar-dark bg-dark">
     <div class="sidebar-list list-group">
-        <a href="#" class="list-group-item list-group-item-action">상담확인증 조회</a>
+        <a href="/student/counsel" class="list-group-item list-group-item-action">상담확인증 조회</a>
     </div>
 </div>

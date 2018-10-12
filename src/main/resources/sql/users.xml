@@ -32,7 +32,7 @@
         FROM users AS U
 	    INNER JOIN auth AS A
 	    ON U.user_code = A.user_code
-        WHERE user_id = #{userId} AND passwd = #{passwd}
+        WHERE user_id = #{userId}
     </select>
 
     <insert id="signup">

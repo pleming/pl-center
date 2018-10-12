@@ -13,7 +13,7 @@
 
 <div class="container-box">
     <div>
-        <h1 class="text-center">관리자 Guide Line</h1>
+        <h1 class="text-center">PL Center - 관리자</h1>
     </div>
     <br>
     <div>

@@ -8,6 +8,7 @@ import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
 import org.computerized.pl.model.general.AuthVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.Map;
 
 @Service
 public class UserService {
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private UserDAO userDAO;
     @Autowired
@@ -25,15 +28,21 @@ public class UserService {
     }
 
     public UserAuthDTO signin(UserDTO userDTO) {
-        List<UserAuthDTO> userList = userDAO.signin(userDTO.getUserId(), userDTO.getPasswd());
+        List<UserAuthDTO> userList = userDAO.signin(userDTO.getUserId());
 
         if (userList.size() == 0)
             return null;
 
-        return userList.get(0);
+        UserAuthDTO userAuthDTO = userList.get(0);
+
+        if (bCryptPasswordEncoder.matches(userDTO.getPasswd(), userAuthDTO.getPasswd()))
+            return userAuthDTO;
+
+        return null;
     }
 
     public void signup(UserDTO userDTO) {
+        userDTO.setPasswd(bCryptPasswordEncoder.encode(userDTO.getPasswd()));
         userDAO.signup(userDTO);
         authDAO.registerAuth();
     }

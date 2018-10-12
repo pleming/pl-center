@@ -24,7 +24,11 @@ public class NoticeController {
 
     @RequestMapping(value = "list", method = {RequestMethod.GET})
     public ModelAndView renderNotice(HttpSession httpSession, ModelAndView mav) {
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+
         setSidebarPath(httpSession, mav, "notice/list");
+        mav.addObject("isAdmin", sessionVO.getAuth().equals(CodeDefinition.Auth.ADMIN.getCode()));
+
         return mav;
     }
 
@@ -40,6 +44,7 @@ public class NoticeController {
 
         mav.addObject("noticeId", noticeId);
         mav.addObject("isExistAuth", isExistAuth);
+        mav.addObject("isAdmin", sessionVO.getAuth().equals(CodeDefinition.Auth.ADMIN.getCode()));
 
         return mav;
     }
@@ -86,6 +91,10 @@ public class NoticeController {
     @ResponseBody
     public ResponseVO addNotice(HttpSession httpSession, @RequestBody NoticePostVO noticePostVO) {
         SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+
+        if (!sessionVO.getAuth().equals(CodeDefinition.Auth.ADMIN.getCode()))
+            return new ResponseVO(true, 1, "게시글 등록 권한이 없습니다.");
+
         noticePostVO.setWriter(sessionVO.getUserCode());
 
         noticeService.addNotice(httpSession, noticePostVO);

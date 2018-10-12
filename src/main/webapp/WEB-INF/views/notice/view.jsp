@@ -37,7 +37,9 @@
             </div>
         </div>
         <div class="div-post-view-menu">
-            <button type="button" class="btn btn-primary" onclick="location.href='/notice/add'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 글쓰기</button>
+            <c:if test="${isAdmin eq true}">
+                <button type="button" class="btn btn-primary" onclick="location.href='/notice/add'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 글쓰기</button>
+            </c:if>
             <button type="button" class="btn btn-success" onclick="location.href='/notice/list'"><i class="fa fa-list" aria-hidden="true"></i> 목록</button>
         </div>
     </div>

@@ -9,13 +9,14 @@
         <mvc:interceptor>
             <mvc:mapping path="/"/>
             <mvc:mapping path="/users/signout"/>
+            <mvc:mapping path="/class/**"/>
+            <mvc:mapping path="/counsel/**"/>
+            <mvc:mapping path="/notice/**"/>
+            <mvc:mapping path="/suggestion/**"/>
             <mvc:mapping path="/student/**"/>
             <mvc:mapping path="/worker/**"/>
             <mvc:mapping path="/lecturer/**"/>
             <mvc:mapping path="/admin/**"/>
-            <mvc:mapping path="/class/**"/>
-            <mvc:mapping path="/counsel/**"/>
-            <mvc:mapping path="/notice/**"/>
             <bean class="org.computerized.pl.interceptor.SessionCheckInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>

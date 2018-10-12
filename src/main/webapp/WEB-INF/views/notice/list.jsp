@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,9 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
         <input type="text" id="notice-search" class="form-control input-notice-search" placeholder="제목, 내용, 작성자 검색" />
-        <button type="button" class="btn btn-success" onclick="location.href='/notice/add'">+ 글쓰기</button>
+        <c:if test="${isAdmin eq true}">
+            <button type="button" class="btn btn-success" onclick="location.href='/notice/add'">+ 글쓰기</button>
+        </c:if>
     </div>
     <div>
         <table class="table table-striped table-hover">

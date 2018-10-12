@@ -27,6 +27,16 @@ CREATE TABLE `auth` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `auth`
+--
+
+LOCK TABLES `auth` WRITE;
+/*!40000 ALTER TABLE `auth` DISABLE KEYS */;
+INSERT INTO `auth` VALUES (1,3),(2,2),(3,2),(4,1),(5,1),(6,0),(7,0);
+/*!40000 ALTER TABLE `auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `class`
 --
 
@@ -46,6 +56,16 @@ CREATE TABLE `class` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `class`
+--
+
+LOCK TABLES `class` WRITE;
+/*!40000 ALTER TABLE `class` DISABLE KEYS */;
+INSERT INTO `class` VALUES (1,2011,1,1),(2,2012,2,2),(3,2013,1,3);
+/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `class_std`
 --
 
@@ -58,6 +78,16 @@ CREATE TABLE `class_std` (
   UNIQUE KEY `class_id` (`class_id`,`user_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `class_std`
+--
+
+LOCK TABLES `class_std` WRITE;
+/*!40000 ALTER TABLE `class_std` DISABLE KEYS */;
+INSERT INTO `class_std` VALUES (1,6),(1,7),(2,6),(3,7);
+/*!40000 ALTER TABLE `class_std` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `col_dept`
@@ -128,6 +158,16 @@ CREATE TABLE `counsel` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `counsel`
+--
+
+LOCK TABLES `counsel` WRITE;
+/*!40000 ALTER TABLE `counsel` DISABLE KEYS */;
+INSERT INTO `counsel` VALUES (1,4,1,6,'2017-11-01 00:00:00','printf'),(2,5,2,7,'2017-11-02 00:00:00','scanf'),(3,4,3,6,'2017-11-03 00:00:00','include');
+/*!40000 ALTER TABLE `counsel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dept`
 --
 
@@ -170,6 +210,15 @@ CREATE TABLE `notice` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `notice`
+--
+
+LOCK TABLES `notice` WRITE;
+/*!40000 ALTER TABLE `notice` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `suggestion`
 --
 
@@ -186,6 +235,15 @@ CREATE TABLE `suggestion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `suggestion`
+--
+
+LOCK TABLES `suggestion` WRITE;
+/*!40000 ALTER TABLE `suggestion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `suggestion` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -210,6 +268,16 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','$2a$10$GryXOoEWPtaCz5go98XdseZYvhi66vLrv2yBB64vQqQSMiER.0Z.G','2','17','-','관리자','admin@korea.ac.kr','010-0000-0001'),(2,'prof','$2a$10$X6cqrhxfokWw8LH68AXNMOR.fYFa2aaCaEoXBKGNwSPiZ2uTQIXgq','2','17','-','교수','prof@korea.ac.kr','010-0000-0002'),(3,'assistant','$2a$10$DPUIzmJ6fXRoAo1Xk2Cw6uQTgALPbPxhSNpP9eBV/1CS6/SlK6pUO','2','17','-','조교','assistant@korea.ac.kr','010-0000-0003'),(4,'worker01','$2a$10$fHNP4i4ZkcbtQIiHWIMS2uQ8XxWseX6ObCfvVJX0.ga4//p2X7Jf.','2','17','2011270001','근무자01','worker01@korea.ac.kr','010-0000-0004'),(5,'worker02','$2a$10$0qpU2i17bEADkZNChAA8QeAJ4FFvRi2RLyvDsTEUlSopD3pnTkSBS','2','17','2011270002','근무자02','worker02@korea.ac.kr','010-0000-0005'),(6,'student01','$2a$10$GN1YkP2bnoDM4PXDVQPg/u1XIrV39yEG9VuTmYwvtIXLpLh5OrxKW','2','8','2011270003','학생01','student01@korea.ac.kr','010-0000-0006'),(7,'student02','$2a$10$u2Y9yYiQCnaezWdGxcB7huXIqi/s8BEew6UMJuDHBkXKhEHlQBaii','2','9','2011270004','학생02','student02@korea.ac.kr','010-0000-0007');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `working_diary`
 --
 
@@ -227,7 +295,17 @@ CREATE TABLE `working_diary` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `working_diary`
+--
+
+LOCK TABLES `working_diary` WRITE;
+/*!40000 ALTER TABLE `working_diary` DISABLE KEYS */;
+INSERT INTO `working_diary` VALUES (1,4,'2017-11-15 00:00:00','2017-11-15 01:00:00','PL Center Open'),(2,5,'2017-11-16 02:00:00','2017-11-16 03:00:00','상담'),(3,4,'2017-11-17 03:00:00','2017-11-17 04:00:00','PL Center Close');
+/*!40000 ALTER TABLE `working_diary` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

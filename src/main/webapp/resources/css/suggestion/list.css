@@ -2,7 +2,7 @@
     padding: 40px 40px 0 240px;
 }
 
-.div-suggestion-controller {
+.div-suggestion-controller > * {
     margin-bottom: 16px;
 }
 

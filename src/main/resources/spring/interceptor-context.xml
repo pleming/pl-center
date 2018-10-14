@@ -9,6 +9,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/"/>
             <mvc:mapping path="/users/signout"/>
+            <mvc:mapping path="/users/profile"/>
             <mvc:mapping path="/class/**"/>
             <mvc:mapping path="/counsel/**"/>
             <mvc:mapping path="/notice/**"/>

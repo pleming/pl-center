@@ -5,6 +5,8 @@ import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
+import org.computerized.pl.model.users.PasswdChkVO;
+import org.computerized.pl.model.users.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,6 +44,38 @@ public class UserDAO {
         param.put("phone", userDTO.getPhone());
 
         sqlSession.insert("users.signup", param);
+    }
+
+    public PasswdChkVO checkPasswd(PasswdChkVO passwdChkVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("userCode", passwdChkVO.getUserCode());
+
+        List<PasswdChkVO> list = sqlSession.selectList("users.checkPasswd", param);
+        return list.get(0);
+    }
+
+    public UserVO loadUserInfo(Integer userCode) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("userCode", userCode);
+
+        List<UserVO> list = sqlSession.selectList("users.loadUserInfo", param);
+        return list.get(0);
+    }
+
+    public void updateUserInfo(Integer userCode, UserVO userVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("userCode", userCode);
+        param.put("passwd", userVO.getPasswd());
+        param.put("colId", userVO.getColId());
+        param.put("deptId", userVO.getDeptId());
+        param.put("studentCode", userVO.getStudentCode());
+        param.put("name", userVO.getName());
+        param.put("email", userVO.getEmail());
+        param.put("phone", userVO.getPhone());
+
+        sqlSession.update("users.updateUserInfo", param);
+
     }
 
     public List<StudentVO> loadStudent() {

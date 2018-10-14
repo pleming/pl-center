@@ -7,6 +7,8 @@ import org.computerized.pl.dto.UserDTO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
 import org.computerized.pl.model.general.AuthVO;
+import org.computerized.pl.model.users.PasswdChkVO;
+import org.computerized.pl.model.users.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,24 @@ public class UserService {
         userDTO.setPasswd(bCryptPasswordEncoder.encode(userDTO.getPasswd()));
         userDAO.signup(userDTO);
         authDAO.registerAuth();
+    }
+
+    public boolean checkPasswd(PasswdChkVO passwdChkVO) {
+        PasswdChkVO userInfo = userDAO.checkPasswd(passwdChkVO);
+
+        if (bCryptPasswordEncoder.matches(passwdChkVO.getPasswd(), userInfo.getPasswd()))
+            return true;
+
+        return false;
+    }
+
+    public UserVO loadUserInfo(Integer userCode) {
+        return userDAO.loadUserInfo(userCode);
+    }
+
+    public void updateUserInfo(Integer userCode, UserVO userVO) {
+        userVO.setPasswd(bCryptPasswordEncoder.encode(userVO.getPasswd()));
+        userDAO.updateUserInfo(userCode, userVO);
     }
 
     public List<StudentVO> loadStudent() {

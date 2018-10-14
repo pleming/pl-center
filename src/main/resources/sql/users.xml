@@ -42,6 +42,33 @@
         	(#{userId}, #{passwd}, ${colId}, ${deptId}, #{studentCode}, #{name}, #{email}, #{phone})
     </insert>
 
+	<select id="checkPasswd" resultType="org.computerized.pl.model.users.PasswdChkVO">
+		SELECT
+			user_code AS userCode,
+			passwd
+		FROM users
+		WHERE user_code = ${userCode}
+	</select>
+
+	<select id="loadUserInfo" resultType="org.computerized.pl.model.users.UserVO">
+		SELECT
+			user_id AS userId,
+			col_id AS colId,
+			dept_id AS deptId,
+			student_code AS studentCode,
+			name,
+			email,
+			phone
+		FROM users
+		WHERE user_code = ${userCode}
+	</select>
+
+	<update id="updateUserInfo">
+		UPDATE users
+		SET passwd = #{passwd}, col_id = ${colId}, dept_id = ${deptId}, student_code = #{studentCode}, name = #{name}, email = #{email}, phone = #{phone}
+		WHERE user_code = ${userCode}
+	</update>
+
 	<select id="loadStudent" resultType="org.computerized.pl.model.classStd.StudentVO">
 		SELECT
 			U.user_code AS userCode,

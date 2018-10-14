@@ -1,4 +1,4 @@
-package org.computerized.pl.model.general;
+package org.computerized.pl.model.users;
 
 import java.io.Serializable;
 

@@ -1,0 +1,12 @@
+.container-box {
+    padding: 40px 40px 0 240px;
+}
+
+.input-passwd {
+    display: inline-block;
+    width: 16%;
+}
+
+.btn-check-passwd {
+    margin-bottom: 4px;
+}

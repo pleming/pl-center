@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.container-box {
+    height: 100%;
+    padding: 40px 40px 0 240px;
+}
+
+.guide-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.div-user-info-update {
+    position: absolute;
+    width: 450px;
+    height: 600px;
+    padding: 48px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.input-account {
+    margin: 4px;
+}
+
+.btn-user-info-update {
+    width: 100%;
+}

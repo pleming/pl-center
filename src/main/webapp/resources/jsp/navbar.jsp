@@ -24,7 +24,7 @@
                         ${sessionInfo.name}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">회원정보</a>
+                        <a class="dropdown-item" href="/users/profile">회원정보</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="a-signout" href="#" onclick="signout()">로그아웃</a>
                     </div>

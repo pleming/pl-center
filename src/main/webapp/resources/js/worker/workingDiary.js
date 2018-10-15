@@ -13,6 +13,7 @@ $(document).ready(function () {
 
         $("button.fc-prev-button").click(loadWorkingDiaryByCalendarMonth);
         $("button.fc-next-button").click(loadWorkingDiaryByCalendarMonth);
+        $("button.fc-today-button").click(loadWorkingDiaryByCalendarMonth);
     });
 
     $("#attendWorkerModal").on("show.bs.modal", function (event) {

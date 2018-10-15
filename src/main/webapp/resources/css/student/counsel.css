@@ -16,6 +16,11 @@
     float: right;
 }
 
+.card-pl-certificated {
+    display: inline-block;
+    margin-right: 16px;
+}
+
 .div-pl-certificated-contents {
     margin-top: 112px;
 }

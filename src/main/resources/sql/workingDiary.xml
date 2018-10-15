@@ -64,6 +64,7 @@
                 OR dept LIKE #{searchKey}
                 OR U.student_code LIKE #{searchKey}
                 OR U.name LIKE #{searchKey})
+        ORDER BY WD.working_start_datetime DESC
     </select>
 
     <insert id="addWorkingDiary">

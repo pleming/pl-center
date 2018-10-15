@@ -21,3 +21,8 @@ var checkPasswd = function () {
         location.href = res.contents;
     });
 };
+
+var profileEnterKey = function () {
+    if (event.keyCode == 13)
+        checkPasswd();
+};

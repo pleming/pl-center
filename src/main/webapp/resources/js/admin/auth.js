@@ -103,5 +103,37 @@ var searchAuth = function () {
                 "</tr>"
             );
         }
+
+        var prevSelectValue = null;
+
+        $("select#auth").focus(function () {
+            prevSelectValue = $(this).val();
+        }).change(function () {
+            if (confirm("권한을 변경하시겠습니까?")) {
+                var authData = {
+                    userCode: Number($(this).parent("td").siblings("td.user-code").text()),
+                    auth: $(this).val()
+                };
+
+                $ajax.request({
+                    url: "/admin/updateAuth",
+                    method: "POST",
+                    data: JSON.stringify(authData)
+                }, function (err, res) {
+                    if (err || res.status == false) {
+                        $(this).val(prevSelectValue);
+                        alert("권한 변경을 실패하였습니다. 관리자에게 문의해주세요.");
+                        return;
+                    }
+                });
+            }
+            else
+                $(this).val(prevSelectValue);
+        });
     });
+};
+
+var authEnterKey = function () {
+    if (event.keyCode == 13)
+        searchAuth();
 };

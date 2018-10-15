@@ -20,7 +20,7 @@
         <button class="btn btn-auth-search" onclick="searchAuth()">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
-        <input type="text" id="auth-search" class="form-control auth-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
+        <input type="text" id="auth-search" class="form-control auth-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" onkeypress="authEnterKey()" />
     </div>
     <div>
         <table class="table table-striped table-hover">

@@ -92,6 +92,12 @@ var searchWorkingDiary = function () {
         searchKey: $("input#working-diary-search").val()
     };
 
+    if (data.workingDiarySearchStartDate == "  00:00:00")
+        data.workingDiarySearchStartDate = null;
+
+    if (data.workingDiarySearchEndDate == "  23:59:59")
+        data.workingDiarySearchEndDate = null;
+
     $ajax.request({
         url: "/admin/searchWorkingDiary",
         method: "POST",
@@ -276,4 +282,9 @@ var delWorkingDiary = function () {
         alert(res.contents);
         location.reload();
     });
+};
+
+var searchWorkingDiaryEnterKey = function () {
+    if (event.keyCode  == 13)
+        searchWorkingDiary();
 };

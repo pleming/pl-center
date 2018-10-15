@@ -19,7 +19,7 @@
     <br>
     <div>
         <p>개인정보보호를 위해 비밀번호를 입력해주세요.</p>
-        <input class="form-control input-passwd" type="password" name="passwd" placeholder="비밀번호"/>
+        <input class="form-control input-passwd" type="password" name="passwd" placeholder="비밀번호" onkeypress="profileEnterKey()" />
         <button class="btn btn-success btn-check-passwd" onclick="checkPasswd()">확인</button>
     </div>
 </div>

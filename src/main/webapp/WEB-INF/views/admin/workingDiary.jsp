@@ -23,7 +23,7 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
 
-        <input type="text" id="working-diary-search" class="form-control working-diary-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
+        <input type="text" id="working-diary-search" class="form-control working-diary-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" onkeypress="searchWorkingDiaryEnterKey()" />
 
         <div class="div-working-diary-filter-calendar">
             <input type="text" id="working-diary-end-datepicker" class="form-control" />

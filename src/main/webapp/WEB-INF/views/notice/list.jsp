@@ -21,7 +21,7 @@
         <button class="btn btn-notice-search" onclick="searchNotice()">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
-        <input type="text" id="notice-search" class="form-control input-notice-search" placeholder="제목, 내용, 작성자 검색" />
+        <input type="text" id="notice-search" class="form-control input-notice-search" placeholder="제목, 내용, 작성자 검색" onkeypress="searchNoticeEnterKey()" />
         <c:if test="${isAdmin eq true}">
             <button type="button" class="btn btn-success" onclick="location.href='/notice/add'">+ 글쓰기</button>
         </c:if>

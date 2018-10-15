@@ -68,3 +68,8 @@ var searchNotice = function () {
         }
     });
 };
+
+var searchNoticeEnterKey = function () {
+    if (event.keyCode  == 13)
+        searchNotice();
+};

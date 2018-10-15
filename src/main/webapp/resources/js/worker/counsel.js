@@ -296,3 +296,8 @@ var delCounsel = function () {
         location.reload();
     });
 };
+
+var searchCounselEnterKey = function () {
+    if (event.keyCode  == 13)
+        searchCounsel();
+};

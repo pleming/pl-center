@@ -1,6 +1,7 @@
 package org.computerized.pl.service;
 
 import org.computerized.pl.dao.CounselDAO;
+import org.computerized.pl.model.counsel.CounselAddForAdminListVO;
 import org.computerized.pl.model.counsel.CounselAddListVO;
 import org.computerized.pl.model.counsel.CounselSearchVO;
 import org.computerized.pl.model.counsel.CounselVO;
@@ -25,6 +26,10 @@ public class CounselService {
 
     public void addCounsel(CounselAddListVO counselAddListVO) {
         counselDAO.addCounsel(counselAddListVO);
+    }
+
+    public void addCounselForAdmin(CounselAddForAdminListVO counselAddForAdminListVO) {
+        counselDAO.addCounselForAdmin(counselAddForAdminListVO);
     }
 
     public void delCounsel(IdListVO idListVO) {

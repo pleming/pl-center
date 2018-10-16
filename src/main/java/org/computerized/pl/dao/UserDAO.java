@@ -1,12 +1,14 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.code.CodeDefinition;
 import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
 import org.computerized.pl.model.users.PasswdChkVO;
 import org.computerized.pl.model.users.UserVO;
+import org.computerized.pl.model.users.WorkerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -62,6 +64,12 @@ public class UserDAO {
         return list.get(0);
     }
 
+    public List<WorkerVO> loadWorker() {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("auth", CodeDefinition.Auth.WORKER.getCode());
+        return sqlSession.selectList("users.loadWorker", param);
+    }
+
     public void updateUserInfo(Integer userCode, UserVO userVO) {
         Map<String, Object> param = new HashMap<String, Object>();
 
@@ -92,6 +100,7 @@ public class UserDAO {
         Map<String, Object> dbParam = new HashMap<String, Object>();
 
         dbParam.put("requireClassInfo", (boolean) param.get("requireClassInfo"));
+        dbParam.put("auth", CodeDefinition.Auth.STUDENT.getCode());
         dbParam.put("searchKey", "%" + param.get("searchKey").toString() + "%");
 
         return sqlSession.selectList("users.loadStudentByCondition", dbParam);

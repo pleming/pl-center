@@ -49,7 +49,7 @@
                     <span>근무 시작 시간 : <span class="span-working-start-datetime"></span></span>
                     <br>
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    <span>근무 종료 시간</span>
+                    <span>근무 종료 시간 : </span>
                     <input type="text" id="working-end-timepicker" class="form-control" />
                 </div>
                 <input type="text" id="working-contents" class="form-control" placeholder="근무 내용" />

@@ -18,9 +18,7 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" onclick="delCounsel()">- 상담일지 삭제</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지
-            추가
-        </button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCounselStudentModal">+ 상담일지 추가</button>
         <input type="text" id="counsel-search" class="form-control counsel-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" onkeypress="searchCounselEnterKey()"/>
         <select class="form-control counsel-filter-elem" id="class-no" onkeypress="searchCounselEnterKey()"></select>
         <select class="form-control counsel-filter-elem" id="semester" onkeypress="searchCounselEnterKey()"></select>

@@ -27,3 +27,38 @@
 .input-counsel-contents {
     margin-top: 16px;
 }
+
+.div-counsel-info {
+    display: inline-block;
+}
+
+.div-counsel-info > * {
+    margin-top: 8px;
+}
+
+.div-counsel-info > i {
+    margin: 0 8px 0 8px;
+}
+
+.div-counselor-info > span {
+    margin-left: 21px;
+}
+
+.div-counselor-info > i {
+    margin: 0 8px 0 8px;
+}
+
+.div-counselor-info > select {
+    display: inline-block;
+    margin: 8px 0 8px 0;
+    width: 190px;
+}
+
+.counsel-picker-modal {
+    display: inline-block;
+    width: inherit;
+}
+
+.ui-timepicker-container {
+    z-index: 9999 !important;
+}

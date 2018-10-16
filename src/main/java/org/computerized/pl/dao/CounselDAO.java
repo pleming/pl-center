@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.counsel.CounselAddForAdminListVO;
 import org.computerized.pl.model.counsel.CounselAddListVO;
 import org.computerized.pl.model.counsel.CounselSearchVO;
 import org.computerized.pl.model.counsel.CounselVO;
@@ -36,6 +37,12 @@ public class CounselDAO {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("counselAddList", counselAddListVO.getCounselAddList());
         sqlSession.insert("counsel.addCounsel", param);
+    }
+
+    public void addCounselForAdmin(CounselAddForAdminListVO counselAddForAdminListVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("counselAddForAdminList", counselAddForAdminListVO.getCounselAddForAdminList());
+        sqlSession.insert("counsel.addCounselForAdmin", param);
     }
 
     public void delCounsel(IdListVO idListVO) {

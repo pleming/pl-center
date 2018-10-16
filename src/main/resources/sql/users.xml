@@ -69,6 +69,17 @@
 		WHERE user_code = ${userCode}
 	</update>
 
+	<select id="loadWorker" resultType="org.computerized.pl.model.users.WorkerVO">
+		SELECT
+			U.user_code AS userCode,
+			U.user_id AS userId,
+			U.name
+		FROM users AS U
+		INNER JOIN auth AS A
+		ON U.user_code = A.user_code
+		WHERE A.auth = ${auth}
+	</select>
+
 	<select id="loadStudent" resultType="org.computerized.pl.model.classStd.StudentVO">
 		SELECT
 			U.user_code AS userCode,
@@ -125,7 +136,7 @@
 			INNER JOIN pl_center.class AS cls
 			ON CS.class_id = cls.id
 		</if>
-		WHERE auth = 0 AND (
+		WHERE auth = ${auth} AND (
 					U.user_id LIKE #{searchKey}
 					OR college LIKE #{searchKey}
 					OR dept LIKE #{searchKey}

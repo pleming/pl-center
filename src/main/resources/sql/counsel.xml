@@ -89,6 +89,15 @@
         </foreach>
     </insert>
 
+    <insert id="addCounselForAdmin">
+        INSERT INTO
+            counsel(counselor_user_code, class_id, user_code, counsel_datetime, counsel_contents)
+        VALUES
+        <foreach item="item" index="index" collection="counselAddForAdminList" separator=",">
+            (${item.counselorUserCode}, ${item.classId}, ${item.userCode}, #{item.counselDatetime}, #{item.counselContents})
+        </foreach>
+    </insert>
+
     <delete id="delCounsel">
         DELETE FROM counsel
         WHERE id IN

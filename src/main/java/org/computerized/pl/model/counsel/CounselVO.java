@@ -13,8 +13,8 @@ public class CounselVO {
     private Integer classNo;
     private String name;
     private Date counselDatetime;
-    String counselContents;
-    String counselorName;
+    private String counselContents;
+    private String counselorName;
 
     public Integer getCounselId() {
         return counselId;

@@ -5,16 +5,14 @@ import org.computerized.pl.model.colDept.ColDeptAddVO;
 import org.computerized.pl.model.colDept.ColDeptDeleteListVO;
 import org.computerized.pl.model.colDept.ColDeptIdVO;
 import org.computerized.pl.model.colDept.CollegeVO;
+import org.computerized.pl.model.counsel.CounselAddForAdminListVO;
 import org.computerized.pl.model.general.AuthVO;
 import org.computerized.pl.model.general.IdListVO;
 import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.workingDiary.WorkingDiarySearchVO;
-import org.computerized.pl.service.ColDeptService;
-import org.computerized.pl.service.CollegeService;
-import org.computerized.pl.service.UserService;
-import org.computerized.pl.service.WorkingDiaryService;
+import org.computerized.pl.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +30,8 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private WorkingDiaryService workingDiaryService;
+    @Autowired
+    private CounselService counselService;
     @Autowired
     private CollegeService collegeService;
     @Autowired
@@ -94,6 +94,19 @@ public class AdminController {
     public ResponseVO delWorkingDiary(@RequestBody IdListVO idListVO) {
         workingDiaryService.delWorkingDiary(idListVO);
         return new ResponseVO(true, 1, "근무일지 삭제를 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "loadWorker", method = {RequestMethod.GET})
+    @ResponseBody
+    public ResponseVO loadWorker() {
+        return new ResponseVO(true, 1, userService.loadWorker());
+    }
+
+    @RequestMapping(value = "addCounselForAdmin", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO addCounselForAdmin(@RequestBody CounselAddForAdminListVO counselAddForAdminListVO) {
+        counselService.addCounselForAdmin(counselAddForAdminListVO);
+        return new ResponseVO(true, 1, "상담일지 추가를 성공하였습니다.");
     }
 
     @RequestMapping(value = "addCollege", method = {RequestMethod.POST})

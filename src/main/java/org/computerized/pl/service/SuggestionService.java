@@ -49,6 +49,10 @@ public class SuggestionService {
         deleteImageFiles(httpSession, suggestionPostVO);
     }
 
+    public void increaseViews(Integer suggestionId) {
+        suggestionDAO.increaseViews(suggestionId);
+    }
+
     public List<SuggestionListVO> searchSuggestion(String searchKey) {
         return suggestionDAO.searchSuggestion(searchKey);
     }

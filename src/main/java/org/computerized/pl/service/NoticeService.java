@@ -49,9 +49,14 @@ public class NoticeService {
         deleteImageFiles(httpSession, noticePostVO);
     }
 
+    public void increaseViews(Integer noticeId) {
+        noticeDAO.increaseViews(noticeId);
+    }
+
     public List<NoticeListVO> searchNotice(String searchKey) {
         return noticeDAO.searchNotice(searchKey);
     }
+
 
     private void deleteImageFiles(HttpSession httpSession, NoticePostVO noticePostVO) {
         String directoryPath = "/resources/uploads/notice/" + noticePostVO.getNoticeId();

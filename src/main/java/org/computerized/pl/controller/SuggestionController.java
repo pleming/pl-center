@@ -36,6 +36,8 @@ public class SuggestionController {
         setSidebarPath(httpSession, mav, "suggestion/view");
 
         SuggestionVO suggestionVO = suggestionService.loadSuggestionById((int) suggestionId);
+        suggestionService.increaseViews((int) suggestionId);
+
         boolean isExistAuth = suggestionVO.getWriterUserCode().equals(userCode);
 
         mav.addObject("suggestionId", suggestionId);

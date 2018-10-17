@@ -56,4 +56,11 @@
         DELETE FROM notice
         WHERE id = ${noticeId}
     </delete>
+
+    <update id="increaseViews">
+        UPDATE notice
+        SET views = views + 1
+        WHERE id = ${noticeId}
+    </update>
+
 </mapper>

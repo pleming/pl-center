@@ -59,6 +59,12 @@ public class NoticeDAO {
         sqlSession.update("notice.delNotice", param);
     }
 
+    public void increaseViews(Integer noticeId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("noticeId", noticeId);
+        sqlSession.update("notice.increaseViews", param);
+    }
+
     public List<NoticeListVO> searchNotice(String searchKey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchKey", "%" + searchKey + "%");

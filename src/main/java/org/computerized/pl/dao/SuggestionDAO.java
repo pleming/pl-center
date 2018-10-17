@@ -60,6 +60,12 @@ public class SuggestionDAO {
         sqlSession.update("suggestion.delSuggestion", param);
     }
 
+    public void increaseViews(Integer suggestionId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("suggestionId", suggestionId);
+        sqlSession.update("suggestion.increaseViews", param);
+    }
+
     public List<SuggestionListVO> searchSuggestion(String searchKey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchKey", "%" + searchKey + "%");

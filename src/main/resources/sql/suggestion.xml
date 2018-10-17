@@ -56,4 +56,10 @@
         DELETE FROM suggestion
         WHERE id = ${suggestionId}
     </delete>
+
+    <update id="increaseViews">
+        UPDATE suggestion
+        SET views = views + 1
+        WHERE id = ${suggestionId}
+    </update>
 </mapper>

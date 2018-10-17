@@ -40,6 +40,8 @@ public class NoticeController {
         setSidebarPath(httpSession, mav, "notice/view");
 
         NoticeVO noticeVO = noticeService.loadNoticeById((int) noticeId);
+        noticeService.increaseViews((int) noticeId);
+
         boolean isExistAuth = noticeVO.getWriterUserCode().equals(userCode);
 
         mav.addObject("noticeId", noticeId);

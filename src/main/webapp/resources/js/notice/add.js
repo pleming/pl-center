@@ -29,6 +29,9 @@ $(document).ready(function () {
 });
 
 var addNotice = function () {
+    if (!confirm("게시글을 작성하시겠습니까?"))
+        return;
+
     var imageList = [];
 
     $("iframe#post-editor_ifr").contents().find("body[data-id=post-editor] img").each(function () {

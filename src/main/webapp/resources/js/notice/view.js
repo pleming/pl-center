@@ -23,6 +23,9 @@ $(document).ready(function () {
 });
 
 var delNotice = function () {
+    if (!confirm("게시글을 삭제하시겠습니까?"))
+        return;
+
     $ajax.request({
         url: "/notice/del/" + $("input[name=notice-id]").val(),
         method: "GET"

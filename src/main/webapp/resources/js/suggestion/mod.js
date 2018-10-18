@@ -43,6 +43,7 @@ $(document).ready(function () {
 
                     var postInfo = res.contents;
 
+                    $("input[name=title]").val(postInfo.title);
                     $("iframe#post-editor_ifr").contents().find("body[data-id=post-editor]").html(postInfo.contents);
                 });
             });
@@ -51,6 +52,9 @@ $(document).ready(function () {
 });
 
 var modSuggestion = function () {
+    if (!confirm("게시글을 수정하시겠습니까?"))
+        return;
+
     var imageList = [];
 
     $("iframe#post-editor_ifr").contents().find("body[data-id=post-editor] img").each(function () {
@@ -78,7 +82,7 @@ var modSuggestion = function () {
                 return;
             }
 
-            location.href = "/suggestion/list";
+            location.href = "/suggestion/view/" + $("input[name=suggestion-id]").val();
         });
     });
 };

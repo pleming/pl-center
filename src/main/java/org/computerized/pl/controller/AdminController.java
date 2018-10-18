@@ -75,10 +75,10 @@ public class AdminController {
         return new ResponseVO(true, 1, workingDiaryForAdminVOList);
     }
 
-    @RequestMapping(value = "loadStudentForAdmin", method = {RequestMethod.POST})
+    @RequestMapping(value = "loadWorkerForWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadStudent(@RequestBody Map<String, Object> param) {
-        List<StdSearchVO> stdSearchVOList = userService.loadStudentForAdmin(param);
+    public ResponseVO loadWorkerForWorkingDiary(@RequestBody Map<String, Object> param) {
+        List<StdSearchVO> stdSearchVOList = userService.loadWorkerForWorkingDiary(param);
         return new ResponseVO(true, 1, stdSearchVOList);
     }
 

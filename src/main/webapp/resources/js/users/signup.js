@@ -85,6 +85,9 @@ var signup = function () {
         }
     }
 
+    if (!confirm("입력하신 정보로 회원가입을 하시겠습니까?"))
+        return;
+
     $ajax.request({
         url: "/users/signup",
         method: "POST",

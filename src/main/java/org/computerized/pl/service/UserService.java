@@ -84,8 +84,8 @@ public class UserService {
         return userDAO.loadStudentByCondition(param);
     }
 
-    public List<StdSearchVO> loadStudentForAdmin(Map<String, Object> param) {
-        return userDAO.loadStudentForAdmin(param);
+    public List<StdSearchVO> loadWorkerForWorkingDiary(Map<String, Object> param) {
+        return userDAO.loadWorkerForWorkingDiary(param);
     }
 
     public void updateAuth(AuthVO authVO) {

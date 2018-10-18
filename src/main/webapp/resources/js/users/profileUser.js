@@ -115,6 +115,9 @@ var updateUserInfo = function () {
         }
     }
 
+    if (!confirm("회원 정보를 변경하시겠습니까?"))
+        return;
+
     $ajax.request({
         url: "/users/updateUserInfo",
         method: "POST",

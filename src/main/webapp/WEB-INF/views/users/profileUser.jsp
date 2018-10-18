@@ -13,13 +13,10 @@
 <jsp:include page="${sidebarPath}"/>
 
 <div class="container-box">
-    <div>
-        <h1 class="text-center">PL Center - 회원정보</h1>
-    </div>
-    <br>
     <div class="guide-box">
         <div class="div-user-info-update">
-            <h1 class="display-4 text-center">Sign Up</h1>
+            <h1 class="display-5 text-center">회원정보 수정</h1>
+            <br>
             <input class="form-control input-account" type="text" name="userId" placeholder="아이디" disabled/>
             <input class="form-control input-account" type="password" name="passwd" placeholder="비밀번호"/>
             <input class="form-control input-account" type="password" name="chkPasswd" placeholder="비밀번호 확인"/>

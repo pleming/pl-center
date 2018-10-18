@@ -158,6 +158,9 @@ var listAllWorkingDiary = function () {
         var workingDiaryList = res.contents;
 
         $("tbody#working-diary-row").html("");
+        $("input#working-diary-start-datepicker").val("");
+        $("input#working-diary-end-datepicker").val("");
+        $("input#working-diary-search").val("");
 
         for (var i = 0; i < workingDiaryList.length; i++) {
             $("tbody#working-diary-row").append(
@@ -183,12 +186,12 @@ var addWorkingDiaryStudentSearch = function () {
     };
 
     $ajax.request({
-        url: "/admin/loadStudentForAdmin",
+        url: "/admin/loadWorkerForWorkingDiary",
         method: "POST",
         data: JSON.stringify(data)
     }, function (err, res) {
         if (err) {
-            alert("학생 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            alert("근무자 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
@@ -285,6 +288,6 @@ var delWorkingDiary = function () {
 };
 
 var searchWorkingDiaryEnterKey = function () {
-    if (event.keyCode  == 13)
+    if (event.keyCode == 13)
         searchWorkingDiary();
 };

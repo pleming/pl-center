@@ -3,6 +3,7 @@ package org.computerized.pl.service;
 import org.apache.commons.codec.binary.Base64;
 import org.computerized.pl.dao.SuggestionDAO;
 import org.computerized.pl.model.image.ImageVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.computerized.pl.model.suggestion.SuggestionVO;
@@ -24,8 +25,12 @@ public class SuggestionService {
     @Autowired
     private SuggestionDAO suggestionDAO;
 
-    public List<SuggestionListVO> loadSuggestionList() {
-        return suggestionDAO.loadSuggestionList();
+    public List<SuggestionListVO> loadSuggestionList(PagingVO pagingVO) {
+        return suggestionDAO.loadSuggestionList(pagingVO);
+    }
+
+    public Integer getTotalRowCount() {
+        return suggestionDAO.getTotalRowCount();
     }
 
     public SuggestionVO loadSuggestionById(Integer suggestionId) {

@@ -1,14 +1,55 @@
 $(document).ready(function () {
-    $ajax.request({
+    var data = {
+        nowPage: 1
+    };
+
+    $ajax.pagingRequest({
         url: "/notice/loadNoticeList",
-        method: "GET"
+        method: "POST",
+        data: JSON.stringify(data)
     }, function (err, res) {
         if (err) {
             alert("공지사항 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
-        var noticeInfo = res.contents;
+        var noticeInfo = res.contents.noticeList;
+        var pagingInfo = res.pagingInfo;
+
+        for (var i = 0; i < noticeInfo.length; i++) {
+            $("#notice-row").append(
+                "<tr>" +
+                "<td class='notice-id'>" + noticeInfo[i].id + "</td>" +
+                "<td class='notice-title'><a href='/notice/view/" + noticeInfo[i].id + "'>" + noticeInfo[i].title + "</a></td>" +
+                "<td class='notice-writer'>" + noticeInfo[i].writer + "</td>" +
+                "<td class='notice-write-datetime'>" + new Date(noticeInfo[i].writeDatetime).format("yyyy-MM-dd") + "</td>" +
+                "<td class='notice-views'>" + noticeInfo[i].views + "</td>" +
+                "</tr>"
+            );
+        }
+
+        pagingUtil.initPaging("ul.pagination", pagingInfo, loadNoticeList);
+    });
+});
+
+var loadNoticeList = function (nowPage) {
+    var data = {
+        nowPage: nowPage
+    };
+
+    $ajax.pagingRequest({
+        url: "/notice/loadNoticeList",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err) {
+            alert("공지사항 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        var noticeInfo = res.contents.noticeList;
+
+        $("#notice-row").html("");
 
         for (var i = 0; i < noticeInfo.length; i++) {
             $("#notice-row").append(
@@ -22,7 +63,7 @@ $(document).ready(function () {
             );
         }
     });
-});
+};
 
 var searchNotice = function () {
     var data = {
@@ -70,6 +111,6 @@ var searchNotice = function () {
 };
 
 var searchNoticeEnterKey = function () {
-    if (event.keyCode  == 13)
+    if (event.keyCode == 13)
         searchNotice();
 };

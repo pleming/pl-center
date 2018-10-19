@@ -28,3 +28,4 @@
 <!-- Import Custom Library(JS)-->
 <script src="/resources/js/ajax.js"></script>
 <script src="/resources/js/date-util.js"></script>
+<script src="/resources/js/paging-util.js"></script>

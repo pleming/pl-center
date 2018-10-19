@@ -19,6 +19,13 @@
             OR U.name LIKE #{searchKey}
         </if>
         ORDER BY id DESC
+        LIMIT ${startIdx}, ${rowBound}
+    </select>
+
+    <select id="getTotalRowCount" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM suggestion
     </select>
 
     <select id="loadSuggestionById" resultType="org.computerized.pl.model.suggestion.SuggestionVO">

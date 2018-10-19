@@ -1,7 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
-import org.computerized.pl.model.notice.NoticeListVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.computerized.pl.model.suggestion.SuggestionVO;
@@ -17,8 +17,18 @@ public class SuggestionDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<SuggestionListVO> loadSuggestionList() {
-        return sqlSession.selectList("suggestion.loadSuggestionList");
+    public List<SuggestionListVO> loadSuggestionList(PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("suggestion.loadSuggestionList", param);
+    }
+
+    public Integer getTotalRowCount() {
+        List<Integer> list = sqlSession.selectList("suggestion.getTotalRowCount");
+        return list.get(0);
     }
 
     public SuggestionVO loadSuggestionById(Integer suggestionId) {

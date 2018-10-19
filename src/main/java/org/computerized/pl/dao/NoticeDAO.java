@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +17,18 @@ public class NoticeDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<NoticeListVO> loadNoticeList() {
-        return sqlSession.selectList("notice.loadNoticeList");
+    public List<NoticeListVO> loadNoticeList(PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("notice.loadNoticeList", param);
+    }
+
+    public Integer getTotalRowCount() {
+        List<Integer> list = sqlSession.selectList("notice.getTotalRowCount");
+        return list.get(0);
     }
 
     public NoticeVO loadNoticeById(Integer noticeId) {

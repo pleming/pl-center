@@ -5,6 +5,9 @@ $.ajaxSetup({
 
 var $ajax = {
     request: function (options, callback) {
+        /**
+         * Required Options : url, method
+         */
         $.ajax(options)
             .done(function (data, textStatus, jqXHR) {
                 callback(null, data);
@@ -28,5 +31,53 @@ var $ajax = {
             else
                 callback("AJAX Image Request Error.", null);
         };
+    },
+    pagingRequest: function (options, callback) {
+        /**
+         * Required Options : url, method, data
+         * Required Data : nowPage,
+         * Selection Data : rowPerPage, pagingCount
+         */
+
+        var parsedData = JSON.parse(options.data);
+        var pagingCount = 10;
+
+        if (!parsedData.hasOwnProperty("rowPerPage"))
+            parsedData.rowPerPage = 10;
+
+        if (parsedData.hasOwnProperty("pagingCount")) {
+            pagingCount = parsedData.pagingCount;
+            delete parsedData.pagingCount;
+        }
+
+        options.data = JSON.stringify(parsedData);
+
+        $.ajax(options)
+            .done(function (data, textStatus, jqXHR) {
+                options.data = JSON.parse(options.data);
+
+                var __data = data;
+                var contents = data.contents;
+                var startPage = parseInt((options.data.nowPage / pagingCount)) * pagingCount + 1;
+
+                __data.pagingInfo = {
+                    nowPage: options.data.nowPage,
+                    rowPerPage: options.data.rowPerPage,
+                    pagingCount: pagingCount,
+                    totalRowCount: contents.totalRowCount,
+                    totalPage: contents.totalRowCount % pagingCount ? parseInt(contents.totalRowCount / pagingCount) + 1 : parseInt(contents.totalRowCount / pagingCount),
+                    startPage: startPage,
+                    endPage: startPage + pagingCount - 1
+                };
+
+                __data.pagingInfo.endPage = __data.pagingInfo.endPage < __data.pagingInfo.totalPage ? __data.pagingInfo.endPage : __data.pagingInfo.totalPage;
+
+                delete __data.contents.totalRowCount;
+
+                callback(null, __data);
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                callback(err, null);
+            });
     }
 };

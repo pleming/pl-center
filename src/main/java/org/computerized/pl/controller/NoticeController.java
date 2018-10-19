@@ -6,6 +6,7 @@ import org.computerized.pl.model.general.SessionVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,11 +76,17 @@ public class NoticeController {
         return mav;
     }
 
-    @RequestMapping(value = "loadNoticeList", method = {RequestMethod.GET})
+    @RequestMapping(value = "loadNoticeList", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadNoticeList() {
-        List<NoticeListVO> noticeListVOList = noticeService.loadNoticeList();
-        return new ResponseVO(true, 1, noticeListVOList);
+    public ResponseVO loadNoticeList(@RequestBody PagingVO pagingVO) {
+        List<NoticeListVO> noticeListVOList = noticeService.loadNoticeList(pagingVO);
+        Integer totalRowCount = noticeService.getTotalRowCount();
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("noticeList", noticeListVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     @RequestMapping(value = "loadNoticeById", method = {RequestMethod.POST})

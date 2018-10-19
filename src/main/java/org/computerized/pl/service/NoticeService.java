@@ -6,6 +6,7 @@ import org.computerized.pl.model.image.ImageVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,8 +25,12 @@ public class NoticeService {
     @Autowired
     private NoticeDAO noticeDAO;
 
-    public List<NoticeListVO> loadNoticeList() {
-        return noticeDAO.loadNoticeList();
+    public List<NoticeListVO> loadNoticeList(PagingVO pagingVO) {
+        return noticeDAO.loadNoticeList(pagingVO);
+    }
+
+    public Integer getTotalRowCount() {
+        return noticeDAO.getTotalRowCount();
     }
 
     public NoticeVO loadNoticeById(Integer noticeId) {

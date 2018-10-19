@@ -3,6 +3,7 @@ package org.computerized.pl.controller;
 import org.computerized.pl.code.CodeDefinition;
 import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
 import org.computerized.pl.model.suggestion.SuggestionVO;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,11 +71,17 @@ public class SuggestionController {
         return mav;
     }
 
-    @RequestMapping(value = "loadSuggestionList", method = {RequestMethod.GET})
+    @RequestMapping(value = "loadSuggestionList", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadSuggestionList() {
-        List<SuggestionListVO> suggestionListVOList = suggestionService.loadSuggestionList();
-        return new ResponseVO(true, 1, suggestionListVOList);
+    public ResponseVO loadSuggestionList(@RequestBody PagingVO pagingVO) {
+        List<SuggestionListVO> suggestionListVOList = suggestionService.loadSuggestionList(pagingVO);
+        Integer totalRowCount = suggestionService.getTotalRowCount();
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("suggestionList", suggestionListVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     @RequestMapping(value = "loadSuggestionById", method = {RequestMethod.POST})

@@ -38,6 +38,16 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class='page-item disabled' id='prevFirst'><a class='page-link' href='#'>&laquo;</a></li>
+                <li class='page-item disabled' id='prev'><a class='page-link' href='#'>&lsaquo;</a></li>
+                <li class='page-item' id='next'><a class='page-link' href='#'>&rsaquo;</a></li>
+                <li class='page-item' id='nextEnd'><a class='page-link' href='#'>&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 </body>

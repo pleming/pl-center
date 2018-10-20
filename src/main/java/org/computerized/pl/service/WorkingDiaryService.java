@@ -2,6 +2,7 @@ package org.computerized.pl.service;
 
 import org.computerized.pl.dao.WorkingDiaryDAO;
 import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.workingDiary.WorkingDiarySearchVO;
@@ -20,8 +21,12 @@ public class WorkingDiaryService {
         return workingDiaryDAO.loadWorkingDiary(nowYearMonth);
     }
 
-    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin() {
-        return workingDiaryDAO.loadWorkingDiaryForAdmin();
+    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin(PagingVO pagingVO) {
+        return workingDiaryDAO.loadWorkingDiaryForAdmin(pagingVO);
+    }
+
+    public Integer getTotalRowCount() {
+        return workingDiaryDAO.getTotalRowCount();
     }
 
     public List<WorkingDiaryForAdminVO> searchWorkingDiary(WorkingDiarySearchVO workingDiarySearchVO) {

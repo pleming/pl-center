@@ -7,6 +7,7 @@ import org.computerized.pl.model.counsel.CounselVO;
 import org.computerized.pl.model.general.IdListVO;
 import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.service.CounselService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("counsel")
@@ -24,11 +27,17 @@ public class CounselController {
     @Autowired
     private CounselService counselService;
 
-    @RequestMapping(value = "loadCounsel", method = {RequestMethod.GET})
+    @RequestMapping(value = "loadCounsel", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadCounsel() {
-        List<CounselVO> counselVOList = counselService.loadCounsel();
-        return new ResponseVO(true, 1, counselVOList);
+    public ResponseVO loadCounsel(@RequestBody PagingVO pagingVO) {
+        List<CounselVO> counselVOList = counselService.loadCounsel(pagingVO);
+        Integer totalRowCount = counselService.getTotalRowCount();
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("counselList", counselVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     @RequestMapping(value = "loadCounselByCondition", method = {RequestMethod.POST})

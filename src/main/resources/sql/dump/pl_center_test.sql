@@ -1,48 +1,45 @@
-CREATE DATABASE  IF NOT EXISTS `pl_center` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `pl_center`;
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `auth`
---
+
+# Dump of table auth
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `auth`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `auth` (
   `user_code` int(11) unsigned NOT NULL,
   `auth` int(11) unsigned NOT NULL,
   UNIQUE KEY `user_code` (`user_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth`
---
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` VALUES (1,3),(2,2),(3,2),(4,1),(5,1),(6,0),(7,0);
+
+INSERT INTO `auth` (`user_code`, `auth`)
+VALUES
+	(1,3),
+	(2,2),
+	(3,2),
+	(4,1),
+	(5,1),
+	(6,0),
+	(7,0);
+
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `class`
---
+
+# Dump of table class
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `class`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `class` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `year` int(11) NOT NULL,
@@ -52,98 +49,131 @@ CREATE TABLE `class` (
   KEY `year` (`year`),
   KEY `semester` (`semester`),
   KEY `class_no` (`class_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `class`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,2011,1,1),(2,2012,2,2),(3,2013,1,3);
+
+INSERT INTO `class` (`id`, `year`, `semester`, `class_no`)
+VALUES
+	(1,2011,1,1),
+	(2,2012,2,2),
+	(3,2013,1,3);
+
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `class_std`
---
+
+# Dump of table class_std
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `class_std`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `class_std` (
   `class_id` int(11) unsigned NOT NULL,
   `user_code` int(11) unsigned NOT NULL,
   UNIQUE KEY `class_id` (`class_id`,`user_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `class_std`
---
 
 LOCK TABLES `class_std` WRITE;
 /*!40000 ALTER TABLE `class_std` DISABLE KEYS */;
-INSERT INTO `class_std` VALUES (1,6),(1,7),(2,6),(3,7);
+
+INSERT INTO `class_std` (`class_id`, `user_code`)
+VALUES
+	(1,6),
+	(1,7),
+	(2,6),
+	(3,7);
+
 /*!40000 ALTER TABLE `class_std` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `col_dept`
---
+
+# Dump of table col_dept
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `col_dept`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `col_dept` (
   `col_id` int(11) unsigned NOT NULL,
   `dept_id` int(11) unsigned NOT NULL,
   UNIQUE KEY `col_id` (`col_id`,`dept_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `col_dept`
---
 
 LOCK TABLES `col_dept` WRITE;
 /*!40000 ALTER TABLE `col_dept` DISABLE KEYS */;
-INSERT INTO `col_dept` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(2,8),(2,9),(2,10),(2,11),(2,12),(2,13),(2,14),(2,15),(2,16),(2,17),(2,18),(3,19),(3,20),(3,21),(3,22),(3,23),(3,24),(4,25),(4,26),(4,27),(4,28),(4,29),(4,30),(4,31),(4,32),(5,33);
+
+INSERT INTO `col_dept` (`col_id`, `dept_id`)
+VALUES
+	(1,1),
+	(1,2),
+	(1,3),
+	(1,4),
+	(1,5),
+	(1,6),
+	(1,7),
+	(2,8),
+	(2,9),
+	(2,10),
+	(2,11),
+	(2,12),
+	(2,13),
+	(2,14),
+	(2,15),
+	(2,16),
+	(2,17),
+	(2,18),
+	(3,19),
+	(3,20),
+	(3,21),
+	(3,22),
+	(3,23),
+	(3,24),
+	(4,25),
+	(4,26),
+	(4,27),
+	(4,28),
+	(4,29),
+	(4,30),
+	(4,31),
+	(4,32),
+	(5,33);
+
 /*!40000 ALTER TABLE `col_dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `college`
---
+
+# Dump of table college
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `college`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `college` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `college` varchar(11) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `college`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `college` WRITE;
 /*!40000 ALTER TABLE `college` DISABLE KEYS */;
-INSERT INTO `college` VALUES (1,'공공정책대학'),(2,'과학기술대학'),(3,'글로벌비즈니스대학'),(4,'문화스포츠대학'),(5,'약학대학');
+
+INSERT INTO `college` (`id`, `college`)
+VALUES
+	(1,'공공정책대학'),
+	(2,'과학기술대학'),
+	(3,'글로벌비즈니스대학'),
+	(4,'문화스포츠대학'),
+	(5,'약학대학');
+
 /*!40000 ALTER TABLE `college` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `counsel`
---
+
+# Dump of table counsel
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `counsel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `counsel` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `counselor_user_code` int(11) unsigned NOT NULL,
@@ -154,50 +184,195 @@ CREATE TABLE `counsel` (
   PRIMARY KEY (`id`),
   KEY `class_id` (`class_id`),
   KEY `user_code` (`user_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `counsel`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `counsel` WRITE;
 /*!40000 ALTER TABLE `counsel` DISABLE KEYS */;
-INSERT INTO `counsel` VALUES (1,4,1,6,'2017-11-01 00:00:00','printf'),(2,5,2,7,'2017-11-02 00:00:00','scanf'),(3,4,3,6,'2017-11-03 00:00:00','include');
+
+INSERT INTO `counsel` (`id`, `counselor_user_code`, `class_id`, `user_code`, `counsel_datetime`, `counsel_contents`)
+VALUES
+	(1,4,1,6,'2017-11-01 00:00:00','printf'),
+	(2,5,2,7,'2017-11-02 00:00:00','scanf'),
+	(3,4,3,6,'2017-11-03 00:00:00','include'),
+	(4,4,1,6,'2017-11-01 00:00:00','Paging 1'),
+	(5,4,1,6,'2017-11-01 00:00:00','Paging 2'),
+	(6,4,1,6,'2017-11-01 00:00:00','Paging 3'),
+	(7,4,1,6,'2017-11-01 00:00:00','Paging 4'),
+	(8,4,1,6,'2017-11-01 00:00:00','Paging 5'),
+	(9,4,1,6,'2017-11-01 00:00:00','Paging 6'),
+	(10,4,1,6,'2017-11-01 00:00:00','Paging 7'),
+	(11,4,1,6,'2017-11-01 00:00:00','Paging 8'),
+	(12,4,1,6,'2017-11-01 00:00:00','Paging 9'),
+	(13,4,1,6,'2017-11-01 00:00:00','Paging 10'),
+	(14,4,1,6,'2017-11-01 00:00:00','Paging 11'),
+	(15,4,1,6,'2017-11-01 00:00:00','Paging 12'),
+	(16,4,1,6,'2017-11-01 00:00:00','Paging 13'),
+	(17,4,1,6,'2017-11-01 00:00:00','Paging 14'),
+	(18,4,1,6,'2017-11-01 00:00:00','Paging 15'),
+	(19,4,1,6,'2017-11-01 00:00:00','Paging 16'),
+	(20,4,1,6,'2017-11-01 00:00:00','Paging 17'),
+	(21,4,1,6,'2017-11-01 00:00:00','Paging 18'),
+	(22,4,1,6,'2017-11-01 00:00:00','Paging 19'),
+	(23,4,1,6,'2017-11-01 00:00:00','Paging 20'),
+	(24,4,1,6,'2017-11-01 00:00:00','Paging 21'),
+	(25,4,1,6,'2017-11-01 00:00:00','Paging 22'),
+	(26,4,1,6,'2017-11-01 00:00:00','Paging 23'),
+	(27,4,1,6,'2017-11-01 00:00:00','Paging 24'),
+	(28,4,1,6,'2017-11-01 00:00:00','Paging 25'),
+	(29,4,1,6,'2017-11-01 00:00:00','Paging 26'),
+	(30,4,1,6,'2017-11-01 00:00:00','Paging 27'),
+	(31,4,1,6,'2017-11-01 00:00:00','Paging 28'),
+	(32,4,1,6,'2017-11-01 00:00:00','Paging 29'),
+	(33,4,1,6,'2017-11-01 00:00:00','Paging 30'),
+	(34,4,1,6,'2017-11-01 00:00:00','Paging 31'),
+	(35,4,1,6,'2017-11-01 00:00:00','Paging 32'),
+	(36,4,1,6,'2017-11-01 00:00:00','Paging 33'),
+	(37,4,1,6,'2017-11-01 00:00:00','Paging 34'),
+	(38,4,1,6,'2017-11-01 00:00:00','Paging 35'),
+	(39,4,1,6,'2017-11-01 00:00:00','Paging 36'),
+	(40,4,1,6,'2017-11-01 00:00:00','Paging 37'),
+	(41,4,1,6,'2017-11-01 00:00:00','Paging 38'),
+	(42,4,1,6,'2017-11-01 00:00:00','Paging 39'),
+	(43,4,1,6,'2017-11-01 00:00:00','Paging 40'),
+	(44,4,1,6,'2017-11-01 00:00:00','Paging 41'),
+	(45,4,1,6,'2017-11-01 00:00:00','Paging 42'),
+	(46,4,1,6,'2017-11-01 00:00:00','Paging 43'),
+	(47,4,1,6,'2017-11-01 00:00:00','Paging 44'),
+	(48,4,1,6,'2017-11-01 00:00:00','Paging 45'),
+	(49,4,1,6,'2017-11-01 00:00:00','Paging 46'),
+	(50,4,1,6,'2017-11-01 00:00:00','Paging 47'),
+	(51,4,1,6,'2017-11-01 00:00:00','Paging 48'),
+	(52,4,1,6,'2017-11-01 00:00:00','Paging 49'),
+	(53,4,1,6,'2017-11-01 00:00:00','Paging 50'),
+	(54,4,1,6,'2017-11-01 00:00:00','Paging 51'),
+	(55,4,1,6,'2017-11-01 00:00:00','Paging 52'),
+	(56,4,1,6,'2017-11-01 00:00:00','Paging 53'),
+	(57,4,1,6,'2017-11-01 00:00:00','Paging 54'),
+	(58,4,1,6,'2017-11-01 00:00:00','Paging 55'),
+	(59,4,1,6,'2017-11-01 00:00:00','Paging 56'),
+	(60,4,1,6,'2017-11-01 00:00:00','Paging 57'),
+	(61,4,1,6,'2017-11-01 00:00:00','Paging 58'),
+	(62,4,1,6,'2017-11-01 00:00:00','Paging 59'),
+	(63,4,1,6,'2017-11-01 00:00:00','Paging 60'),
+	(64,4,1,6,'2017-11-01 00:00:00','Paging 61'),
+	(65,4,1,6,'2017-11-01 00:00:00','Paging 62'),
+	(66,4,1,6,'2017-11-01 00:00:00','Paging 63'),
+	(67,4,1,6,'2017-11-01 00:00:00','Paging 64'),
+	(68,4,1,6,'2017-11-01 00:00:00','Paging 65'),
+	(69,4,1,6,'2017-11-01 00:00:00','Paging 66'),
+	(70,4,1,6,'2017-11-01 00:00:00','Paging 67'),
+	(71,4,1,6,'2017-11-01 00:00:00','Paging 68'),
+	(72,4,1,6,'2017-11-01 00:00:00','Paging 69'),
+	(73,4,1,6,'2017-11-01 00:00:00','Paging 70'),
+	(74,4,1,6,'2017-11-01 00:00:00','Paging 71'),
+	(75,4,1,6,'2017-11-01 00:00:00','Paging 72'),
+	(76,4,1,6,'2017-11-01 00:00:00','Paging 73'),
+	(77,4,1,6,'2017-11-01 00:00:00','Paging 74'),
+	(78,4,1,6,'2017-11-01 00:00:00','Paging 75'),
+	(79,4,1,6,'2017-11-01 00:00:00','Paging 76'),
+	(80,4,1,6,'2017-11-01 00:00:00','Paging 77'),
+	(81,4,1,6,'2017-11-01 00:00:00','Paging 78'),
+	(82,4,1,6,'2017-11-01 00:00:00','Paging 79'),
+	(83,4,1,6,'2017-11-01 00:00:00','Paging 80'),
+	(84,4,1,6,'2017-11-01 00:00:00','Paging 81'),
+	(85,4,1,6,'2017-11-01 00:00:00','Paging 82'),
+	(86,4,1,6,'2017-11-01 00:00:00','Paging 83'),
+	(87,4,1,6,'2017-11-01 00:00:00','Paging 84'),
+	(88,4,1,6,'2017-11-01 00:00:00','Paging 85'),
+	(89,4,1,6,'2017-11-01 00:00:00','Paging 86'),
+	(90,4,1,6,'2017-11-01 00:00:00','Paging 87'),
+	(91,4,1,6,'2017-11-01 00:00:00','Paging 88'),
+	(92,4,1,6,'2017-11-01 00:00:00','Paging 89'),
+	(93,4,1,6,'2017-11-01 00:00:00','Paging 90'),
+	(94,4,1,6,'2017-11-01 00:00:00','Paging 91'),
+	(95,4,1,6,'2017-11-01 00:00:00','Paging 92'),
+	(96,4,1,6,'2017-11-01 00:00:00','Paging 93'),
+	(97,4,1,6,'2017-11-01 00:00:00','Paging 94'),
+	(98,4,1,6,'2017-11-01 00:00:00','Paging 95'),
+	(99,4,1,6,'2017-11-01 00:00:00','Paging 96'),
+	(100,4,1,6,'2017-11-01 00:00:00','Paging 97'),
+	(101,4,1,6,'2017-11-01 00:00:00','Paging 98'),
+	(102,4,1,6,'2017-11-01 00:00:00','Paging 99'),
+	(103,4,1,6,'2017-11-01 00:00:00','Paging 100'),
+	(104,4,1,6,'2017-11-01 00:00:00','Paging 101'),
+	(105,4,1,6,'2017-11-01 00:00:00','Paging 102'),
+	(106,4,1,6,'2017-11-01 00:00:00','Paging 103'),
+	(107,4,1,6,'2017-11-01 00:00:00','Paging 104'),
+	(108,4,1,6,'2017-11-01 00:00:00','Paging 105'),
+	(109,4,1,6,'2017-11-01 00:00:00','Paging 106'),
+	(110,4,1,6,'2017-11-01 00:00:00','Paging 107'),
+	(111,4,1,6,'2017-11-01 00:00:00','Paging 108'),
+	(112,4,1,6,'2017-11-01 00:00:00','Paging 109'),
+	(113,4,1,6,'2017-11-01 00:00:00','Paging 110'),
+	(114,4,1,6,'2017-11-01 00:00:00','Paging 111'),
+	(115,4,1,6,'2017-11-01 00:00:00','Paging 112'),
+	(116,4,1,6,'2017-11-01 00:00:00','Paging 113'),
+	(117,4,1,6,'2017-11-01 00:00:00','Paging 114'),
+	(118,4,1,6,'2017-11-01 00:00:00','Paging 115');
+
 /*!40000 ALTER TABLE `counsel` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `dept`
---
+
+# Dump of table dept
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `dept`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `dept` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `dept` varchar(24) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `dept`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `dept` WRITE;
 /*!40000 ALTER TABLE `dept` DISABLE KEYS */;
-INSERT INTO `dept` VALUES (1,'경제정책학전공'),(2,'공공사회학전공'),(3,'국가통계전공'),(4,'빅데이터전공'),(5,'사회복지융합전공'),(6,'정부행정학부'),(7,'통일외교안보전공'),(8,'데이터계산과학전공'),(9,'디스플레이융합전공'),(10,'반도체물리전공'),(11,'사이버보안전공'),(12,'생명정보공학과'),(13,'식품생명공학과'),(14,'신소재화학과'),(15,'전자/기계융합공학과'),(16,'전자및정보공학과'),(17,'컴퓨터융합소프트웨어학과'),(18,'환경시스템공학과'),(19,'글로벌경영전공'),(20,'독일학전공'),(21,'디지털경영전공'),(22,'영미학전공'),(23,'중국학전공'),(24,'한국학전공'),(25,'국제스포츠학부'),(26,'고고미술사학전공'),(27,'디지털매체문화융합전공'),(28,'문화ICT융합전공'),(29,'문화콘텐츠전공'),(30,'미디어문예창작학전공'),(31,'스포츠과학전공'),(32,'스포츠비즈니스전공'),(33,'약학대학');
+
+INSERT INTO `dept` (`id`, `dept`)
+VALUES
+	(1,'경제정책학전공'),
+	(2,'공공사회학전공'),
+	(3,'국가통계전공'),
+	(4,'빅데이터전공'),
+	(5,'사회복지융합전공'),
+	(6,'정부행정학부'),
+	(7,'통일외교안보전공'),
+	(8,'데이터계산과학전공'),
+	(9,'디스플레이융합전공'),
+	(10,'반도체물리전공'),
+	(11,'사이버보안전공'),
+	(12,'생명정보공학과'),
+	(13,'식품생명공학과'),
+	(14,'신소재화학과'),
+	(15,'전자/기계융합공학과'),
+	(16,'전자및정보공학과'),
+	(17,'컴퓨터융합소프트웨어학과'),
+	(18,'환경시스템공학과'),
+	(19,'글로벌경영전공'),
+	(20,'독일학전공'),
+	(21,'디지털경영전공'),
+	(22,'영미학전공'),
+	(23,'중국학전공'),
+	(24,'한국학전공'),
+	(25,'국제스포츠학부'),
+	(26,'고고미술사학전공'),
+	(27,'디지털매체문화융합전공'),
+	(28,'문화ICT융합전공'),
+	(29,'문화콘텐츠전공'),
+	(30,'미디어문예창작학전공'),
+	(31,'스포츠과학전공'),
+	(32,'스포츠비즈니스전공'),
+	(33,'약학대학');
+
 /*!40000 ALTER TABLE `dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `notice`
---
+
+# Dump of table notice
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `notice`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `notice` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -206,25 +381,138 @@ CREATE TABLE `notice` (
   `write_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `notice`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `notice` WRITE;
 /*!40000 ALTER TABLE `notice` DISABLE KEYS */;
+
+INSERT INTO `notice` (`id`, `title`, `contents`, `writer`, `write_datetime`, `views`)
+VALUES
+	(1,'Paging 1','Paging 1',1,'2017-11-01 00:00:00',0),
+	(2,'Paging 2','Paging 2',1,'2017-11-01 00:00:00',0),
+	(3,'Paging 3','Paging 3',1,'2017-11-01 00:00:00',0),
+	(4,'Paging 4','Paging 4',1,'2017-11-01 00:00:00',0),
+	(5,'Paging 5','Paging 5',1,'2017-11-01 00:00:00',0),
+	(6,'Paging 6','Paging 6',1,'2017-11-01 00:00:00',0),
+	(7,'Paging 7','Paging 7',1,'2017-11-01 00:00:00',0),
+	(8,'Paging 8','Paging 8',1,'2017-11-01 00:00:00',0),
+	(9,'Paging 9','Paging 9',1,'2017-11-01 00:00:00',0),
+	(10,'Paging 10','Paging 10',1,'2017-11-01 00:00:00',0),
+	(11,'Paging 11','Paging 11',1,'2017-11-01 00:00:00',0),
+	(12,'Paging 12','Paging 12',1,'2017-11-01 00:00:00',0),
+	(13,'Paging 13','Paging 13',1,'2017-11-01 00:00:00',0),
+	(14,'Paging 14','Paging 14',1,'2017-11-01 00:00:00',0),
+	(15,'Paging 15','Paging 15',1,'2017-11-01 00:00:00',0),
+	(16,'Paging 16','Paging 16',1,'2017-11-01 00:00:00',0),
+	(17,'Paging 17','Paging 17',1,'2017-11-01 00:00:00',0),
+	(18,'Paging 18','Paging 18',1,'2017-11-01 00:00:00',0),
+	(19,'Paging 19','Paging 19',1,'2017-11-01 00:00:00',0),
+	(20,'Paging 20','Paging 20',1,'2017-11-01 00:00:00',0),
+	(21,'Paging 21','Paging 21',1,'2017-11-01 00:00:00',0),
+	(22,'Paging 22','Paging 22',1,'2017-11-01 00:00:00',0),
+	(23,'Paging 23','Paging 23',1,'2017-11-01 00:00:00',0),
+	(24,'Paging 24','Paging 24',1,'2017-11-01 00:00:00',0),
+	(25,'Paging 25','Paging 25',1,'2017-11-01 00:00:00',0),
+	(26,'Paging 26','Paging 26',1,'2017-11-01 00:00:00',0),
+	(27,'Paging 27','Paging 27',1,'2017-11-01 00:00:00',0),
+	(28,'Paging 28','Paging 28',1,'2017-11-01 00:00:00',0),
+	(29,'Paging 29','Paging 29',1,'2017-11-01 00:00:00',0),
+	(30,'Paging 30','Paging 30',1,'2017-11-01 00:00:00',0),
+	(31,'Paging 31','Paging 31',1,'2017-11-01 00:00:00',0),
+	(32,'Paging 32','Paging 32',1,'2017-11-01 00:00:00',0),
+	(33,'Paging 33','Paging 33',1,'2017-11-01 00:00:00',0),
+	(34,'Paging 34','Paging 34',1,'2017-11-01 00:00:00',0),
+	(35,'Paging 35','Paging 35',1,'2017-11-01 00:00:00',0),
+	(36,'Paging 36','Paging 36',1,'2017-11-01 00:00:00',0),
+	(37,'Paging 37','Paging 37',1,'2017-11-01 00:00:00',0),
+	(38,'Paging 38','Paging 38',1,'2017-11-01 00:00:00',0),
+	(39,'Paging 39','Paging 39',1,'2017-11-01 00:00:00',0),
+	(40,'Paging 40','Paging 40',1,'2017-11-01 00:00:00',0),
+	(41,'Paging 41','Paging 41',1,'2017-11-01 00:00:00',0),
+	(42,'Paging 42','Paging 42',1,'2017-11-01 00:00:00',0),
+	(43,'Paging 43','Paging 43',1,'2017-11-01 00:00:00',0),
+	(44,'Paging 44','Paging 44',1,'2017-11-01 00:00:00',0),
+	(45,'Paging 45','Paging 45',1,'2017-11-01 00:00:00',0),
+	(46,'Paging 46','Paging 46',1,'2017-11-01 00:00:00',0),
+	(47,'Paging 47','Paging 47',1,'2017-11-01 00:00:00',0),
+	(48,'Paging 48','Paging 48',1,'2017-11-01 00:00:00',0),
+	(49,'Paging 49','Paging 49',1,'2017-11-01 00:00:00',0),
+	(50,'Paging 50','Paging 50',1,'2017-11-01 00:00:00',0),
+	(51,'Paging 51','Paging 51',1,'2017-11-01 00:00:00',0),
+	(52,'Paging 52','Paging 52',1,'2017-11-01 00:00:00',0),
+	(53,'Paging 53','Paging 53',1,'2017-11-01 00:00:00',0),
+	(54,'Paging 54','Paging 54',1,'2017-11-01 00:00:00',0),
+	(55,'Paging 55','Paging 55',1,'2017-11-01 00:00:00',0),
+	(56,'Paging 56','Paging 56',1,'2017-11-01 00:00:00',0),
+	(57,'Paging 57','Paging 57',1,'2017-11-01 00:00:00',0),
+	(58,'Paging 58','Paging 58',1,'2017-11-01 00:00:00',0),
+	(59,'Paging 59','Paging 59',1,'2017-11-01 00:00:00',0),
+	(60,'Paging 60','Paging 60',1,'2017-11-01 00:00:00',0),
+	(61,'Paging 61','Paging 61',1,'2017-11-01 00:00:00',0),
+	(62,'Paging 62','Paging 62',1,'2017-11-01 00:00:00',0),
+	(63,'Paging 63','Paging 63',1,'2017-11-01 00:00:00',0),
+	(64,'Paging 64','Paging 64',1,'2017-11-01 00:00:00',0),
+	(65,'Paging 65','Paging 65',1,'2017-11-01 00:00:00',0),
+	(66,'Paging 66','Paging 66',1,'2017-11-01 00:00:00',0),
+	(67,'Paging 67','Paging 67',1,'2017-11-01 00:00:00',0),
+	(68,'Paging 68','Paging 68',1,'2017-11-01 00:00:00',0),
+	(69,'Paging 69','Paging 69',1,'2017-11-01 00:00:00',0),
+	(70,'Paging 70','Paging 70',1,'2017-11-01 00:00:00',0),
+	(71,'Paging 71','Paging 71',1,'2017-11-01 00:00:00',0),
+	(72,'Paging 72','Paging 72',1,'2017-11-01 00:00:00',0),
+	(73,'Paging 73','Paging 73',1,'2017-11-01 00:00:00',0),
+	(74,'Paging 74','Paging 74',1,'2017-11-01 00:00:00',0),
+	(75,'Paging 75','Paging 75',1,'2017-11-01 00:00:00',0),
+	(76,'Paging 76','Paging 76',1,'2017-11-01 00:00:00',0),
+	(77,'Paging 77','Paging 77',1,'2017-11-01 00:00:00',0),
+	(78,'Paging 78','Paging 78',1,'2017-11-01 00:00:00',0),
+	(79,'Paging 79','Paging 79',1,'2017-11-01 00:00:00',0),
+	(80,'Paging 80','Paging 80',1,'2017-11-01 00:00:00',0),
+	(81,'Paging 81','Paging 81',1,'2017-11-01 00:00:00',0),
+	(82,'Paging 82','Paging 82',1,'2017-11-01 00:00:00',0),
+	(83,'Paging 83','Paging 83',1,'2017-11-01 00:00:00',0),
+	(84,'Paging 84','Paging 84',1,'2017-11-01 00:00:00',0),
+	(85,'Paging 85','Paging 85',1,'2017-11-01 00:00:00',0),
+	(86,'Paging 86','Paging 86',1,'2017-11-01 00:00:00',0),
+	(87,'Paging 87','Paging 87',1,'2017-11-01 00:00:00',0),
+	(88,'Paging 88','Paging 88',1,'2017-11-01 00:00:00',0),
+	(89,'Paging 89','Paging 89',1,'2017-11-01 00:00:00',0),
+	(90,'Paging 90','Paging 90',1,'2017-11-01 00:00:00',0),
+	(91,'Paging 91','Paging 91',1,'2017-11-01 00:00:00',0),
+	(92,'Paging 92','Paging 92',1,'2017-11-01 00:00:00',0),
+	(93,'Paging 93','Paging 93',1,'2017-11-01 00:00:00',0),
+	(94,'Paging 94','Paging 94',1,'2017-11-01 00:00:00',0),
+	(95,'Paging 95','Paging 95',1,'2017-11-01 00:00:00',0),
+	(96,'Paging 96','Paging 96',1,'2017-11-01 00:00:00',0),
+	(97,'Paging 97','Paging 97',1,'2017-11-01 00:00:00',0),
+	(98,'Paging 98','Paging 98',1,'2017-11-01 00:00:00',0),
+	(99,'Paging 99','Paging 99',1,'2017-11-01 00:00:00',0),
+	(100,'Paging 100','Paging 100',1,'2017-11-01 00:00:00',0),
+	(101,'Paging 101','Paging 101',1,'2017-11-01 00:00:00',0),
+	(102,'Paging 102','Paging 102',1,'2017-11-01 00:00:00',0),
+	(103,'Paging 103','Paging 103',1,'2017-11-01 00:00:00',0),
+	(104,'Paging 104','Paging 104',1,'2017-11-01 00:00:00',0),
+	(105,'Paging 105','Paging 105',1,'2017-11-01 00:00:00',0),
+	(106,'Paging 106','Paging 106',1,'2017-11-01 00:00:00',0),
+	(107,'Paging 107','Paging 107',1,'2017-11-01 00:00:00',0),
+	(108,'Paging 108','Paging 108',1,'2017-11-01 00:00:00',0),
+	(109,'Paging 109','Paging 109',1,'2017-11-01 00:00:00',0),
+	(110,'Paging 110','Paging 110',1,'2017-11-01 00:00:00',0),
+	(111,'Paging 111','Paging 111',1,'2017-11-01 00:00:00',0),
+	(112,'Paging 112','Paging 112',1,'2017-11-01 00:00:00',0),
+	(113,'Paging 113','Paging 113',1,'2017-11-01 00:00:00',0),
+	(114,'Paging 114','Paging 114',1,'2017-11-01 00:00:00',0),
+	(115,'Paging 115','Paging 115',1,'2017-11-01 00:00:00',0);
+
 /*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `suggestion`
---
+
+# Dump of table suggestion
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `suggestion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `suggestion` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -234,24 +522,137 @@ CREATE TABLE `suggestion` (
   `views` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `suggestion`
---
 
 LOCK TABLES `suggestion` WRITE;
 /*!40000 ALTER TABLE `suggestion` DISABLE KEYS */;
+
+INSERT INTO `suggestion` (`id`, `title`, `contents`, `writer`, `write_datetime`, `views`)
+VALUES
+	(1,'Paging 1','Paging 1',1,'2017-11-01 00:00:00',0),
+	(2,'Paging 2','Paging 2',1,'2017-11-01 00:00:00',0),
+	(3,'Paging 3','Paging 3',1,'2017-11-01 00:00:00',0),
+	(4,'Paging 4','Paging 4',1,'2017-11-01 00:00:00',0),
+	(5,'Paging 5','Paging 5',1,'2017-11-01 00:00:00',0),
+	(6,'Paging 6','Paging 6',1,'2017-11-01 00:00:00',0),
+	(7,'Paging 7','Paging 7',1,'2017-11-01 00:00:00',0),
+	(8,'Paging 8','Paging 8',1,'2017-11-01 00:00:00',0),
+	(9,'Paging 9','Paging 9',1,'2017-11-01 00:00:00',0),
+	(10,'Paging 10','Paging 10',1,'2017-11-01 00:00:00',0),
+	(11,'Paging 11','Paging 11',1,'2017-11-01 00:00:00',0),
+	(12,'Paging 12','Paging 12',1,'2017-11-01 00:00:00',0),
+	(13,'Paging 13','Paging 13',1,'2017-11-01 00:00:00',0),
+	(14,'Paging 14','Paging 14',1,'2017-11-01 00:00:00',0),
+	(15,'Paging 15','Paging 15',1,'2017-11-01 00:00:00',0),
+	(16,'Paging 16','Paging 16',1,'2017-11-01 00:00:00',0),
+	(17,'Paging 17','Paging 17',1,'2017-11-01 00:00:00',0),
+	(18,'Paging 18','Paging 18',1,'2017-11-01 00:00:00',0),
+	(19,'Paging 19','Paging 19',1,'2017-11-01 00:00:00',0),
+	(20,'Paging 20','Paging 20',1,'2017-11-01 00:00:00',0),
+	(21,'Paging 21','Paging 21',1,'2017-11-01 00:00:00',0),
+	(22,'Paging 22','Paging 22',1,'2017-11-01 00:00:00',0),
+	(23,'Paging 23','Paging 23',1,'2017-11-01 00:00:00',0),
+	(24,'Paging 24','Paging 24',1,'2017-11-01 00:00:00',0),
+	(25,'Paging 25','Paging 25',1,'2017-11-01 00:00:00',0),
+	(26,'Paging 26','Paging 26',1,'2017-11-01 00:00:00',0),
+	(27,'Paging 27','Paging 27',1,'2017-11-01 00:00:00',0),
+	(28,'Paging 28','Paging 28',1,'2017-11-01 00:00:00',0),
+	(29,'Paging 29','Paging 29',1,'2017-11-01 00:00:00',0),
+	(30,'Paging 30','Paging 30',1,'2017-11-01 00:00:00',0),
+	(31,'Paging 31','Paging 31',1,'2017-11-01 00:00:00',0),
+	(32,'Paging 32','Paging 32',1,'2017-11-01 00:00:00',0),
+	(33,'Paging 33','Paging 33',1,'2017-11-01 00:00:00',0),
+	(34,'Paging 34','Paging 34',1,'2017-11-01 00:00:00',0),
+	(35,'Paging 35','Paging 35',1,'2017-11-01 00:00:00',0),
+	(36,'Paging 36','Paging 36',1,'2017-11-01 00:00:00',0),
+	(37,'Paging 37','Paging 37',1,'2017-11-01 00:00:00',0),
+	(38,'Paging 38','Paging 38',1,'2017-11-01 00:00:00',0),
+	(39,'Paging 39','Paging 39',1,'2017-11-01 00:00:00',0),
+	(40,'Paging 40','Paging 40',1,'2017-11-01 00:00:00',0),
+	(41,'Paging 41','Paging 41',1,'2017-11-01 00:00:00',0),
+	(42,'Paging 42','Paging 42',1,'2017-11-01 00:00:00',0),
+	(43,'Paging 43','Paging 43',1,'2017-11-01 00:00:00',0),
+	(44,'Paging 44','Paging 44',1,'2017-11-01 00:00:00',0),
+	(45,'Paging 45','Paging 45',1,'2017-11-01 00:00:00',0),
+	(46,'Paging 46','Paging 46',1,'2017-11-01 00:00:00',0),
+	(47,'Paging 47','Paging 47',1,'2017-11-01 00:00:00',0),
+	(48,'Paging 48','Paging 48',1,'2017-11-01 00:00:00',0),
+	(49,'Paging 49','Paging 49',1,'2017-11-01 00:00:00',0),
+	(50,'Paging 50','Paging 50',1,'2017-11-01 00:00:00',0),
+	(51,'Paging 51','Paging 51',1,'2017-11-01 00:00:00',0),
+	(52,'Paging 52','Paging 52',1,'2017-11-01 00:00:00',0),
+	(53,'Paging 53','Paging 53',1,'2017-11-01 00:00:00',0),
+	(54,'Paging 54','Paging 54',1,'2017-11-01 00:00:00',0),
+	(55,'Paging 55','Paging 55',1,'2017-11-01 00:00:00',0),
+	(56,'Paging 56','Paging 56',1,'2017-11-01 00:00:00',0),
+	(57,'Paging 57','Paging 57',1,'2017-11-01 00:00:00',0),
+	(58,'Paging 58','Paging 58',1,'2017-11-01 00:00:00',0),
+	(59,'Paging 59','Paging 59',1,'2017-11-01 00:00:00',0),
+	(60,'Paging 60','Paging 60',1,'2017-11-01 00:00:00',0),
+	(61,'Paging 61','Paging 61',1,'2017-11-01 00:00:00',0),
+	(62,'Paging 62','Paging 62',1,'2017-11-01 00:00:00',0),
+	(63,'Paging 63','Paging 63',1,'2017-11-01 00:00:00',0),
+	(64,'Paging 64','Paging 64',1,'2017-11-01 00:00:00',0),
+	(65,'Paging 65','Paging 65',1,'2017-11-01 00:00:00',0),
+	(66,'Paging 66','Paging 66',1,'2017-11-01 00:00:00',0),
+	(67,'Paging 67','Paging 67',1,'2017-11-01 00:00:00',0),
+	(68,'Paging 68','Paging 68',1,'2017-11-01 00:00:00',0),
+	(69,'Paging 69','Paging 69',1,'2017-11-01 00:00:00',0),
+	(70,'Paging 70','Paging 70',1,'2017-11-01 00:00:00',0),
+	(71,'Paging 71','Paging 71',1,'2017-11-01 00:00:00',0),
+	(72,'Paging 72','Paging 72',1,'2017-11-01 00:00:00',0),
+	(73,'Paging 73','Paging 73',1,'2017-11-01 00:00:00',0),
+	(74,'Paging 74','Paging 74',1,'2017-11-01 00:00:00',0),
+	(75,'Paging 75','Paging 75',1,'2017-11-01 00:00:00',0),
+	(76,'Paging 76','Paging 76',1,'2017-11-01 00:00:00',0),
+	(77,'Paging 77','Paging 77',1,'2017-11-01 00:00:00',0),
+	(78,'Paging 78','Paging 78',1,'2017-11-01 00:00:00',0),
+	(79,'Paging 79','Paging 79',1,'2017-11-01 00:00:00',0),
+	(80,'Paging 80','Paging 80',1,'2017-11-01 00:00:00',0),
+	(81,'Paging 81','Paging 81',1,'2017-11-01 00:00:00',0),
+	(82,'Paging 82','Paging 82',1,'2017-11-01 00:00:00',0),
+	(83,'Paging 83','Paging 83',1,'2017-11-01 00:00:00',0),
+	(84,'Paging 84','Paging 84',1,'2017-11-01 00:00:00',0),
+	(85,'Paging 85','Paging 85',1,'2017-11-01 00:00:00',0),
+	(86,'Paging 86','Paging 86',1,'2017-11-01 00:00:00',0),
+	(87,'Paging 87','Paging 87',1,'2017-11-01 00:00:00',0),
+	(88,'Paging 88','Paging 88',1,'2017-11-01 00:00:00',0),
+	(89,'Paging 89','Paging 89',1,'2017-11-01 00:00:00',0),
+	(90,'Paging 90','Paging 90',1,'2017-11-01 00:00:00',0),
+	(91,'Paging 91','Paging 91',1,'2017-11-01 00:00:00',0),
+	(92,'Paging 92','Paging 92',1,'2017-11-01 00:00:00',0),
+	(93,'Paging 93','Paging 93',1,'2017-11-01 00:00:00',0),
+	(94,'Paging 94','Paging 94',1,'2017-11-01 00:00:00',0),
+	(95,'Paging 95','Paging 95',1,'2017-11-01 00:00:00',0),
+	(96,'Paging 96','Paging 96',1,'2017-11-01 00:00:00',0),
+	(97,'Paging 97','Paging 97',1,'2017-11-01 00:00:00',0),
+	(98,'Paging 98','Paging 98',1,'2017-11-01 00:00:00',0),
+	(99,'Paging 99','Paging 99',1,'2017-11-01 00:00:00',0),
+	(100,'Paging 100','Paging 100',1,'2017-11-01 00:00:00',0),
+	(101,'Paging 101','Paging 101',1,'2017-11-01 00:00:00',0),
+	(102,'Paging 102','Paging 102',1,'2017-11-01 00:00:00',0),
+	(103,'Paging 103','Paging 103',1,'2017-11-01 00:00:00',0),
+	(104,'Paging 104','Paging 104',1,'2017-11-01 00:00:00',0),
+	(105,'Paging 105','Paging 105',1,'2017-11-01 00:00:00',0),
+	(106,'Paging 106','Paging 106',1,'2017-11-01 00:00:00',0),
+	(107,'Paging 107','Paging 107',1,'2017-11-01 00:00:00',0),
+	(108,'Paging 108','Paging 108',1,'2017-11-01 00:00:00',0),
+	(109,'Paging 109','Paging 109',1,'2017-11-01 00:00:00',0),
+	(110,'Paging 110','Paging 110',1,'2017-11-01 00:00:00',0),
+	(111,'Paging 111','Paging 111',1,'2017-11-01 00:00:00',0),
+	(112,'Paging 112','Paging 112',1,'2017-11-01 00:00:00',0),
+	(113,'Paging 113','Paging 113',1,'2017-11-01 00:00:00',0),
+	(114,'Paging 114','Paging 114',1,'2017-11-01 00:00:00',0),
+	(115,'Paging 115','Paging 115',1,'2017-11-01 00:00:00',0);
+
 /*!40000 ALTER TABLE `suggestion` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `users`
---
+
+# Dump of table users
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `users` (
   `user_code` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` varchar(24) NOT NULL DEFAULT '',
@@ -264,26 +665,30 @@ CREATE TABLE `users` (
   `phone` varchar(16) NOT NULL DEFAULT '',
   PRIMARY KEY (`user_code`),
   KEY `student_code` (`student_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$10$GryXOoEWPtaCz5go98XdseZYvhi66vLrv2yBB64vQqQSMiER.0Z.G','2','17','-','관리자','admin@korea.ac.kr','010-0000-0001'),(2,'prof','$2a$10$X6cqrhxfokWw8LH68AXNMOR.fYFa2aaCaEoXBKGNwSPiZ2uTQIXgq','2','17','-','교수','prof@korea.ac.kr','010-0000-0002'),(3,'assistant','$2a$10$DPUIzmJ6fXRoAo1Xk2Cw6uQTgALPbPxhSNpP9eBV/1CS6/SlK6pUO','2','17','-','조교','assistant@korea.ac.kr','010-0000-0003'),(4,'worker01','$2a$10$fHNP4i4ZkcbtQIiHWIMS2uQ8XxWseX6ObCfvVJX0.ga4//p2X7Jf.','2','17','2011270001','근무자01','worker01@korea.ac.kr','010-0000-0004'),(5,'worker02','$2a$10$0qpU2i17bEADkZNChAA8QeAJ4FFvRi2RLyvDsTEUlSopD3pnTkSBS','2','17','2011270002','근무자02','worker02@korea.ac.kr','010-0000-0005'),(6,'student01','$2a$10$GN1YkP2bnoDM4PXDVQPg/u1XIrV39yEG9VuTmYwvtIXLpLh5OrxKW','2','8','2011270003','학생01','student01@korea.ac.kr','010-0000-0006'),(7,'student02','$2a$10$u2Y9yYiQCnaezWdGxcB7huXIqi/s8BEew6UMJuDHBkXKhEHlQBaii','2','9','2011270004','학생02','student02@korea.ac.kr','010-0000-0007');
+
+INSERT INTO `users` (`user_code`, `user_id`, `passwd`, `col_id`, `dept_id`, `student_code`, `name`, `email`, `phone`)
+VALUES
+	(1,'admin','$2a$10$GryXOoEWPtaCz5go98XdseZYvhi66vLrv2yBB64vQqQSMiER.0Z.G','2','17','-','관리자','admin@korea.ac.kr','010-0000-0001'),
+	(2,'prof','$2a$10$X6cqrhxfokWw8LH68AXNMOR.fYFa2aaCaEoXBKGNwSPiZ2uTQIXgq','2','17','-','교수','prof@korea.ac.kr','010-0000-0002'),
+	(3,'assistant','$2a$10$DPUIzmJ6fXRoAo1Xk2Cw6uQTgALPbPxhSNpP9eBV/1CS6/SlK6pUO','2','17','-','조교','assistant@korea.ac.kr','010-0000-0003'),
+	(4,'worker01','$2a$10$fHNP4i4ZkcbtQIiHWIMS2uQ8XxWseX6ObCfvVJX0.ga4//p2X7Jf.','2','17','2011270001','근무자01','worker01@korea.ac.kr','010-0000-0004'),
+	(5,'worker02','$2a$10$0qpU2i17bEADkZNChAA8QeAJ4FFvRi2RLyvDsTEUlSopD3pnTkSBS','2','17','2011270002','근무자02','worker02@korea.ac.kr','010-0000-0005'),
+	(6,'student01','$2a$10$GN1YkP2bnoDM4PXDVQPg/u1XIrV39yEG9VuTmYwvtIXLpLh5OrxKW','2','8','2011270003','학생01','student01@korea.ac.kr','010-0000-0006'),
+	(7,'student02','$2a$10$u2Y9yYiQCnaezWdGxcB7huXIqi/s8BEew6UMJuDHBkXKhEHlQBaii','2','9','2011270004','학생02','student02@korea.ac.kr','010-0000-0007');
+
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `working_diary`
---
+
+# Dump of table working_diary
+# ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `working_diary`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `working_diary` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_code` int(10) unsigned NOT NULL,
@@ -292,24 +697,140 @@ CREATE TABLE `working_diary` (
   `working_contents` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_code` (`user_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `working_diary`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `working_diary` WRITE;
 /*!40000 ALTER TABLE `working_diary` DISABLE KEYS */;
-INSERT INTO `working_diary` VALUES (1,4,'2017-11-15 00:00:00','2017-11-15 01:00:00','PL Center Open'),(2,5,'2017-11-16 02:00:00','2017-11-16 03:00:00','상담'),(3,4,'2017-11-17 03:00:00','2017-11-17 04:00:00','PL Center Close');
+
+INSERT INTO `working_diary` (`id`, `user_code`, `working_start_datetime`, `working_end_datetime`, `working_contents`)
+VALUES
+	(1,4,'2017-11-15 00:00:00','2017-11-15 01:00:00','PL Center Open'),
+	(2,5,'2017-11-16 02:00:00','2017-11-16 03:00:00','상담'),
+	(3,4,'2017-11-17 03:00:00','2017-11-17 04:00:00','PL Center Close'),
+	(4,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 1'),
+	(5,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 2'),
+	(6,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 3'),
+	(7,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 4'),
+	(8,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 5'),
+	(9,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 6'),
+	(10,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 7'),
+	(11,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 8'),
+	(12,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 9'),
+	(13,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 10'),
+	(14,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 11'),
+	(15,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 12'),
+	(16,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 13'),
+	(17,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 14'),
+	(18,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 15'),
+	(19,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 16'),
+	(20,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 17'),
+	(21,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 18'),
+	(22,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 19'),
+	(23,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 20'),
+	(24,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 21'),
+	(25,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 22'),
+	(26,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 23'),
+	(27,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 24'),
+	(28,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 25'),
+	(29,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 26'),
+	(30,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 27'),
+	(31,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 28'),
+	(32,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 29'),
+	(33,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 30'),
+	(34,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 31'),
+	(35,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 32'),
+	(36,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 33'),
+	(37,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 34'),
+	(38,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 35'),
+	(39,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 36'),
+	(40,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 37'),
+	(41,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 38'),
+	(42,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 39'),
+	(43,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 40'),
+	(44,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 41'),
+	(45,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 42'),
+	(46,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 43'),
+	(47,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 44'),
+	(48,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 45'),
+	(49,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 46'),
+	(50,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 47'),
+	(51,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 48'),
+	(52,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 49'),
+	(53,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 50'),
+	(54,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 51'),
+	(55,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 52'),
+	(56,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 53'),
+	(57,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 54'),
+	(58,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 55'),
+	(59,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 56'),
+	(60,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 57'),
+	(61,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 58'),
+	(62,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 59'),
+	(63,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 60'),
+	(64,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 61'),
+	(65,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 62'),
+	(66,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 63'),
+	(67,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 64'),
+	(68,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 65'),
+	(69,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 66'),
+	(70,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 67'),
+	(71,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 68'),
+	(72,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 69'),
+	(73,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 70'),
+	(74,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 71'),
+	(75,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 72'),
+	(76,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 73'),
+	(77,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 74'),
+	(78,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 75'),
+	(79,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 76'),
+	(80,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 77'),
+	(81,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 78'),
+	(82,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 79'),
+	(83,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 80'),
+	(84,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 81'),
+	(85,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 82'),
+	(86,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 83'),
+	(87,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 84'),
+	(88,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 85'),
+	(89,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 86'),
+	(90,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 87'),
+	(91,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 88'),
+	(92,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 89'),
+	(93,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 90'),
+	(94,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 91'),
+	(95,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 92'),
+	(96,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 93'),
+	(97,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 94'),
+	(98,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 95'),
+	(99,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 96'),
+	(100,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 97'),
+	(101,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 98'),
+	(102,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 99'),
+	(103,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 100'),
+	(104,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 101'),
+	(105,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 102'),
+	(106,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 103'),
+	(107,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 104'),
+	(108,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 105'),
+	(109,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 106'),
+	(110,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 107'),
+	(111,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 108'),
+	(112,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 109'),
+	(113,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 110'),
+	(114,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 111'),
+	(115,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 112'),
+	(116,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 113'),
+	(117,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 114'),
+	(118,4,'2017-11-01 00:00:00','2017-11-01 00:00:00','Paging 115');
+
 /*!40000 ALTER TABLE `working_diary` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

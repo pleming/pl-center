@@ -6,6 +6,7 @@ import org.computerized.pl.model.counsel.CounselAddListVO;
 import org.computerized.pl.model.counsel.CounselSearchVO;
 import org.computerized.pl.model.counsel.CounselVO;
 import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,12 @@ public class CounselService {
     @Autowired
     private CounselDAO counselDAO;
 
-    public List<CounselVO> loadCounsel() {
-        return counselDAO.loadCounsel();
+    public List<CounselVO> loadCounsel(PagingVO pagingVO) {
+        return counselDAO.loadCounsel(pagingVO);
+    }
+
+    public Integer getTotalRowCount() {
+        return counselDAO.getTotalRowCount();
     }
 
     public List<CounselVO> loadCounselByCondition(CounselSearchVO counselSearchVO) {

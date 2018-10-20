@@ -35,6 +35,13 @@
         INNER JOIN dept AS D
         ON U.dept_id = D.id
         ORDER BY WD.working_start_datetime DESC
+        LIMIT ${startIdx}, ${rowBound}
+    </select>
+
+    <select id="getTotalRowCount" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM notice
     </select>
 
     <select id="searchWorkingDiary" resultType="org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO">

@@ -6,6 +6,7 @@ import org.computerized.pl.model.counsel.CounselAddListVO;
 import org.computerized.pl.model.counsel.CounselSearchVO;
 import org.computerized.pl.model.counsel.CounselVO;
 import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +19,18 @@ public class CounselDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<CounselVO> loadCounsel() {
-        return sqlSession.selectList("counsel.loadCounsel");
+    public List<CounselVO> loadCounsel(PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("counsel.loadCounsel", param);
+    }
+
+    public Integer getTotalRowCount() {
+        List<Integer> list = sqlSession.selectList("counsel.getTotalRowCount");
+        return list.get(0);
     }
 
     public List<CounselVO> loadCounselByCondition(CounselSearchVO counselSearchVO) {

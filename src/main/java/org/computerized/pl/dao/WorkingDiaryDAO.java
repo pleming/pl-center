@@ -2,6 +2,7 @@ package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.computerized.pl.model.general.IdListVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
 import org.computerized.pl.model.workingDiary.WorkingDiarySearchVO;
@@ -24,8 +25,18 @@ public class WorkingDiaryDAO {
         return sqlSession.selectList("workingDiary.loadWorkingDiary", param);
     }
 
-    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin() {
-        return sqlSession.selectList("workingDiary.loadWorkingDiaryForAdmin");
+    public List<WorkingDiaryForAdminVO> loadWorkingDiaryForAdmin(PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("workingDiary.loadWorkingDiaryForAdmin", param);
+    }
+
+    public Integer getTotalRowCount() {
+        List<Integer> list = sqlSession.selectList("notice.getTotalRowCount");
+        return list.get(0);
     }
 
     public List<WorkingDiaryForAdminVO> searchWorkingDiary(WorkingDiarySearchVO workingDiarySearchVO) {

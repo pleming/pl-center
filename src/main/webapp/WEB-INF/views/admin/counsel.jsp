@@ -24,24 +24,36 @@
         <select class="form-control counsel-filter-elem" id="semester" onkeypress="searchCounselEnterKey()"></select>
         <select class="form-control counsel-filter-elem" id="year" onkeypress="searchCounselEnterKey()"></select>
     </div>
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th><input type="checkbox" name="checkAll"/></th>
-            <th>아이디</th>
-            <th>단과대학</th>
-            <th>학과</th>
-            <th>학번</th>
-            <th>분반</th>
-            <th>이름</th>
-            <th>상담일자</th>
-            <th>상담내용</th>
-            <th>상담자</th>
-        </tr>
-        </thead>
-        <tbody id="counsel-row">
-        </tbody>
-    </table>
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="checkAll"/></th>
+                <th>아이디</th>
+                <th>단과대학</th>
+                <th>학과</th>
+                <th>학번</th>
+                <th>분반</th>
+                <th>이름</th>
+                <th>상담일자</th>
+                <th>상담내용</th>
+                <th>상담자</th>
+            </tr>
+            </thead>
+            <tbody id="counsel-row">
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class='page-item disabled' id='prevFirst'><a class='page-link' href='#'>&laquo;</a></li>
+                <li class='page-item disabled' id='prev'><a class='page-link' href='#'>&lsaquo;</a></li>
+                <li class='page-item' id='next'><a class='page-link' href='#'>&rsaquo;</a></li>
+                <li class='page-item' id='nextEnd'><a class='page-link' href='#'>&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 <div class="modal fade" id="addCounselStudentModal" tabindex="-1" role="dialog"

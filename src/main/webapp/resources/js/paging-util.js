@@ -10,6 +10,7 @@ var pagingUtil = {
             $("#nextEnd").addClass("disabled");
         }
 
+        $(".paging-number:first").addClass("active");
         pagingUtil.eventBinding(loadFunc);
 
         $("#prevFirst").click(function () {
@@ -93,6 +94,8 @@ var pagingUtil = {
     eventBinding: function (loadFunc) {
         $(".paging-number > a").click(function (event) {
             event.preventDefault();
+            $(".page-item").removeClass("active");
+            $(this).parent().addClass("active");
             loadFunc(parseInt($(this).text()));
         })
     }

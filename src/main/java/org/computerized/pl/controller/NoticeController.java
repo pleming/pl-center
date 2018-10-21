@@ -2,11 +2,12 @@ package org.computerized.pl.controller;
 
 import org.computerized.pl.code.CodeDefinition;
 import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.general.SearchKeyVO;
 import org.computerized.pl.model.general.SessionVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
-import org.computerized.pl.model.paging.PagingVO;
+import org.computerized.pl.model.paging.PagingInfoVO;
 import org.computerized.pl.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,8 +79,8 @@ public class NoticeController {
 
     @RequestMapping(value = "loadNoticeList", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadNoticeList(@RequestBody PagingVO pagingVO) {
-        List<NoticeListVO> noticeListVOList = noticeService.loadNoticeList(pagingVO);
+    public ResponseVO loadNoticeList(@RequestBody PagingInfoVO pagingInfoVO) {
+        List<NoticeListVO> noticeListVOList = noticeService.loadNoticeList(pagingInfoVO.getPagingInfo());
         Integer totalRowCount = noticeService.getTotalRowCount();
 
         Map<String, Object> res = new HashMap<String, Object>();
@@ -147,10 +148,15 @@ public class NoticeController {
 
     @RequestMapping(value = "search", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO searchNotice(@RequestBody Map<String, Object> param) {
-        String searchKey = (String) param.get("searchKey");
-        List<NoticeListVO> noticeListVOList = noticeService.searchNotice(searchKey);
-        return new ResponseVO(true, 1, noticeListVOList);
+    public ResponseVO searchNotice(@RequestBody SearchKeyVO searchKeyVO) {
+        List<NoticeListVO> noticeListVOList = noticeService.searchNotice(searchKeyVO.getSearchKey(), searchKeyVO.getPagingInfo());
+        Integer totalRowCount = noticeService.getTotalRowCountForSearch(searchKeyVO.getSearchKey());
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("noticeList", noticeListVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     private void setSidebarPath(HttpSession httpSession, ModelAndView mav, String viewName) {

@@ -76,9 +76,21 @@ public class SuggestionDAO {
         sqlSession.update("suggestion.increaseViews", param);
     }
 
-    public List<SuggestionListVO> searchSuggestion(String searchKey) {
+    public List<SuggestionListVO> searchSuggestion(String searchKey, PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+        param.put("searchKey", "%" + searchKey + "%");
+
+        return sqlSession.selectList("suggestion.loadSuggestionList", param);
+    }
+
+    public Integer getTotalRowCountForSearch(String searchKey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchKey", "%" + searchKey + "%");
-        return sqlSession.selectList("suggestion.loadSuggestionList", param);
+
+        List<Integer> list = sqlSession.selectList("suggestion.getTotalRowCountForSearch", param);
+        return list.get(0);
     }
 }

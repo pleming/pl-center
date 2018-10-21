@@ -85,6 +85,42 @@
             )
         </if>
         ORDER BY counsel.counsel_datetime DESC
+        LIMIT #{startIdx}, #{rowBound}
+    </select>
+
+    <select id="getTotalRowCountForSearch" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM pl_center.counsel AS counsel
+        INNER JOIN pl_center.class AS C
+        ON counsel.class_id = C.id
+        INNER JOIN pl_center.users AS U
+        ON counsel.user_code = U.user_code
+        INNER JOIN pl_center.college AS col
+        ON U.col_id = col.id
+        INNER JOIN pl_center.dept AS dept
+        ON U.dept_id = dept.id
+        INNER JOIN pl_center.users AS U2
+        ON U2.user_code = counsel.counselor_user_code
+        WHERE counsel.id IS NOT NULL
+        <if test="year != -1">
+            AND C.year = ${year}
+        </if>
+        <if test="semester != -1">
+            AND C.semester = ${semester}
+        </if>
+        <if test="classNo != -1">
+            AND C.class_no = ${classNo}
+        </if>
+        <if test="searchKey != ''">
+            AND (
+                    U.user_id LIKE #{searchKey}
+                    OR col.college LIKE #{searchKey}
+                    OR dept.dept LIKE #{searchKey}
+                    OR U.student_code LIKE #{searchKey}
+                    OR U.name LIKE #{searchKey}
+            )
+        </if>
     </select>
 
     <insert id="addCounsel">

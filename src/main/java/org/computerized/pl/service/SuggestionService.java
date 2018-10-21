@@ -58,8 +58,12 @@ public class SuggestionService {
         suggestionDAO.increaseViews(suggestionId);
     }
 
-    public List<SuggestionListVO> searchSuggestion(String searchKey) {
-        return suggestionDAO.searchSuggestion(searchKey);
+    public List<SuggestionListVO> searchSuggestion(String searchKey, PagingVO pagingVO) {
+        return suggestionDAO.searchSuggestion(searchKey, pagingVO);
+    }
+
+    public Integer getTotalRowCountForSearch(String searchKey) {
+        return suggestionDAO.getTotalRowCountForSearch(searchKey);
     }
 
     private void deleteImageFiles(HttpSession httpSession, SuggestionPostVO suggestionPostVO) {

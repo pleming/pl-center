@@ -35,19 +35,19 @@ var $ajax = {
     pagingRequest: function (options, callback) {
         /**
          * Required Options : url, method, data
-         * Required Data : nowPage,
-         * Selection Data : rowPerPage, pagingCount
+         * Required Data : pagingInfo(nowPage),
+         * Selection Data : pagingInfo(rowPerPage, pagingCount)
          */
 
         var parsedData = JSON.parse(options.data);
         var pagingCount = 10;
 
-        if (!parsedData.hasOwnProperty("rowPerPage"))
-            parsedData.rowPerPage = 10;
+        if (!parsedData.pagingInfo.hasOwnProperty("rowPerPage"))
+            parsedData.pagingInfo.rowPerPage = 10;
 
-        if (parsedData.hasOwnProperty("pagingCount")) {
-            pagingCount = parsedData.pagingCount;
-            delete parsedData.pagingCount;
+        if (parsedData.pagingInfo.hasOwnProperty("pagingCount")) {
+            pagingCount = parsedData.pagingInfo.pagingCount;
+            delete parsedData.pagingInfo.pagingCount;
         }
 
         options.data = JSON.stringify(parsedData);
@@ -58,11 +58,11 @@ var $ajax = {
 
                 var __data = data;
                 var contents = data.contents;
-                var startPage = parseInt((options.data.nowPage / pagingCount)) * pagingCount + 1;
+                var startPage = parseInt((options.data.pagingInfo.nowPage / pagingCount)) * pagingCount + 1;
 
                 __data.pagingInfo = {
-                    nowPage: options.data.nowPage,
-                    rowPerPage: options.data.rowPerPage,
+                    nowPage: options.data.pagingInfo.nowPage,
+                    rowPerPage: options.data.pagingInfo.rowPerPage,
                     pagingCount: pagingCount,
                     totalRowCount: contents.totalRowCount,
                     totalPage: contents.totalRowCount % pagingCount ? parseInt(contents.totalRowCount / pagingCount) + 1 : parseInt(contents.totalRowCount / pagingCount),

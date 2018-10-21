@@ -33,6 +33,10 @@ public class WorkingDiaryService {
         return workingDiaryDAO.searchWorkingDiary(workingDiarySearchVO);
     }
 
+    public Integer getTotalRowCountForSearch(WorkingDiarySearchVO workingDiarySearchVO) {
+        return workingDiaryDAO.getTotalRowCountForSearch(workingDiarySearchVO);
+    }
+
     public void addWorkingDiary(WorkingDiaryAddListVO workingDiaryAddListVO) {
         workingDiaryDAO.addWorkingDiary(workingDiaryAddListVO);
     }

@@ -9,6 +9,7 @@ import org.computerized.pl.model.counsel.CounselAddForAdminListVO;
 import org.computerized.pl.model.general.AuthVO;
 import org.computerized.pl.model.general.IdListVO;
 import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.paging.PagingInfoVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryAddListVO;
 import org.computerized.pl.model.workingDiary.WorkingDiaryForAdminVO;
@@ -65,8 +66,8 @@ public class AdminController {
 
     @RequestMapping(value = "loadWorkingDiary", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadWorkingDiary(@RequestBody PagingVO pagingVO) {
-        List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.loadWorkingDiaryForAdmin(pagingVO);
+    public ResponseVO loadWorkingDiary(@RequestBody PagingInfoVO pagingInfoVO) {
+        List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.loadWorkingDiaryForAdmin(pagingInfoVO.getPagingInfo());
         Integer totalRowCount = workingDiaryService.getTotalRowCount();
 
         Map<String, Object> res = new HashMap<String, Object>();
@@ -80,7 +81,13 @@ public class AdminController {
     @ResponseBody
     public ResponseVO searchWorkingDiary(@RequestBody WorkingDiarySearchVO workingDiarySearchVO) {
         List<WorkingDiaryForAdminVO> workingDiaryForAdminVOList = workingDiaryService.searchWorkingDiary(workingDiarySearchVO);
-        return new ResponseVO(true, 1, workingDiaryForAdminVOList);
+        Integer totalRowCount = workingDiaryService.getTotalRowCountForSearch(workingDiarySearchVO);
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("workingDiaryList", workingDiaryForAdminVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     @RequestMapping(value = "loadWorkerForWorkingDiary", method = {RequestMethod.POST})

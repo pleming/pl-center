@@ -7,6 +7,7 @@ import org.computerized.pl.model.counsel.CounselVO;
 import org.computerized.pl.model.general.IdListVO;
 import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.paging.PagingInfoVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.service.CounselService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class CounselController {
 
     @RequestMapping(value = "loadCounsel", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadCounsel(@RequestBody PagingVO pagingVO) {
-        List<CounselVO> counselVOList = counselService.loadCounsel(pagingVO);
+    public ResponseVO loadCounsel(@RequestBody PagingInfoVO pagingInfoVO) {
+        List<CounselVO> counselVOList = counselService.loadCounsel(pagingInfoVO.getPagingInfo());
         Integer totalRowCount = counselService.getTotalRowCount();
 
         Map<String, Object> res = new HashMap<String, Object>();
@@ -43,9 +44,14 @@ public class CounselController {
     @RequestMapping(value = "loadCounselByCondition", method = {RequestMethod.POST})
     @ResponseBody
     public ResponseVO loadCounselByCondition(@RequestBody CounselSearchVO counselSearchVO) {
-        List<CounselVO> counselVOList = null;
-        counselVOList = counselService.loadCounselByCondition(counselSearchVO);
-        return new ResponseVO(true, 1, counselVOList);
+        List<CounselVO> counselVOList = counselService.loadCounselByCondition(counselSearchVO);
+        Integer totalRowCount = counselService.getTotalRowCountForSearch(counselSearchVO);
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("counselList", counselVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     @RequestMapping(value = "addCounsel", method = {RequestMethod.POST})

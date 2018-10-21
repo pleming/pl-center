@@ -41,12 +41,26 @@ public class WorkingDiaryDAO {
 
     public List<WorkingDiaryForAdminVO> searchWorkingDiary(WorkingDiarySearchVO workingDiarySearchVO) {
         Map<String, Object> param = new HashMap<String, Object>();
+        PagingVO pagingVO = workingDiarySearchVO.getPagingInfo();
+
+        param.put("startDate", workingDiarySearchVO.getWorkingDiarySearchStartDate());
+        param.put("endDate", workingDiarySearchVO.getWorkingDiarySearchEndDate());
+        param.put("searchKey", "%" + workingDiarySearchVO.getSearchKey() + "%");
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("workingDiary.searchWorkingDiary", param);
+    }
+
+    public Integer getTotalRowCountForSearch(WorkingDiarySearchVO workingDiarySearchVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
 
         param.put("startDate", workingDiarySearchVO.getWorkingDiarySearchStartDate());
         param.put("endDate", workingDiarySearchVO.getWorkingDiarySearchEndDate());
         param.put("searchKey", "%" + workingDiarySearchVO.getSearchKey() + "%");
 
-        return sqlSession.selectList("workingDiary.searchWorkingDiary", param);
+        List<Integer> list = sqlSession.selectList("workingDiary.getTotalRowCountForSearch", param);
+        return list.get(0);
     }
 
     public void addWorkingDiary(WorkingDiaryAddListVO workingDiaryAddListVO) {

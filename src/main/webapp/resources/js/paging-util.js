@@ -1,5 +1,12 @@
 var pagingUtil = {
     initPaging: function (selector, pagingInfo, loadFunc) {
+        $("#prevFirst").addClass("disabled");
+        $("#prev").addClass("disabled");
+        $("#next").removeClass("disabled");
+        $("#nextEnd").removeClass("disabled");
+
+        $(".paging-number").remove();
+
         for (var i = pagingInfo.endPage; i >= pagingInfo.startPage; i--)
             $("#prev").after("<li class='page-item paging-number'><a class='page-link' href='#'>" + i + "</a></li>");
 
@@ -11,6 +18,7 @@ var pagingUtil = {
         }
 
         $(".paging-number:first").addClass("active");
+
         pagingUtil.eventBinding(loadFunc);
 
         $("#prevFirst").click(function () {

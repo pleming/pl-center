@@ -58,10 +58,13 @@ public class NoticeService {
         noticeDAO.increaseViews(noticeId);
     }
 
-    public List<NoticeListVO> searchNotice(String searchKey) {
-        return noticeDAO.searchNotice(searchKey);
+    public List<NoticeListVO> searchNotice(String searchKey, PagingVO pagingVO) {
+        return noticeDAO.searchNotice(searchKey, pagingVO);
     }
 
+    public Integer getTotalRowCountForSearch(String searchKey) {
+        return noticeDAO.getTotalRowCountForSearch(searchKey);
+    }
 
     private void deleteImageFiles(HttpSession httpSession, NoticePostVO noticePostVO) {
         String directoryPath = "/resources/uploads/notice/" + noticePostVO.getNoticeId();

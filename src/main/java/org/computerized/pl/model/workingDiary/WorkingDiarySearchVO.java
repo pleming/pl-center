@@ -1,9 +1,12 @@
 package org.computerized.pl.model.workingDiary;
 
+import org.computerized.pl.model.paging.PagingVO;
+
 public class WorkingDiarySearchVO {
     private String workingDiarySearchStartDate;
     private String workingDiarySearchEndDate;
     private String searchKey;
+    private PagingVO pagingInfo;
 
     public String getWorkingDiarySearchStartDate() {
         return workingDiarySearchStartDate;
@@ -27,5 +30,13 @@ public class WorkingDiarySearchVO {
 
     public void setSearchKey(String searchKey) {
         this.searchKey = searchKey;
+    }
+
+    public PagingVO getPagingInfo() {
+        return pagingInfo;
+    }
+
+    public void setPagingInfo(PagingVO pagingInfo) {
+        this.pagingInfo = pagingInfo;
     }
 }

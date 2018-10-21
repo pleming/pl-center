@@ -29,6 +29,10 @@ public class CounselService {
         return counselDAO.loadCounselByCondition(counselSearchVO);
     }
 
+    public Integer getTotalRowCountForSearch(CounselSearchVO counselSearchVO) {
+        return counselDAO.getTotalRowCountForSearch(counselSearchVO);
+    }
+
     public void addCounsel(CounselAddListVO counselAddListVO) {
         counselDAO.addCounsel(counselAddListVO);
     }

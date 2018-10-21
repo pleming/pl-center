@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var data = {
-        nowPage: 1
+        pagingInfo: {
+            nowPage: 1
+        }
     };
 
     $ajax.pagingRequest({
@@ -95,7 +97,9 @@ $(document).ready(function () {
 
 var loadWorkingDiary = function(nowPage) {
     var data = {
-        nowPage: nowPage
+        pagingInfo: {
+            nowPage: nowPage
+        }
     };
 
     $ajax.pagingRequest({
@@ -133,7 +137,10 @@ var searchWorkingDiary = function () {
     var data = {
         workingDiarySearchStartDate: new Date($("input#working-diary-start-datepicker").val()).format("yyyy-MM-dd") + " 00:00:00",
         workingDiarySearchEndDate: new Date($("input#working-diary-end-datepicker").val()).format("yyyy-MM-dd") + " 23:59:59",
-        searchKey: $("input#working-diary-search").val()
+        searchKey: $("input#working-diary-search").val(),
+        pagingInfo: {
+            nowPage: 1
+        }
     };
 
     if (data.workingDiarySearchStartDate == "  00:00:00")
@@ -142,7 +149,7 @@ var searchWorkingDiary = function () {
     if (data.workingDiarySearchEndDate == "  23:59:59")
         data.workingDiarySearchEndDate = null;
 
-    $ajax.request({
+    $ajax.pagingRequest({
         url: "/admin/searchWorkingDiary",
         method: "POST",
         data: JSON.stringify(data)
@@ -152,7 +159,72 @@ var searchWorkingDiary = function () {
             return;
         }
 
-        var workingDiaryList = res.contents;
+        var workingDiaryList = res.contents.workingDiaryList;
+        var pagingInfo = res.pagingInfo;
+
+        $("tbody#working-diary-row").html("");
+
+        if (workingDiaryList.length == 0) {
+            $("tbody#working-diary-row").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='working-diary-id'/></td>" +
+                "<td class='user-id'></td>" +
+                "<td class='college'></td>" +
+                "<td class='dept'></td>" +
+                "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='name'></td>" +
+                "<td class='working-datetime'></td>" +
+                "<td class='working-contents'></td>" +
+                "</tr>"
+            );
+        }
+
+        for (var i = 0; i < workingDiaryList.length; i++) {
+            $("tbody#working-diary-row").append(
+                "<tr>" +
+                "<td><input type='checkbox' name='working-diary-id' value='" + workingDiaryList[i].workingDiaryId + "'/></td>" +
+                "<td class='user-id'>" + workingDiaryList[i].userId + "</td>" +
+                "<td class='college'>" + workingDiaryList[i].college + "</td>" +
+                "<td class='dept'>" + workingDiaryList[i].dept + "</td>" +
+                "<td class='student-code'>" + workingDiaryList[i].studentCode + "</td>" +
+                "<td class='name'>" + workingDiaryList[i].name + "</td>" +
+                "<td class='working-datetime'>" + new Date(workingDiaryList[i].workingStartDatetime).format("yyyy-MM-dd HH:mm") + "~" + new Date(workingDiaryList[i].workingEndDatetime).format("HH:mm") + "</td>" +
+                "<td class='working-contents'>" + workingDiaryList[i].workingContents + "</td>" +
+                "</tr>"
+            );
+        }
+
+        pagingUtil.initPaging("ul.pagination", pagingInfo, searchWorkingDiaryForPaging);
+    });
+};
+
+var searchWorkingDiaryForPaging = function(nowPage) {
+    var data = {
+        workingDiarySearchStartDate: new Date($("input#working-diary-start-datepicker").val()).format("yyyy-MM-dd") + " 00:00:00",
+        workingDiarySearchEndDate: new Date($("input#working-diary-end-datepicker").val()).format("yyyy-MM-dd") + " 23:59:59",
+        searchKey: $("input#working-diary-search").val(),
+        pagingInfo: {
+            nowPage: nowPage
+        }
+    };
+
+    if (data.workingDiarySearchStartDate == "  00:00:00")
+        data.workingDiarySearchStartDate = null;
+
+    if (data.workingDiarySearchEndDate == "  23:59:59")
+        data.workingDiarySearchEndDate = null;
+
+    $ajax.pagingRequest({
+        url: "/admin/searchWorkingDiary",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err) {
+            alert("근무일지 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
+            return;
+        }
+
+        var workingDiaryList = res.contents.workingDiaryList;
 
         $("tbody#working-diary-row").html("");
 
@@ -169,7 +241,6 @@ var searchWorkingDiary = function () {
                 "<td class='working-contents'></td>" +
                 "</tr>"
             );
-            return;
         }
 
         for (var i = 0; i < workingDiaryList.length; i++) {
@@ -190,16 +261,24 @@ var searchWorkingDiary = function () {
 };
 
 var listAllWorkingDiary = function () {
-    $ajax.request({
+    var data = {
+        pagingInfo: {
+            nowPage: 1
+        }
+    };
+
+    $ajax.pagingRequest({
         url: "/admin/loadWorkingDiary",
-        method: "GET"
+        method: "POST",
+        data: JSON.stringify(data)
     }, function (err, res) {
         if (err) {
             alert("근무일지 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
         }
 
-        var workingDiaryList = res.contents;
+        var workingDiaryList = res.contents.workingDiaryList;
+        var pagingInfo = res.pagingInfo;
 
         $("tbody#working-diary-row").html("");
         $("input#working-diary-start-datepicker").val("");
@@ -220,6 +299,8 @@ var listAllWorkingDiary = function () {
                 "</tr>"
             );
         }
+
+        pagingUtil.initPaging("ul.pagination", pagingInfo, loadWorkingDiary);
     });
 };
 

@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var data = {
-        nowPage: 1
+        pagingInfo: {
+            nowPage: 1
+        }
     };
 
     $ajax.pagingRequest({
@@ -87,7 +89,9 @@ $(document).ready(function () {
 
 var loadCounsel = function (nowPage) {
     var data = {
-        nowPage: nowPage
+        pagingInfo: {
+            nowPage: nowPage
+        }
     };
 
     $ajax.pagingRequest({
@@ -127,10 +131,13 @@ var searchCounsel = function () {
         year: Number($("select#year").val()),
         semester: Number($("select#semester").val()),
         classNo: Number($("select#class-no").val()),
-        searchKey: $("input#counsel-search").val()
+        searchKey: $("input#counsel-search").val(),
+        pagingInfo: {
+            nowPage: 1
+        }
     };
 
-    $ajax.request({
+    $ajax.pagingRequest({
         url: "/counsel/loadCounselByCondition",
         method: "POST",
         data: JSON.stringify(data)
@@ -140,7 +147,8 @@ var searchCounsel = function () {
             return;
         }
 
-        var counselList = res.contents;
+        var counselList = res.contents.counselList;
+        var pagingInfo = res.pagingInfo;
 
         $("tbody#counsel-row").html("");
 
@@ -158,7 +166,67 @@ var searchCounsel = function () {
                 "<td class='counselor-name'></td>" +
                 "</tr>"
             );
+        }
+
+        for (var i = 0; i < counselList.length; i++) {
+            $("tbody#counsel-row").append(
+                "<tr>" +
+                "<td class='user-id'>" + counselList[i].userId + "</td>" +
+                "<td class='college'>" + counselList[i].college + "</td>" +
+                "<td class='dept'>" + counselList[i].dept + "</td>" +
+                "<td class='student-code'>" + counselList[i].studentCode + "</td>" +
+                "<td class='class-div'>" + counselList[i].year + "-" + counselList[i].semester + "(0" + counselList[i].classNo + ")</td>" +
+                "<td class='name'>" + counselList[i].name + "</td>" +
+                "<td class='counsel-datetime'>" + new Date(counselList[i].counselDatetime).format("yyyy-MM-dd HH:mm:ss") + "</td>" +
+                "<td class='counsel-contents'>" + counselList[i].counselContents + "</td>" +
+                "<td class='counselor-name'>" + counselList[i].counselorName + "</td>" +
+                "</tr>"
+            );
+        }
+
+        pagingUtil.initPaging("ul.pagination", pagingInfo, searchCounselForPaging);
+    });
+};
+
+var searchCounselForPaging = function(nowPage) {
+    var data = {
+        year: Number($("select#year").val()),
+        semester: Number($("select#semester").val()),
+        classNo: Number($("select#class-no").val()),
+        searchKey: $("input#counsel-search").val(),
+        pagingInfo: {
+            nowPage: nowPage
+        }
+    };
+
+    $ajax.pagingRequest({
+        url: "/counsel/loadCounselByCondition",
+        method: "POST",
+        data: JSON.stringify(data)
+    }, function (err, res) {
+        if (err) {
+            alert("상담일지 목록 불러오기를 실패하였습니다. 관리자에게 문의해주세요.");
             return;
+        }
+
+        var counselList = res.contents.counselList;
+
+        $("tbody#counsel-row").html("");
+
+        if (counselList.length == 0) {
+            $("tbody#counsel-row").append(
+                "<tr>" +
+                "<td class='user-id'></td>" +
+                "<td class='college'></td>" +
+                "<td class='dept'></td>" +
+                "<td class='student-code'>검색 결과가 존재하지 않습니다.</td>" +
+                "<td class='class-div'></td>" +
+                "<td class='name'></td>" +
+                "<td class='counsel-datetime'></td>" +
+                "<td class='counsel-contents'></td>" +
+                "<td class='counselor-name'></td>" +
+                "</tr>"
+            );
         }
 
         for (var i = 0; i < counselList.length; i++) {
@@ -177,4 +245,9 @@ var searchCounsel = function () {
             );
         }
     });
+};
+
+var searchCounselEnterKey = function () {
+    if (event.keyCode == 13)
+        searchCounsel();
 };

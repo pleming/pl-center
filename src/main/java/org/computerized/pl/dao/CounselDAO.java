@@ -35,13 +35,28 @@ public class CounselDAO {
 
     public List<CounselVO> loadCounselByCondition(CounselSearchVO counselSearchVO) {
         Map<String, Object> param = new HashMap<String, Object>();
+        PagingVO pagingVO = counselSearchVO.getPagingInfo();
+
+        param.put("year", counselSearchVO.getYear());
+        param.put("semester", counselSearchVO.getSemester());
+        param.put("classNo", counselSearchVO.getClassNo());
+        param.put("searchKey", "%" + counselSearchVO.getSearchKey() + "%");
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("counsel.loadCounselByCondition", param);
+    }
+
+    public Integer getTotalRowCountForSearch(CounselSearchVO counselSearchVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
 
         param.put("year", counselSearchVO.getYear());
         param.put("semester", counselSearchVO.getSemester());
         param.put("classNo", counselSearchVO.getClassNo());
         param.put("searchKey", "%" + counselSearchVO.getSearchKey() + "%");
 
-        return sqlSession.selectList("counsel.loadCounselByCondition", param);
+        List<Integer> list = sqlSession.selectList("counsel.getTotalRowCountForSearch", param);
+        return list.get(0);
     }
 
     public void addCounsel(CounselAddListVO counselAddListVO) {

@@ -72,6 +72,28 @@
                 OR U.student_code LIKE #{searchKey}
                 OR U.name LIKE #{searchKey})
         ORDER BY WD.working_start_datetime DESC
+        LIMIT ${startIdx}, ${rowBound}
+    </select>
+
+    <select id="getTotalRowCountForSearch" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM pl_center.working_diary AS WD
+        INNER JOIN users AS U
+        ON U.user_code = WD.user_code
+        INNER JOIN college AS C
+        ON U.col_id = C.id
+        INNER JOIN dept AS D
+        ON U.dept_id = D.id
+        WHERE WD.id IS NOT NULL
+            <if test="startDate != null and endDate != null">
+                AND (working_start_datetime BETWEEN #{startDate} AND #{endDate})
+            </if>
+            AND (U.user_id LIKE #{searchKey}
+                OR college LIKE #{searchKey}
+                OR dept LIKE #{searchKey}
+                OR U.student_code LIKE #{searchKey}
+                OR U.name LIKE #{searchKey})
     </select>
 
     <insert id="addWorkingDiary">

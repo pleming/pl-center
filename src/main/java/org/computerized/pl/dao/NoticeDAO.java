@@ -76,9 +76,21 @@ public class NoticeDAO {
         sqlSession.update("notice.increaseViews", param);
     }
 
-    public List<NoticeListVO> searchNotice(String searchKey) {
+    public List<NoticeListVO> searchNotice(String searchKey, PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+        param.put("searchKey", "%" + searchKey + "%");
+
+        return sqlSession.selectList("notice.loadNoticeList", param);
+    }
+
+    public Integer getTotalRowCountForSearch(String searchKey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchKey", "%" + searchKey + "%");
-        return sqlSession.selectList("notice.loadNoticeList", param);
+
+        List<Integer> list = sqlSession.selectList("notice.getTotalRowCountForSearch", param);
+        return list.get(0);
     }
 }

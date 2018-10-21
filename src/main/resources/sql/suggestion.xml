@@ -14,9 +14,9 @@
         ON S.writer = U.user_code
         <if test="searchKey != null">
             WHERE
-            title LIKE #{searchKey}
-            OR contents LIKE #{searchKey}
-            OR U.name LIKE #{searchKey}
+                title LIKE #{searchKey}
+                OR contents LIKE #{searchKey}
+                OR U.name LIKE #{searchKey}
         </if>
         ORDER BY id DESC
         LIMIT ${startIdx}, ${rowBound}
@@ -26,6 +26,20 @@
         SELECT
             count(*)
         FROM suggestion
+    </select>
+
+    <select id="getTotalRowCountForSearch" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM suggestion AS S
+        INNER JOIN users AS U
+        ON S.writer = U.user_code
+        <if test="searchKey != null">
+            WHERE
+                title LIKE #{searchKey}
+                OR contents LIKE #{searchKey}
+                OR U.name LIKE #{searchKey}
+        </if>
     </select>
 
     <select id="loadSuggestionById" resultType="org.computerized.pl.model.suggestion.SuggestionVO">

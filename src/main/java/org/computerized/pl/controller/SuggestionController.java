@@ -2,7 +2,9 @@ package org.computerized.pl.controller;
 
 import org.computerized.pl.code.CodeDefinition;
 import org.computerized.pl.model.general.ResponseVO;
+import org.computerized.pl.model.general.SearchKeyVO;
 import org.computerized.pl.model.general.SessionVO;
+import org.computerized.pl.model.paging.PagingInfoVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
@@ -73,8 +75,8 @@ public class SuggestionController {
 
     @RequestMapping(value = "loadSuggestionList", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO loadSuggestionList(@RequestBody PagingVO pagingVO) {
-        List<SuggestionListVO> suggestionListVOList = suggestionService.loadSuggestionList(pagingVO);
+    public ResponseVO loadSuggestionList(@RequestBody PagingInfoVO pagingInfoVO) {
+        List<SuggestionListVO> suggestionListVOList = suggestionService.loadSuggestionList(pagingInfoVO.getPagingInfo());
         Integer totalRowCount = suggestionService.getTotalRowCount();
 
         Map<String, Object> res = new HashMap<String, Object>();
@@ -138,10 +140,15 @@ public class SuggestionController {
 
     @RequestMapping(value = "search", method = {RequestMethod.POST})
     @ResponseBody
-    public ResponseVO searchSuggestion(@RequestBody Map<String, Object> param) {
-        String searchKey = (String) param.get("searchKey");
-        List<SuggestionListVO> suggestionListVOList = suggestionService.searchSuggestion(searchKey);
-        return new ResponseVO(true, 1, suggestionListVOList);
+    public ResponseVO searchSuggestion(@RequestBody SearchKeyVO searchKeyVO) {
+        List<SuggestionListVO> suggestionListVOList = suggestionService.searchSuggestion(searchKeyVO.getSearchKey(), searchKeyVO.getPagingInfo());
+        Integer totalRowCount = suggestionService.getTotalRowCountForSearch(searchKeyVO.getSearchKey());
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("suggestionList", suggestionListVOList);
+        res.put("totalRowCount", totalRowCount);
+
+        return new ResponseVO(true, 1, res);
     }
 
     private void setSidebarPath(HttpSession httpSession, ModelAndView mav, String viewName) {

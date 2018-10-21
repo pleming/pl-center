@@ -17,10 +17,10 @@
         <button class="btn btn-counsel-search" onclick="searchCounsel()">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
-        <input type="text" id="counsel-search" class="form-control counsel-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" />
-        <select class="form-control counsel-filter-elem" id="class-no"></select>
-        <select class="form-control counsel-filter-elem" id="semester"></select>
-        <select class="form-control counsel-filter-elem" id="year"></select>
+        <input type="text" id="counsel-search" class="form-control counsel-filter-elem" placeholder="아이디, 학과, 학번, 이름 검색" onkeypress="searchCounselEnterKey()"/>
+        <select class="form-control counsel-filter-elem" id="class-no" onkeypress="searchCounselEnterKey()"></select>
+        <select class="form-control counsel-filter-elem" id="semester" onkeypress="searchCounselEnterKey()"></select>
+        <select class="form-control counsel-filter-elem" id="year" onkeypress="searchCounselEnterKey()"></select>
     </div>
     <div>
         <table class="table table-striped table-hover">

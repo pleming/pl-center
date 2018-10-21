@@ -28,6 +28,20 @@
         FROM notice
     </select>
 
+    <select id="getTotalRowCountForSearch" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM notice AS N
+        INNER JOIN users AS U
+        ON N.writer = U.user_code
+        <if test="searchKey != null">
+            WHERE
+                title LIKE #{searchKey}
+                OR contents LIKE #{searchKey}
+                OR U.name LIKE #{searchKey}
+        </if>
+    </select>
+
     <select id="loadNoticeById" resultType="org.computerized.pl.model.notice.NoticeVO">
         SELECT
             id,
@@ -69,5 +83,4 @@
         SET views = views + 1
         WHERE id = ${noticeId}
     </update>
-
 </mapper>

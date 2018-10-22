@@ -7,6 +7,7 @@ import org.computerized.pl.dto.UserDTO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
 import org.computerized.pl.model.general.AuthVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.users.PasswdChkVO;
 import org.computerized.pl.model.users.UserVO;
 import org.computerized.pl.model.users.WorkerVO;
@@ -72,12 +73,20 @@ public class UserService {
         userDAO.updateUserInfo(userCode, userVO);
     }
 
-    public List<StudentVO> loadStudent() {
-        return userDAO.loadStudent();
+    public List<StudentVO> loadStudent(PagingVO pagingVO) {
+        return userDAO.loadStudent(pagingVO);
     }
 
-    public List<StudentVO> searchStudent(String searchKey) {
-        return userDAO.searchStudent(searchKey);
+    public Integer getTotalRowCount() {
+        return userDAO.getTotalRowCount();
+    }
+
+    public List<StudentVO> searchStudent(String searchKey, PagingVO pagingVO) {
+        return userDAO.searchStudent(searchKey, pagingVO);
+    }
+
+    public Integer getTotalRowCountForSearch(String searchKey) {
+        return userDAO.getTotalRowCountForSearch(searchKey);
     }
 
     public List<StdSearchVO> loadStudentByCondition(Map<String, Object> param) {

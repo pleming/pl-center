@@ -6,6 +6,7 @@ import org.computerized.pl.dto.UserAuthDTO;
 import org.computerized.pl.dto.UserDTO;
 import org.computerized.pl.model.classStd.StdSearchVO;
 import org.computerized.pl.model.classStd.StudentVO;
+import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.users.PasswdChkVO;
 import org.computerized.pl.model.users.UserVO;
 import org.computerized.pl.model.users.WorkerVO;
@@ -86,14 +87,36 @@ public class UserDAO {
 
     }
 
-    public List<StudentVO> loadStudent() {
-        return sqlSession.selectList("users.loadStudent");
+    public List<StudentVO> loadStudent(PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+
+        return sqlSession.selectList("users.loadStudent", param);
     }
 
-    public List<StudentVO> searchStudent(String searchKey) {
+    public Integer getTotalRowCount() {
+        List<Integer> list = sqlSession.selectList("users.getTotalRowCount");
+        return list.get(0);
+    }
+
+    public List<StudentVO> searchStudent(String searchKey, PagingVO pagingVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("startIdx", (pagingVO.getNowPage() - 1) * pagingVO.getRowPerPage());
+        param.put("rowBound", pagingVO.getRowPerPage());
+        param.put("searchKey", "%" + searchKey + "%");
+
+        return sqlSession.selectList("users.loadStudent", param);
+    }
+
+    public Integer getTotalRowCountForSearch(String searchKey) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("searchKey", "%" + searchKey + "%");
-        return sqlSession.selectList("users.loadStudent", param);
+
+        List<Integer> list = sqlSession.selectList("users.getTotalRowCountForSearch", param);
+        return list.get(0);
     }
 
     public List<StdSearchVO> loadStudentByCondition(Map<String, Object> param) {

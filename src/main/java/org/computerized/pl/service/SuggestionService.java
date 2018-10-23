@@ -2,6 +2,7 @@ package org.computerized.pl.service;
 
 import org.apache.commons.codec.binary.Base64;
 import org.computerized.pl.dao.SuggestionDAO;
+import org.computerized.pl.model.comment.CommentVO;
 import org.computerized.pl.model.image.ImageVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
@@ -64,6 +65,26 @@ public class SuggestionService {
 
     public Integer getTotalRowCountForSearch(String searchKey) {
         return suggestionDAO.getTotalRowCountForSearch(searchKey);
+    }
+
+    public List<CommentVO> loadComment(Integer suggestionId) {
+        return suggestionDAO.loadComment(suggestionId);
+    }
+
+    public CommentVO loadCommentById(Integer commentId) {
+        return suggestionDAO.loadCommentById(commentId);
+    }
+
+    public void addComment(CommentVO commentVO) {
+        suggestionDAO.addComment(commentVO);
+    }
+
+    public void modComment(CommentVO commentVO) {
+        suggestionDAO.modComment(commentVO);
+    }
+
+    public void delComment(Integer commentId) {
+        suggestionDAO.delComment(commentId);
     }
 
     private void deleteImageFiles(HttpSession httpSession, SuggestionPostVO suggestionPostVO) {

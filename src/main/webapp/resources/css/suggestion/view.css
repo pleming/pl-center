@@ -25,6 +25,66 @@
     margin-top: 28px;
 }
 
+.div-comment-box {
+    margin: 4px 0 10px 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.div-comment-writer {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.div-comment-control {
+    display: inline-block;
+    float: right;
+}
+
+.div-comment-control > span:first-child:hover, .div-comment-control > span:last-child:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.comment-contents {
+    font-size: 14px;
+    padding-left: 18px;
+}
+
+.comment-contents > p {
+    margin-bottom: inherit;
+}
+
+.div-comment-writebox {
+    margin-top: 16px;
+}
+
+textarea#comment {
+    display: inline-block;
+    width: 88%;
+    height: 64px;
+}
+
+.btn-comment-regist {
+    display: inline-block;
+    float: right;
+    width: 10%;
+    height: 64px;
+}
+
+#comment-mod {
+    display: inline-block;
+    width: 88%;
+    height: 64px;
+}
+
+.btn-comment-mod {
+    display: inline-block;
+    float: right;
+    width: 10%;
+    height: 64px;
+}
+
 .div-post-view-menu {
     float: right;
     margin-top: 16px;

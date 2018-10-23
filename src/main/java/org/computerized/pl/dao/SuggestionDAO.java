@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.comment.CommentVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.computerized.pl.model.suggestion.SuggestionListVO;
 import org.computerized.pl.model.suggestion.SuggestionPostVO;
@@ -92,5 +93,48 @@ public class SuggestionDAO {
 
         List<Integer> list = sqlSession.selectList("suggestion.getTotalRowCountForSearch", param);
         return list.get(0);
+    }
+
+    public List<CommentVO> loadComment(Integer suggestionId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("suggestionId", suggestionId);
+        return sqlSession.selectList("suggestionComment.loadComment", param);
+    }
+
+    public CommentVO loadCommentById(Integer commentId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("commentId", commentId);
+
+        List<CommentVO> commentVOList = sqlSession.selectList("suggestionComment.loadCommentById", param);
+
+        if(commentVOList.size() == 0)
+            return null;
+
+        return commentVOList.get(0);
+    }
+
+    public void addComment(CommentVO commentVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("suggestionId", commentVO.getPostId());
+        param.put("contents", commentVO.getContents());
+        param.put("writer", commentVO.getWriterId());
+
+        sqlSession.insert("suggestionComment.addComment", param);
+    }
+
+    public void modComment(CommentVO commentVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("commentId", commentVO.getId());
+        param.put("contents", commentVO.getContents());
+
+        sqlSession.update("suggestionComment.modComment", param);
+    }
+
+    public void delComment(Integer commentId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("commentId", commentId);
+        sqlSession.delete("suggestionComment.delComment", param);
     }
 }

@@ -91,6 +91,8 @@ var loadStudent = function (nowPage) {
 
         var userList = res.contents.userList;
 
+        $("tbody#student-row").html("");
+
         for (var i = 0; i < userList.length; i++) {
             $("tbody#student-row").append(
                 "<tr>" +

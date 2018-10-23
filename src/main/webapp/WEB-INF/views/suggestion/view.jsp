@@ -7,7 +7,7 @@
     <%@ include file="/resources/jsp/header.jsp" %>
     <link rel="stylesheet" href="/resources/css/suggestion/view.css">
     <script src="/resources/js/suggestion/view.js"></script>
-    <title>PL Center - 공지사항</title>
+    <title>PL Center - 건의사항</title>
 </head>
 
 <%@ include file="/resources/jsp/navbar.jsp" %>
@@ -33,6 +33,12 @@
                     <p id="post-writer"><i class="fa fa-user-circle-o" aria-hidden="true"></i><b></b></p>
                     <div class="dropdown-divider"></div>
                     <div id="post-contents"></div>
+                </div>
+                <div class="card-footer">
+                    <div class="div-comment-writebox">
+                        <textarea class="form-control" id="comment"></textarea>
+                        <button class="form-control btn-comment-regist" onclick="addComment()">등록</button>
+                    </div>
                 </div>
             </div>
         </div>

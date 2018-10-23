@@ -1,6 +1,7 @@
 package org.computerized.pl.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.computerized.pl.model.comment.CommentVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
@@ -92,5 +93,48 @@ public class NoticeDAO {
 
         List<Integer> list = sqlSession.selectList("notice.getTotalRowCountForSearch", param);
         return list.get(0);
+    }
+
+    public List<CommentVO> loadComment(Integer noticeId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("noticeId", noticeId);
+        return sqlSession.selectList("noticeComment.loadComment", param);
+    }
+
+    public CommentVO loadCommentById(Integer commentId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("commentId", commentId);
+
+        List<CommentVO> commentVOList = sqlSession.selectList("noticeComment.loadCommentById", param);
+
+        if(commentVOList.size() == 0)
+            return null;
+
+        return commentVOList.get(0);
+    }
+
+    public void addComment(CommentVO commentVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("noticeId", commentVO.getPostId());
+        param.put("contents", commentVO.getContents());
+        param.put("writer", commentVO.getWriterId());
+
+        sqlSession.insert("noticeComment.addComment", param);
+    }
+
+    public void modComment(CommentVO commentVO) {
+        Map<String, Object> param = new HashMap<String, Object>();
+
+        param.put("commentId", commentVO.getId());
+        param.put("contents", commentVO.getContents());
+
+        sqlSession.update("noticeComment.modComment", param);
+    }
+
+    public void delComment(Integer commentId) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("commentId", commentId);
+        sqlSession.delete("noticeComment.delComment", param);
     }
 }

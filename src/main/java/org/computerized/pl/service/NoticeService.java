@@ -2,12 +2,14 @@ package org.computerized.pl.service;
 
 import org.apache.commons.codec.binary.Base64;
 import org.computerized.pl.dao.NoticeDAO;
+import org.computerized.pl.model.comment.CommentVO;
 import org.computerized.pl.model.image.ImageVO;
 import org.computerized.pl.model.notice.NoticeListVO;
 import org.computerized.pl.model.notice.NoticePostVO;
 import org.computerized.pl.model.notice.NoticeVO;
 import org.computerized.pl.model.paging.PagingVO;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Comment;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -64,6 +66,26 @@ public class NoticeService {
 
     public Integer getTotalRowCountForSearch(String searchKey) {
         return noticeDAO.getTotalRowCountForSearch(searchKey);
+    }
+
+    public List<CommentVO> loadComment(Integer noticeId) {
+        return noticeDAO.loadComment(noticeId);
+    }
+
+    public CommentVO loadCommentById(Integer commentId) {
+        return noticeDAO.loadCommentById(commentId);
+    }
+
+    public void addComment(CommentVO commentVO) {
+        noticeDAO.addComment(commentVO);
+    }
+
+    public void modComment(CommentVO commentVO) {
+        noticeDAO.modComment(commentVO);
+    }
+
+    public void delComment(Integer commentId) {
+        noticeDAO.delComment(commentId);
     }
 
     private void deleteImageFiles(HttpSession httpSession, NoticePostVO noticePostVO) {

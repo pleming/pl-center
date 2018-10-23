@@ -27,6 +27,16 @@ CREATE TABLE `auth` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `auth`
+--
+
+LOCK TABLES `auth` WRITE;
+/*!40000 ALTER TABLE `auth` DISABLE KEYS */;
+INSERT INTO `auth` VALUES (1,3);
+/*!40000 ALTER TABLE `auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `class`
 --
 
@@ -42,7 +52,7 @@ CREATE TABLE `class` (
   KEY `year` (`year`),
   KEY `semester` (`semester`),
   KEY `class_no` (`class_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +134,7 @@ CREATE TABLE `counsel` (
   PRIMARY KEY (`id`),
   KEY `class_id` (`class_id`),
   KEY `user_code` (`user_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +176,26 @@ CREATE TABLE `notice` (
   `write_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `notice_comment`
+--
+
+DROP TABLE IF EXISTS `notice_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notice_comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `notice_id` int(10) unsigned NOT NULL,
+  `parent_comment_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `contents` text NOT NULL,
+  `writer` int(10) unsigned NOT NULL,
+  `write_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `notice_id` (`notice_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +213,25 @@ CREATE TABLE `suggestion` (
   `write_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `suggestion_comment`
+--
+
+DROP TABLE IF EXISTS `suggestion_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suggestion_comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `suggestion_id` int(10) unsigned NOT NULL,
+  `parent_comment_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `contents` text NOT NULL,
+  `writer` int(10) unsigned NOT NULL,
+  `write_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,8 +253,18 @@ CREATE TABLE `users` (
   `phone` varchar(16) NOT NULL DEFAULT '',
   PRIMARY KEY (`user_code`),
   KEY `student_code` (`student_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','$2a$10$GryXOoEWPtaCz5go98XdseZYvhi66vLrv2yBB64vQqQSMiER.0Z.G','2','17','-','관리자','admin@korea.ac.kr','010-0000-0000');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `working_diary`
@@ -224,7 +281,7 @@ CREATE TABLE `working_diary` (
   `working_contents` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_code` (`user_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

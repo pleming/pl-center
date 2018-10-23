@@ -34,6 +34,12 @@
                     <div class="dropdown-divider"></div>
                     <div id="post-contents"></div>
                 </div>
+                <div class="card-footer">
+                    <div class="div-comment-writebox">
+                        <textarea class="form-control" id="comment"></textarea>
+                        <button class="form-control btn-comment-regist" onclick="addComment()">등록</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="div-post-view-menu">

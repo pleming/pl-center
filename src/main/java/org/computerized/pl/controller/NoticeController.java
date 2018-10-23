@@ -1,6 +1,8 @@
 package org.computerized.pl.controller;
 
 import org.computerized.pl.code.CodeDefinition;
+import org.computerized.pl.model.comment.CommentVO;
+import org.computerized.pl.model.general.IdListVO;
 import org.computerized.pl.model.general.ResponseVO;
 import org.computerized.pl.model.general.SearchKeyVO;
 import org.computerized.pl.model.general.SessionVO;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -157,6 +160,67 @@ public class NoticeController {
         res.put("totalRowCount", totalRowCount);
 
         return new ResponseVO(true, 1, res);
+    }
+
+    @RequestMapping(value = "loadComment", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO loadComment(HttpSession httpSession, @RequestBody Map<String, Object> param) {
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+        Integer noticeId = (Integer) param.get("noticeId");
+        List<CommentVO> commentVOList = noticeService.loadComment(noticeId);
+
+        Map<String, Object> res = new HashMap<String, Object>();
+        res.put("commentList", commentVOList);
+        res.put("userCode", sessionVO.getUserCode());
+
+        return new ResponseVO(true, 1, res);
+    }
+
+    @RequestMapping(value = "addComment", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO addComment(HttpSession httpSession, @RequestBody CommentVO commentVO) {
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+
+        commentVO.setWriterId(sessionVO.getUserCode());
+        noticeService.addComment(commentVO);
+
+        return new ResponseVO(true, 1, "댓글 등록을 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "modComment", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO modComment(HttpSession httpSession, @RequestBody CommentVO commentVO) {
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+        CommentVO commentInfo = noticeService.loadCommentById(commentVO.getId());
+
+        if (commentInfo == null)
+            return new ResponseVO(true, 1, "수정할 댓글이 존재하지 않습니다.");
+
+        if (!commentInfo.getWriterId().equals(sessionVO.getUserCode()))
+            return new ResponseVO(true, 2, "댓글 수정 권한이 존재하지 않습니다.");
+
+        noticeService.modComment(commentVO);
+
+        return new ResponseVO(true, 3, "댓글 수정을 성공하였습니다.");
+    }
+
+    @RequestMapping(value = "delComment", method = {RequestMethod.POST})
+    @ResponseBody
+    public ResponseVO delComment(HttpSession httpSession, @RequestBody IdListVO idListVO) {
+        SessionVO sessionVO = (SessionVO) httpSession.getAttribute("sessionInfo");
+        Integer commentId = idListVO.getIdList().get(0);
+
+        CommentVO commentVO = noticeService.loadCommentById(commentId);
+
+        if (commentVO == null)
+            return new ResponseVO(true, 1, "삭제할 댓글이 존재하지 않습니다.");
+
+        if (!commentVO.getWriterId().equals(sessionVO.getUserCode()))
+            return new ResponseVO(true, 2, "댓글 삭제 권한이 존재하지 않습니다.");
+
+        noticeService.delComment(commentId);
+
+        return new ResponseVO(true, 3, "댓글 삭제를 성공하였습니다.");
     }
 
     private void setSidebarPath(HttpSession httpSession, ModelAndView mav, String viewName) {

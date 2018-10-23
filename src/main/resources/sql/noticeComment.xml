@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="noticeComment">
+    <select id="loadComment" resultType="org.computerized.pl.model.comment.CommentVO">
+        SELECT
+            id,
+            notice_id AS noticeId,
+            parent_comment_id AS parentCommentId,
+            contents,
+            writer AS writerId,
+            U.name AS writer,
+            write_datetime AS writeDatetime
+        FROM notice_comment AS NC
+        INNER JOIN users AS U
+        ON NC.writer = U.user_code
+        WHERE NC.notice_id = ${noticeId}
+        ORDER BY write_datetime ASC
+    </select>
+
+    <select id="loadCommentById" resultType="org.computerized.pl.model.comment.CommentVO">
+        SELECT
+            id,
+            notice_id AS noticeId,
+            parent_comment_id AS parentCommentId,
+            contents,
+            writer AS writerId,
+            U.name AS writer,
+            write_datetime AS writeDatetime
+        FROM notice_comment AS NC
+        INNER JOIN users AS U
+        ON NC.writer = U.user_code
+        WHERE NC.id = ${commentId}
+    </select>
+
+    <insert id="addComment">
+        INSERT INTO
+            notice_comment(notice_id, contents, writer)
+        VALUES(${noticeId}, #{contents}, ${writer})
+    </insert>
+
+    <update id="modComment">
+        UPDATE notice_comment
+        SET contents = #{contents}
+        WHERE id = ${commentId}
+    </update>
+
+    <delete id="delComment">
+        DELETE FROM notice_comment
+        WHERE id = ${commentId}
+    </delete>
+</mapper>
